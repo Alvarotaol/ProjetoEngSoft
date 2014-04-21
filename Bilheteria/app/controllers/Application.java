@@ -5,6 +5,7 @@ import play.mvc.*;
 import play.data.*;
 import play.data.validation.*;
 
+import java.sql.Time;
 import java.util.*;
 
 import models.*;
@@ -14,18 +15,19 @@ public class Application extends Controller {
 //Desde que exista um html com o mesmo nome
     public static void index() {
     	List<Evento> eve = Evento.all().fetch();
-    	eve.add(new Evento("Teste alternativo"));
-    	Logger.info("Resutado: " + eve.size());
-    	System.out.println(eve.size());
         render(eve);
     }
     
-    public static void cadastrarEvento(@Required String nome){
+    public static void cadastrarEvento(@Required String nome, @Required Date dia/*, @Required Time hora*/){
     	
-    	Evento evento = new Evento(nome);
+    	//Hora Não funciona
+    	/*Logger.info("Teste " + params.get("hora"));
+    	hora = hora.valueOf(params.get("hora").toString());/**/
+    	Evento evento = new Evento(nome, dia);
+    	
 		/*if (validation.hasErrors()) {
-			render("Application/inserir.html", evento);
-		}*///Quando tiver validação faz algo assim
+			render("Application/index.html", null);
+		}//Quando tiver validação faz algo assim /**/
 
 		evento.save();
 		index();

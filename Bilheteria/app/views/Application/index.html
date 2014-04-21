@@ -2,17 +2,17 @@
 #{set title:'P' /}
 
 <!--Testando sintaxe-->
-#{ if eve.size() == 2}
-	Olá 2
+#{ if eve == null}
+	Erro: Preencha todos os campos (eu sei que o erro é nosso, mas tenha paciência)
 #{/if}
 #{else}
-	Olá Outro número
+	Olá, imundo
 #{/else}
 
 <div> Lista aqui
 <ol>
 #{list items:eve, as:'evento'}
-		<li>${evento.nome}</li>
+		<li>Nome: ${evento.nome}, Data: ${evento.data}</li>
  #{/list}
  </ol>
 
