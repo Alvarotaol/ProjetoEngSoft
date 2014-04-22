@@ -1,2 +1,0 @@
-insert into evento values (1, 'teste 1')
-insert into evento values (2, 'teste 2')
