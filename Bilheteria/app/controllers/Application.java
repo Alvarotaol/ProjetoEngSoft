@@ -18,12 +18,10 @@ public class Application extends Controller {
         render(eve);
     }
     
-    public static void cadastrarEvento(@Required String nome, @Required Date dia/*, @Required Time hora*/, @Required int quantidade){
+    public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
     	
-    	//Hora Não funciona
-    	/*Logger.info("Teste " + params.get("hora"));
-    	hora = hora.valueOf(params.get("hora").toString());/**/
-    	Evento evento = new Evento(nome, dia, quantidade);
+    	Logger.info("Valor hora: " + hora);
+    	Evento evento = new Evento(nome, dia, hora, quantidade);
     	
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);

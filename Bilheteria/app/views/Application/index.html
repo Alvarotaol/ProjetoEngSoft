@@ -15,13 +15,15 @@
 		<th>Nome</th>
 		<th>Quantidade de Ingressos</th>
 		<th>Data</th>
+		<th>Hora</th>
 	</tr>
 	
 	#{list items:eve, as:'evento'}
 	<tr>
 		<td>${evento.nome}</td>
 		<td>${evento.quantidade}</td>
-		<td>${evento.data}</td>
+		<td>${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900}</td>
+		<td>${evento.hora}</td>
 	</tr>
 	#{/list}
 </table>

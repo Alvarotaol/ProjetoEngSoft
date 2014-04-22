@@ -4,6 +4,7 @@
 <h1>Um formulário simples </h1>
 	#{form @Application.cadastrarEvento()}
 	
+	
 	<div class="linha">
 		<div class="esq">
 			<p><label for="nome">Nome:</label></p>
@@ -12,7 +13,6 @@
 			<p><input type="text" name="nome" id="nome" value="${params.nome}" /></p>
 		</div>
 	</div>
-	
 	<div class="linha">
 		<div class="esq">
 			<p><label for="quantidade">Quantidade de Ingressos:</label></p>
@@ -31,14 +31,14 @@
 		</div>
 	</div>
 	
-	<!--<div class="linha">
+	<div class="linha">
 		<div class="esq">
 			<p><label for="hora">Hora:</label></p>
 		</div>
 		<div class="dir">
 			<p><input type="time" name="hora" id="hora" value="${params.hora}" /></p>
 		</div>
-	</div>-->
+	</div>
 	
 	<div class="bot-enviar">
 		<p><input type="submit" value="Cadastrar o Evento" /></p>

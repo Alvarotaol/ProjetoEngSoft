@@ -16,17 +16,17 @@ public class Evento extends Model {
 	private String nome;
 	private Date data;
 	private int quantidade;
-	//private Time hora;
+	private String hora;
 	
 	public Evento(){
 		nome = "Evento" + nEvento;
 		nEvento++;
 	}
 	
-	public Evento(String nome, Date data/*, Time hora*/, int quantidade){
+	public Evento(String nome, Date data, String hora, int quantidade){
 		this.nome = nome;
 		this.data = data;
-		//this.hora = hora;
+		this.hora = hora;
 		this.quantidade = quantidade;
 	}
 	
