@@ -13,10 +13,10 @@ import play.db.jpa.Model; //Classe modelo
 public class Evento extends Model {
 	//Por enquanto só o nome
 	private static int nEvento = 0;
-	private String nome;
-	private Date data;
-	private int quantidade;
-	private String hora;
+	public String nome;
+	public Date data;
+	public int quantidade;
+	public String hora;
 	
 	public Evento(){
 		nome = "Evento" + nEvento;

@@ -6,6 +6,8 @@ import play.data.*;
 import play.data.validation.*;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import models.*;
@@ -39,4 +41,35 @@ public class Application extends Controller {
     	render();    	
     }
     
+    public static void apagar(long id) {
+    	Evento evento = Evento.find("id", id).first();
+		evento.delete();
+		index();
+    }
+    
+    public static void editar(long id){
+    	Evento evento = Evento.find("id", id).first();
+		render(evento);
+    }
+    
+    public static void editarEvento(long id){
+
+		Evento evento = Evento.find("id", id).first();
+
+		if (validation.hasErrors()) {
+			render("Application/editar.html", evento);
+		}
+		SimpleDateFormat formatar = new SimpleDateFormat();
+		evento.nome = request.params.get("nome");
+		evento.quantidade = Integer.parseInt(request.params.get("quantidade"));
+		try {
+			evento.data = formatar.parse(request.params.get("dia"));
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+		evento.hora = request.params.get("hora");
+		evento.save();
+    	index();
+    }
 }

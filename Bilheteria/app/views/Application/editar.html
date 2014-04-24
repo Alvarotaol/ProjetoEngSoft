@@ -2,7 +2,7 @@
 #{set title:'Gerenciar eventos' /}
 
 <h1>Cadastro de evento </h1>
-	#{form @Application.cadastrarEvento()}
+	#{form @Application.editarEvento(evento.id)}
 	
 	
 	<div class="linha">
@@ -10,7 +10,7 @@
 			<p><label for="nome">Nome:</label></p>
 		</div>
 		<div class="dir">
-			<p><input type="text" name="nome" id="nome" value="${params.nome}" /></p>
+			<p><input type="text" name="nome" id="nome" value="${evento.nome}" /></p>
 		</div>
 	</div>
 	<div class="linha">
@@ -18,7 +18,7 @@
 			<p><label for="quantidade">Quantidade de Ingressos:</label></p>
 		</div>
 		<div class="dir">
-			<p><input type="text" name="quantidade" id="quantidade" value="${params.quantidade}" /></p>
+			<p><input type="text" name="quantidade" id="quantidade" value="${evento.quantidade}" /></p>
 		</div>
 	</div>	
 	
@@ -27,7 +27,7 @@
 			<p><label for="dia">Data:</label></p>
 		</div>
 		<div class="dir">
-			<p><input type="date" name="dia" id="dia" value="${params.dia}" /></p>
+			<p><input type="date" name="dia" id="dia" value="${evento.data}" /></p>
 		</div>
 	</div>
 	
@@ -36,12 +36,12 @@
 			<p><label for="hora">Hora:</label></p>
 		</div>
 		<div class="dir">
-			<p><input type="time" name="hora" id="hora" value="${params.hora}" /></p>
+			<p><input type="time" name="hora" id="hora" value="${evento.hora}" /></p>
 		</div>
 	</div>
 	
 	<div class="bot-enviar">
-		<p><input type="submit" value="Cadastrar o Evento" /></p>
+		<p><input type="submit" value="Editar o Evento" /></p>
 	</div>
 
 #{/form}

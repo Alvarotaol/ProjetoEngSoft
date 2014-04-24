@@ -6,16 +6,17 @@
 	Erro: Preencha todos os campos (eu sei que o erro é nosso, mas tenha paciência)
 #{/if}
 #{else}
-	Olá, imundo
+<h1>Bem vindo</h1>
 #{/else}
 
-<div> Lista aqui <br/>
+<div> <h2>Lista de eventos</h2> <br/>
 <table border="1">
 	<tr>
 		<th>Nome</th>
 		<th>Quantidade de Ingressos</th>
 		<th>Data</th>
 		<th>Hora</th>
+		<th></th>
 	</tr>
 	
 	#{list items:eve, as:'evento'}
@@ -24,6 +25,8 @@
 		<td>${evento.quantidade}</td>
 		<td>${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900}</td>
 		<td>${evento.hora}</td>
+		<td><a href="@{Application.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este contato?')){return false;}">Apagar</a>
+		<a href="@{Application.editar(evento.id)}">Editar</a></td>
 	</tr>
 	#{/list}
 </table>
