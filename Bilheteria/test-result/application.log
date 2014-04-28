@@ -1,5 +1,5 @@
-18 Abr 2014 20:53:33,121 INFO  ~ Starting C:\Users\Breno Cardoso\workspace\Bilheteria
-18 Abr 2014 20:53:33,989 WARN  ~ You're running Play! in DEV mode
-18 Abr 2014 20:53:34,124 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-18 Abr 2014 20:53:42,889 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
-18 Abr 2014 20:53:42,945 INFO  ~ Application 'Bilheteria' is now started !
+28 Abr 2014 10:43:46,595 INFO  ~ Starting C:\Users\Breno Cardoso\workspace\ProjetoEngSoft-master\Bilheteria
+28 Abr 2014 10:43:47,525 WARN  ~ You're running Play! in DEV mode
+28 Abr 2014 10:43:47,708 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+28 Abr 2014 10:44:06,516 INFO  ~ Connected to jdbc:mysql://localhost/bdbilheteria?useUnicode=yes&characterEncoding=UTF-8&connectionCollation=utf8_general_ci
+28 Abr 2014 10:44:07,986 INFO  ~ Application 'Bilheteria' is now started !

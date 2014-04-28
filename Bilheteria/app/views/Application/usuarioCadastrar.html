@@ -1,0 +1,67 @@
+#{extends 'pagteste.html' /}
+#{set title:'Cadastrar Usuário' /}
+
+<h1>Cadastro de novo usuário</h1>
+	#{form @Application.cadastrarUsuario()}
+	
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="nome">Nome:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="nome" id="nome" value="${params.nome}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="cpf">CPF:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="cpf" id="cpf" value="${params.cpf}" /></p>
+		</div>
+	</div>	
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="dia">Data de Nascimento:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="date" name="dia" id="dia" value="${params.dia}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="email">E-Mail:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="email" id="email" value="${params.email}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="endereco">Endereço:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="endereco" id="endereco" value="${params.endereco}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="telefone">Telefone:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="telefone" id="telefone" value="${params.telefone}" /></p>
+		</div>
+	</div>
+	
+	
+	<div class="bot-enviar">
+		<p><input type="submit" value="Finalizar Cadastro" /></p>
+	</div>
+
+#{/form}

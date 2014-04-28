@@ -1,0 +1,66 @@
+#{extends 'pagteste.html' /}
+#{set title:'Editar Usuários' /}
+
+<h1>Editar um Usuário </h1>
+	#{form @Application.usuarioEditar2(usuario.id)}
+	
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="nome">Nome:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="nome" id="nome" value="${usuario.nome}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="cpf">CPF:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="cpf" id="cpf" value="${usuario.cpf}" /></p>
+		</div>
+	</div>	
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="dia">Data de Nascimento:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="date" name="dia" id="dia" value="${usuario.dNasc}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="email">E-Mail:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="email" id="email" value="${usuario.email}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="endereco">Endereço:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="endereco" id="endereco" value="${usuario.endereco}" /></p>
+		</div>
+	</div>
+	
+	<div class="linha">
+		<div class="esq">
+			<p><label for="telefone">Telefone:</label></p>
+		</div>
+		<div class="dir">
+			<p><input type="text" name="telefone" id="telefone" value="${usuario.telefone}" /></p>
+		</div>
+	</div>
+	
+	<div class="bot-enviar">
+		<p><input type="submit" value="Finalizar Edição" /></p>
+	</div>
+
+#{/form}

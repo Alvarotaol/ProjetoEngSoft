@@ -1,5 +1,5 @@
 #{extends 'pagteste.html' /}
-#{set title:'P' /}
+#{set title:'Sistema de reservas' /}
 
 <!--Testando sintaxe-->
 #{ if eve == null}
@@ -16,7 +16,7 @@
 		<th>Quantidade de Ingressos</th>
 		<th>Data</th>
 		<th>Hora</th>
-		<th></th>
+		<th>Ações</th>
 	</tr>
 	
 	#{list items:eve, as:'evento'}
@@ -35,3 +35,4 @@
 <!-- Esse Aplication.eventos() corresponde ao método eventos no Controlador -->
 <div><a href="@{Application.eventos()}">Gerenciar eventos</a></div>
 <div><a href="@{Application.ingressos()}">Comprar ingressos</a></div>
+<div><a href="@{Application.usuarioIndex()}">Gerência de Usuários</a></div>

@@ -1,0 +1,32 @@
+#{extends 'pagteste.html' /}
+#{set title:'Gerência de Usuários' /}
+
+<div> <h2>Lista de Usuários</h2> <br/>
+<table border="1">
+	<tr>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th>Data de Nacimento</th>
+		<th>E-Mail</th>
+		<th>Endereço</th>
+		<th>Telefone</th>
+		<th>Ações</th>
+	</tr>
+	
+	#{list items:usr, as:'usuario'}
+	<tr>
+		<td>${usuario.nome}</td>
+		<td>${usuario.cpf}</td>
+		<td>${usuario.dNasc.getDate()}/${usuario.dNasc.getMonth() + 1}/${usuario.dNasc.getYear() + 1900}</td>
+		<td>${usuario.email}</td>
+		<td>${usuario.endereco}</td>
+		<td>${usuario.telefone}</td>
+		<td><a href="@{Application.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
+		    <a href="@{Application.usuarioEditar(usuario.id)}">Editar</a></td>
+	</tr>
+	#{/list}
+</table>
+</div> <br/>
+
+<div><a href="@{Application.usuarioCadastrar()}">Cadastrar Usuário</a></div>
+<div><a href="@{Application.index()}">Voltar</a></div>
