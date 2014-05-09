@@ -21,16 +21,16 @@ public class Application extends Controller {
     }    
     
     public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
-    	
+    	/*
     	Logger.info("Valor hora: " + hora);
     	Evento evento = new Evento(nome, dia, hora, quantidade);
     	
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim /**/
+		}//Quando tiver validação faz algo assim
 
 		evento.save();
-		index();
+		index(); */
     }
     
     public static void eventos() {
@@ -57,7 +57,7 @@ public class Application extends Controller {
     }
     
     public static void editarEvento(long id){
-
+    	/*
 		Evento evento = Evento.find("id", id).first();
 
 		if (validation.hasErrors()) {
@@ -74,21 +74,21 @@ public class Application extends Controller {
 		}
 		evento.hora = request.params.get("hora");
 		evento.save();
-    	index();
+    	index(); */
     }
     
     //-------------------USUÁRIOS
     public static void cadastrarUsuario(@Required String nome, @Required String cpf,
     									@Required String email, @Required String endereco,
     									@Required String telefone, @Required Date dia) {
-    	Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dia);
+    	/*Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dia);
     	
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim /**/
+		}//Quando tiver validação faz algo assim 
 
 		usr._save();
-		usuarioIndex();
+		usuarioIndex(); */
     }
     
     public static void usuarioEditar(long id){

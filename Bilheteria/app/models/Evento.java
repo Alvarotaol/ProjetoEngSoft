@@ -8,26 +8,32 @@ import javax.persistence.Entity;//Importa a anotação Entity (que não sei pra 
 import play.*; //Coloquei pra caso precise
 import play.db.jpa.Model; //Classe modelo
 
-
 @Entity
 public class Evento extends Model {
-	//Por enquanto só o nome
-	private static int nEvento = 0;
 	public String nome;
 	public Date data;
-	public int quantidade;
 	public String hora;
+
+	public Date dataExpiraCompraDeIngresso;
+	public String horaExpiraCompraDeIngressos;
 	
-	public Evento(){
-		nome = "Evento" + nEvento;
-		nEvento++;
-	}
+	//chaves estrangeiras
+	public int id_estadio;
+	public int id_mandante;
+	public int id_visitante;
 	
-	public Evento(String nome, Date data, String hora, int quantidade){
+	public Evento(String nome, Date data, String hora, Date data2, String hora2,
+			      int id_estadio, int id_mandante, int id_visitante){
 		this.nome = nome;
 		this.data = data;
 		this.hora = hora;
-		this.quantidade = quantidade;
+		this.dataExpiraCompraDeIngresso = data2;
+		this.horaExpiraCompraDeIngressos = hora2;
+		
+		//chaves estrangeiras
+		this.id_estadio = id_estadio;
+		this.id_mandante = id_mandante;
+		this.id_visitante = id_visitante;
 	}
 	
 }
