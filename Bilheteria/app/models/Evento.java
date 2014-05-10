@@ -18,12 +18,12 @@ public class Evento extends Model {
 	public String horaExpiraCompraDeIngressos;
 	
 	//chaves estrangeiras
-	public int id_estadio;
-	public int id_mandante;
-	public int id_visitante;
+	public long id_estadio;
+	public long id_mandante;
+	public long id_visitante;
 	
 	public Evento(String nome, Date data, String hora, Date data2, String hora2,
-			      int id_estadio, int id_mandante, int id_visitante){
+			      long id_estadio, long id_mandante, long id_visitante){
 		this.nome = nome;
 		this.data = data;
 		this.hora = hora;

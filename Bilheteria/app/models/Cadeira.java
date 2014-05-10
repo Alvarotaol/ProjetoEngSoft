@@ -10,11 +10,11 @@ public class Cadeira extends Model{
 	public int status;
 	
 	//chave estrangeira
-	public int id_setor;
+	public long id_fileira;
 	
-	public Cadeira(String nome, int id_setor, int status) {
+	public Cadeira(String nome, long id_fileira, int status) {
 		this.nome = nome;
-		this.id_setor = id_setor;
+		this.id_fileira = id_fileira;
 		this.status = status;
 	}
 }

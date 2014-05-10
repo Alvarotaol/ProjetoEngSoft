@@ -9,13 +9,13 @@ public class SetorDisponivelPartida extends Model{
 	public int status;
 	
 	//chaves estrangeiras
-	public int id_patida;
-	public int id_setor;
+	public long id_evento;
+	public long id_setor;
 	public float valor;
 	
-	public SetorDisponivelPartida (int status, int id_partida, int id_setor, float valor) {
+	public SetorDisponivelPartida (int status, long id_evento, long id_setor, float valor) {
 		this.status = status;
-		this.id_patida = id_partida;
+		this.id_evento = id_evento;
 		this.id_setor = id_setor;
 		this.valor = valor;
 	}

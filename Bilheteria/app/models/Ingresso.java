@@ -12,16 +12,15 @@ public class Ingresso extends Model{
 	public String horaCompra;
 	
 	//chaves estrngeiras
-	public int id_usuario;
-	public int id_partida;
-	public int id_cadeira;
+	public long id_usuario;
+	public long id_evento;
+	public long id_cadeira;
 	
-	public Ingresso(Date dataCompra, String horaCompra, int id_usuario, int id_partida,
-			        int id_cadeira) {
+	public Ingresso(Date dataCompra, String horaCompra, long id_usuario, long id_evento, long id_cadeira) {
 		this.dataCompra = dataCompra;
 		this.horaCompra = horaCompra;
 		this.id_usuario = id_usuario;
-		this.id_partida = id_partida;
+		this.id_evento = id_evento;
 		this.id_cadeira = id_cadeira;
 	}
 }

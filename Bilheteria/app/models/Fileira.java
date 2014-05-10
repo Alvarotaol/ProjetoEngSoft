@@ -9,9 +9,9 @@ public class Fileira extends Model{
 	public String nome;
 	
 	//chave estrangeira
-	public int id_setor;
+	public long id_setor;
 	
-	public Fileira(String nome, int id_setor) {
+	public Fileira(String nome, long id_setor) {
 		this.nome = nome;
 		this.id_setor = id_setor;
 	}
