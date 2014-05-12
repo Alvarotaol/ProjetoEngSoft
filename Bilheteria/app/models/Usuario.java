@@ -30,6 +30,7 @@ public class Usuario extends Model {
 		this.email = email;
 		this.telefone = telefone;
 		this.endereco = endereco;
+		this.login = login;
 		
 		this.dNasc = dNasc;
 		this.tipo = tipo;

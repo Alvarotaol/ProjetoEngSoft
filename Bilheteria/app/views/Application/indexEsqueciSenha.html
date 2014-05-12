@@ -1,0 +1,29 @@
+#{extends 'pagteste2.html' /}
+#{set title:'Login' /}
+  
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>digite seu cpf para recuperar a senha</h2>
+          <div class="clr"></div>
+
+			#{form @Application.esqueciMinhaSenha()}
+	            <ol>
+				  <li>
+	                <label for="cpf">CPF:</label>
+	                <input type="text" name="cpf" id="cpf" class="text" value="${params.cpf}" />
+	              </li>
+	              <li>
+	              	<input type="submit" value="Recuperar Senha" class="send"/>
+	                <div class="clr"></div>
+	              </li>
+	            </ol>
+			#{/form}
+
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

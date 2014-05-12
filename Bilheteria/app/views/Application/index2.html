@@ -1,0 +1,18 @@
+#{extends 'pagteste.html' /}
+#{set title:'Sistema de reservas' /}
+
+<!--Testando sintaxe-->
+#{ if eve == null}
+	Erro: Preencha todos os campos (eu sei que o erro é nosso, mas tenha paciência)
+#{/if}
+#{else}
+<h1>Bem vindo</h1>
+#{/else}
+
+
+
+
+<!-- Esse Aplication.eventos() corresponde ao método eventos no Controlador -->
+<div><a href="@{Application.eventos()}">Gerenciar eventos</a></div>
+<div><a href="@{Application.ingressos()}">Comprar ingressos</a></div>
+<div><a href="@{Application.usuarioIndex()}">Gerência de Usuários</a></div>

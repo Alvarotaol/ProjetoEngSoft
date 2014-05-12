@@ -1,18 +1,33 @@
-#{extends 'pagteste.html' /}
-#{set title:'Sistema de reservas' /}
+#{extends 'pagteste2.html' /}
+#{set title:'Arenas da Copa - HomePage' /}
+  
+<div class="content">
+	<div class="content_resize">
+		<div class="mainbar">
+			<div class="article">
+          	<div class="clr"></div>
 
-<!--Testando sintaxe-->
-#{ if eve == null}
-	Erro: Preencha todos os campos (eu sei que o erro é nosso, mas tenha paciência)
-#{/if}
-#{else}
-<h1>Bem vindo</h1>
-#{/else}
+				 <div class="slider">
+				        <div id="coin-slider">
+							<img src="@{'/public/images/slide1.jpg'}" width="960" height="360" alt="" />
+								<span><big>ABC x Alecrim</big><br />
+								22/05/2014 - Grande Clássico do Futebol Potiguar</span>
+						  
+						    <img src="@{'/public/images/slide2.jpg'}" width="960" height="360" alt="" />
+								<span><big>ABC x América</big><br />
+								25/05/2014 - Maior clássico do futebol Nordestino</span>
+							
+							<img src="@{'/public/images/slide3.jpg'}" width="960" height="360" alt="" /><span>
+								<big>ABC x Barcelona</big><br />
+								02/06/2014 - Valendo o título mundial de clubes</span>
+						</div>
+				        <div class="clr"></div>
+				</div>
 
-
-
-
-<!-- Esse Aplication.eventos() corresponde ao método eventos no Controlador -->
-<div><a href="@{Application.eventos()}">Gerenciar eventos</a></div>
-<div><a href="@{Application.ingressos()}">Comprar ingressos</a></div>
-<div><a href="@{Application.usuarioIndex()}">Gerência de Usuários</a></div>
+          		<a href="@{Application.index2()}"> ADM </a>
+			</div>
+      		</div>
+		</div>
+      <div class="clr"></div>
+	</div>
+</div>

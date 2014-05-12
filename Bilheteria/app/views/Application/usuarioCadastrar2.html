@@ -1,11 +1,11 @@
-#{extends 'pagtesteadm.html' /}
+#{extends 'pagteste2.html' /}
 #{set title:'Cadastrar Usuário' /}
   
   <div class="content">
     <div class="content_resize">
       <div class="mainbar">
         <div class="article">
-          <h2>digite os dados do usuario</h2>
+          <h2>digite os seus dados</h2>
           <div class="clr"></div>
           * Dados Obrigatórios
                     
@@ -48,7 +48,7 @@
                 <input type="password" name="senha2" id="senha2" class="text" value="${params.senha2}" />
               </li>
               <li>
-                <input type="image" name="imageField" id="imageField" src="/public/images/submit.gif" class="send" />
+                <input type="submit" value="Finalizar Cadastro" class="send"/>
                 <div class="clr"></div>
               </li>
             </ol>

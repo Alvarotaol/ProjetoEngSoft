@@ -4,11 +4,18 @@ import play.*;
 import play.mvc.*;
 import play.data.*;
 import play.data.validation.*;
+import play.db.jpa.JPA;
 
+import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import javax.management.Query;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import models.*;
 
@@ -16,9 +23,25 @@ public class Application extends Controller {
 //Cada método static aqui corresponde a uma página (creio eu)
 //Desde que exista um html com o mesmo nome
     public static void index() {
+    	render();
+    }
+
+    public static void index2() {
     	List<Evento> eve = Evento.all().fetch();
         render(eve);
-    }    
+    }
+    
+    public static void indexLogin() {
+    	render();
+    }
+    
+    public static void indexEsqueciSenha() {
+    	render();
+    }
+    
+    public static void indexProxJogos() {
+    	render();
+    }
     
     public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
     	/*
@@ -45,10 +68,14 @@ public class Application extends Controller {
     	render();    	
     }
     
-    public static void apagar(long id) {
+    public static void usuarioCadastrar2() {
+    	render();    	
+    }
+    
+    public static void apagar(long id) throws SQLException {
     	Evento evento = Evento.find("id", id).first();
 		evento.delete();
-		index();
+		eventos();
     }
     
     public static void editar(long id){
@@ -77,18 +104,21 @@ public class Application extends Controller {
     	index(); */
     }
     
-    //-------------------USUÁRIOS
-    public static void cadastrarUsuario(@Required String nome, @Required String cpf,
-    									@Required String email, @Required String endereco,
-    									@Required String telefone, @Required Date dia) {
-    	/*Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dia);
+    //-------------------USUÁRIOS        
+    public static void cadastrarUsuario(@Required String nome,     @Required String cpf,
+    									@Required String email,    @Required String endereco,
+    									@Required String telefone, @Required Date   dNasc,
+    									@Required String login,    @Required String senha,
+    									@Required String senha2,   @Required int    tipo, 
+    									@Required int    banido) {
+    	Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dNasc, login, senha, 3, 0);
     	
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim 
+		}//Quando tiver validação faz algo assim */
 
 		usr._save();
-		usuarioIndex(); */
+		indexLogin();
     }
     
     public static void usuarioEditar(long id){
@@ -131,5 +161,15 @@ public class Application extends Controller {
     public static void usuarioIndex() { //carregar página de gerencia de usuário
     	List<Usuario> usr = Usuario.all().fetch();
         render(usr);
+    }
+    
+    //--------------------LOGIN
+    public static void entrar(@Required String usuario, @Required String senha) {
+    	
+    }
+    
+
+    public static void esqueciMinhaSenha(@Required String CPF) {
+    	
     }
 }
