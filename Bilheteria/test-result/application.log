@@ -907,3 +907,158 @@ play.exceptions.NoRouteFoundException: No route found
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
 	at Invocation.HTTP Request(Play!)
+12 Mai 2014 21:07:34,960 WARN  ~ Ignoring  (static params must be specified as key:'value',...)
+12 Mai 2014 22:05:27,974 ERROR ~ 
+
+@6i7jn5bm7
+Internal Server Error (500) for request GET /application/usuarioindex
+
+Template execution error (In /app/views/Application/usuarioIndex.html around line 31)
+Execution error occured in template /app/views/Application/usuarioIndex.html. Exception raised was NullPointerException : Cannot invoke method getDate() on null object.
+
+play.exceptions.TemplateExecutionException: Cannot invoke method getDate() on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:86)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:272)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:202)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:661)
+	at play.mvc.Controller.renderTemplate(Controller.java:641)
+	at play.mvc.Controller.render(Controller.java:696)
+	at controllers.Application.usuarioIndex(Application.java:163)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot invoke method getDate() on null object
+	at /app/views/Application/usuarioIndex.html.(line:31)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:247)
+	... 13 more
+12 Mai 2014 22:05:31,100 ERROR ~ 
+
+@6i7jn5bm8
+Internal Server Error (500) for request GET /application/usuarioindex
+
+Template execution error (In /app/views/Application/usuarioIndex.html around line 31)
+Execution error occured in template /app/views/Application/usuarioIndex.html. Exception raised was NullPointerException : Cannot invoke method getDate() on null object.
+
+play.exceptions.TemplateExecutionException: Cannot invoke method getDate() on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:86)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:272)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:202)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:661)
+	at play.mvc.Controller.renderTemplate(Controller.java:641)
+	at play.mvc.Controller.render(Controller.java:696)
+	at controllers.Application.usuarioIndex(Application.java:163)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot invoke method getDate() on null object
+	at /app/views/Application/usuarioIndex.html.(line:31)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:247)
+	... 13 more
+12 Mai 2014 22:05:34,362 ERROR ~ 
+
+@6i7jn5bm9
+Internal Server Error (500) for request GET /application/usuarioindex
+
+Template execution error (In /app/views/Application/usuarioIndex.html around line 31)
+Execution error occured in template /app/views/Application/usuarioIndex.html. Exception raised was NullPointerException : Cannot invoke method getDate() on null object.
+
+play.exceptions.TemplateExecutionException: Cannot invoke method getDate() on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:86)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:272)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:202)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:661)
+	at play.mvc.Controller.renderTemplate(Controller.java:641)
+	at play.mvc.Controller.render(Controller.java:696)
+	at controllers.Application.usuarioIndex(Application.java:163)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot invoke method getDate() on null object
+	at /app/views/Application/usuarioIndex.html.(line:31)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:247)
+	... 13 more
+12 Mai 2014 22:08:01,714 ERROR ~ 
+
+@6i7jn5bma
+Internal Server Error (500) for request GET /application/usuarioindex
+
+Template execution error (In /app/views/Application/usuarioIndex.html around line 31)
+Execution error occured in template /app/views/Application/usuarioIndex.html. Exception raised was NullPointerException : Cannot invoke method getDate() on null object.
+
+play.exceptions.TemplateExecutionException: Cannot invoke method getDate() on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:86)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:272)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:202)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:661)
+	at play.mvc.Controller.renderTemplate(Controller.java:641)
+	at play.mvc.Controller.render(Controller.java:696)
+	at controllers.Application.usuarioIndex(Application.java:163)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot invoke method getDate() on null object
+	at /app/views/Application/usuarioIndex.html.(line:31)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:247)
+	... 13 more
+12 Mai 2014 22:16:10,377 ERROR ~ 
+
+@6i7jn5bmb
+application.index.html action not found
+
+Action not found
+Action application.index.html could not be found. Error raised is Controller controllers.application.index not found
+
+play.exceptions.ActionNotFoundException: Action application.index.html not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:599)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.application.index not found
+	... 3 more
+12 Mai 2014 22:37:55,742 ERROR ~ 
+
+@6i7jn5bmc
+Internal Server Error (500) for request GET /application/usuarioindex
+
+Template execution error (In /app/views/Application/usuarioIndex.html around line 31)
+Execution error occured in template /app/views/Application/usuarioIndex.html. Exception raised was NullPointerException : Cannot invoke method getDate() on null object.
+
+play.exceptions.TemplateExecutionException: Cannot invoke method getDate() on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:86)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:272)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:202)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:661)
+	at play.mvc.Controller.renderTemplate(Controller.java:641)
+	at play.mvc.Controller.render(Controller.java:696)
+	at controllers.Application.usuarioIndex(Application.java:163)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot invoke method getDate() on null object
+	at /app/views/Application/usuarioIndex.html.(line:31)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:247)
+	... 13 more

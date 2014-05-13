@@ -164,6 +164,7 @@ public class Application extends Controller {
     }
     
     //--------------------LOGIN
+    
     public static void entrar(@Required String usuario, @Required String senha) {
     	
     }

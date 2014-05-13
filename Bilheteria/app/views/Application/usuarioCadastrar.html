@@ -25,11 +25,11 @@
               </li>
               <li>
                 <label for="telefone">Telefone*:</label>
-                <input type="text" name="telefone" id="telefone" class="text" value="${params.telefone}" />
+                <input type="text" name="telefone" id="telefone" class="text" value="${params.telefone}" maxlength="15"  onkeypress="javascript: mascaraTelefone(this);"/>
               </li>
               <li>
                 <label for="cpf">CPF*:</label>
-                <input type="text" name="cpf" id="cpf" class="text" value="${params.cpf}" />
+                <input type="text" name="cpf" id="cpf" class="text" value="${params.cpf}"  onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14"/>
               </li>
               <li>
                 <label for="endereco">Endereço*:</label>
@@ -48,7 +48,7 @@
                 <input type="password" name="senha2" id="senha2" class="text" value="${params.senha2}" />
               </li>
               <li>
-                <input type="image" name="imageField" id="imageField" src="/public/images/submit.gif" class="send" />
+                <input type="submit" value="Finalizar Cadastro" class="send"/>
                 <div class="clr"></div>
               </li>
             </ol>
