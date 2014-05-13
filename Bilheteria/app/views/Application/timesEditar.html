@@ -1,0 +1,39 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Editar Times' /}
+ 
+   <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>editar dados do time de futebol</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+          
+          #{form @Application.timeEditar(timefutebol.id)}
+          <ol>
+              <li>
+                <label for="nome">Nome*:</label>
+                <input type="text" name="nome" id="nome" class="text" value="${timefutebol.nomeTime}"/>
+              </li>
+			  <li>
+                <label for="login">CNPJ*:</label>
+                <input type="text" name="cnpj" id="cnpj" class="text" value="${timefutebol.cnpjTime}" />
+              </li>
+			  <li>
+                <label for="login">Ano de Fundação*:</label>
+                <input type="text" name="ano" id="ano" class="text" value="${timefutebol.anoFundacao}" />
+              </li>
+              <li>
+                <input type="submit" value="Finalizar Edição" class="send"/>
+                <div class="clr"></div>
+              </li>
+            </ol>
+          #{/form}      
+      
+          
+         </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

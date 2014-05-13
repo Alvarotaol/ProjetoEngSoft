@@ -1,0 +1,42 @@
+#{extends 'pagTesteAdm.html' /}
+#{set title:'Gerência de Times de Futebol' /}
+
+
+<div class="content">
+	<div class="content_resize">
+		<div class="mainbar">
+			<div class="article">
+          		<h2>TIMES DE FUTEBOL</h2>
+          		<div class="clr"></div>
+          			<div><a href="@{Application.timesCadastrar()}">Cadastrar Times</a></div>
+					<div><a href="@{Application.index2()}">Voltar</a></div>
+					
+          			<br/>
+					<table border="1">
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th>CNPJ</th>
+							<th>Ano de Fundação</th>
+							<th>Ações</th>
+						</tr>
+						
+						#{list items:time, as:'timefutebol'}
+						<tr>
+							<td>${timefutebol.id}</td>
+							<td>${timefutebol.nomeTime}</td>
+							<td>${timefutebol.cnpjTime}</td>
+							<td>${timefutebol.anoFundacao}</td>
+							<td><a href="@{Application.timeApagar(timefutebol.id)}" onClick="if(!confirm('Deseja excluir este Time?')){return false;}">Apagar</a>
+							    <a href="@{Application.timesEditar(timefutebol.id)}">Editar</a></td>
+						</tr>
+						#{/list}
+					</table>
+					</div> <br/>
+					
+        		</div>
+      		</div>
+		</div>
+	<div class="clr"></div>
+	</div>
+</div>

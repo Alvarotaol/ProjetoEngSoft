@@ -8,9 +8,9 @@ import play.db.jpa.Model;
 public class TimeFutebol extends Model {
 	public String nomeTime;
 	public String cnpjTime;
-	public int anoFundacao;
+	public String anoFundacao;
 	
-	public TimeFutebol(String nome, String cnpj, int ano) {
+	public TimeFutebol(String nome, String cnpj, String ano) {
 		this.nomeTime = nome;
 		this.cnpjTime = cnpj;
 		this.anoFundacao = ano;

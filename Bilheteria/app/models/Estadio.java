@@ -6,13 +6,20 @@ import javax.persistence.Table;
 import play.db.jpa.Model;
 
 @Entity
-@Table(name="estadio")
 public class Estadio extends Model{
 	public String nomeEstadio;
-	public String enderecoEstadio;
+	public String logradouro;
+	public String bairro;
+	public String cep;
+	public String cidade;
+	public String estado;
 	
-	public Estadio(String nome, String endereco) {
+	public Estadio(String nome, String logradouro, String bairro, String cep, String cidade, String estado) {
 		this.nomeEstadio = nome;
-		this.enderecoEstadio = endereco;
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.estado = estado;
 	}
 }
