@@ -20,43 +20,42 @@
 
 <body>
 
-<div class="main">
-  <div class="header">
-    <div class="header_resize">
-      <div class="rss">
-       
-      </div>
-      <div class="logo">
-        <h1><a href="@{Application.index2()}"> <span>arenas da copa</span> <small>venda de ingressos para jogos de futebol</small></a></h1>
-      </div>
-      <div class="clr"></div>
-      <div class="searchform">
-	  
-      </div>
-      <div class="menu_nav">
-        <ul>
-          <li><a href="@{Application.index2()}"><span>Home ADM</span></a></li>
-          <li><a href="@{Application.eventos()}"><span>Gerência Estádios</span></a></li>
-          <li><a href="@{Application.timesIndex()}"><span>Gerência Times</span></a></li>
-          <li><a href="@{Application.eventos()}"><span>Gerência Eventos</span></a></li>
-          <li><a href="@{Application.usuarioIndex()}"><span>Gerência Usuários</span></a></li>
-        </ul>
-      </div>
-      <div class="clr"></div>
-      
-      <div class="clr"></div>
-    </div>
-  </div>
-
-	#{doLayout /}
+	<div class="main"><!--Não está fechado-->
+		<div class="header">
+			<div class="header_resize">
+				<div class="rss"></div>
+				
+				<div class="logo">
+					<h1><a href="@{Application.index2()}"> <span>arenas da copa</span> <small>venda de ingressos para jogos de futebol</small></a></h1>
+				</div>
+				
+				<div class="clr"></div>
+				<div class="searchform"></div>
+				
+				<div class="menu_nav">
+					<ul>
+						<!--Substituir a palavra Application pelo nome do controlador apropriado-->
+						<li><a href="@{Application.index2()}"><span>Home ADM</span></a></li>
+						<li><a href="@{Application.eventos()}"><span>Gerência Estádios</span></a></li>
+						<li><a href="@{TimeFutebolCtrl.timesIndex()}"><span>Gerência Times</span></a></li>
+						<li><a href="@{Application.eventos()}"><span>Gerência Eventos</span></a></li>
+						<li><a href="@{Application.usuarioIndex()}"><span>Gerência Usuários</span></a></li>
+					</ul>
+				</div>
+				<div class="clr"></div>
+				
+				<div class="clr"></div>
+			</div>
+		</div>
 	
-	<div class="fbg">
-		<div class="footer">
-    		<div class="footer_resize">
-      			<p class="lf">UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE</p>
-      			<p class="rf">Ciência da Computação</p>
-      		<div style="clear:both;">
-      		</div>
-    	</div>
-  	</div>
+		#{doLayout /}
+	
+	<div class="fbg"><!--Não está fechado-->
+	<div class="footer">
+		<div class="footer_resize">
+			<p class="lf">UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE</p>
+			<p class="rf">Ciência da Computação</p>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
 </body>

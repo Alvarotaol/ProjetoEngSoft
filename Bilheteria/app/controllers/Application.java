@@ -43,21 +43,6 @@ public class Application extends Controller {
     	render();
     }
     
-    //-------abrir páginas relacionadas a times
-    public static void timesIndex() {
-    	List<TimeFutebol> time = TimeFutebol.all().fetch();
-    	render(time);
-    }
-    
-    public static void timesCadastrar() {
-    	render();
-    }
-    
-    public static void timesEditar(long id){ //carrega o time que quer editar e manda pra página
-    	TimeFutebol timefutebol = TimeFutebol.find("id", id).first();
-		render(timefutebol);
-    }
-    
     //------------EVENTOS
     public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
     	/*
@@ -190,37 +175,5 @@ public class Application extends Controller {
     	
     }
     
-    //------TIMES
-    public static void cadastrarTime(@Required String nome, @Required String cnpj, @Required String ano) {
-    	
-    	TimeFutebol time = new TimeFutebol(nome, cnpj, ano);
-
-		/*if (validation.hasErrors()) {
-			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim */
-
-    	time._save();
-		timesIndex();
-    }
-    
-    public static void timeApagar(long id) {
-    	TimeFutebol time = TimeFutebol.find("id", id).first();
-		time.delete();
-		timesIndex();
-    }
-    
-    public static void timeEditar(long id){
-		TimeFutebol time = TimeFutebol.find("id", id).first();
-
-		if (validation.hasErrors()) {
-			render("Application/timesEditar.html", time);
-		}
-		
-		time.nomeTime = request.params.get("nome");
-		time.cnpjTime = request.params.get("cnpj");
-		time.anoFundacao = request.params.get("ano");
-		
-		time.save();
-    	timesIndex();
-    }
+   
 }
