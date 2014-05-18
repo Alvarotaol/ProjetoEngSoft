@@ -1,15 +1,15 @@
-#{extends 'pagtesteadm.html' /}
+#{extends 'pagteste2.html' /}
 #{set title:'Cadastrar Usuário' /}
   
   <div class="content">
     <div class="content_resize">
       <div class="mainbar">
         <div class="article">
-          <h2>digite os dados do usuario</h2>
+          <h2>digite os seus dados</h2>
           <div class="clr"></div>
           * Dados Obrigatórios
                     
-          #{form @Application.cadastrarUsuario()}
+          #{form @UsuarioCtrl.cadastrarUsuario()}
             <ol>
               <li>
                 <label for="nome">Nome Completo*:</label>

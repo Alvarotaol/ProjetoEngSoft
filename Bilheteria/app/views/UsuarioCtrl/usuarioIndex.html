@@ -21,7 +21,7 @@
 							<th>Telefone</th>
 							<th>Ações</th>
 						</tr>
-						
+						#{if usr != null}
 						#{list items:usr, as:'usuario'}
 						<tr>
 							<td>${usuario.login}</td>
@@ -32,14 +32,15 @@
 							<td>${usuario.email}</td>
 							<td>${usuario.endereco}</td>
 							<td>${usuario.telefone}</td>
-							<td><a href="@{Application.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
-							    <a href="@{Application.usuarioEditar(usuario.id)}">Editar</a></td>
+							<td><a href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
+							    <a href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a></td>
 						</tr>
 						#{/list}
+						#{/if}
 					</table>
 					</div> <br/>
 					
-					<div><a href="@{Application.usuarioCadastrar()}">Cadastrar Usuário</a></div>
+					<div><a href="@{UsuarioCtrl.usuarioCadastrar()}">Cadastrar Usuário</a></div>
 					<div><a href="@{Application.index()}">Voltar</a></div>
         		</div>
       		</div>

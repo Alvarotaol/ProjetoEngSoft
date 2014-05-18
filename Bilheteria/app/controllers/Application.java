@@ -31,14 +31,6 @@ public class Application extends Controller {
         render(eve);
     }
     
-    public static void indexLogin() {
-    	render();
-    }
-    
-    public static void indexEsqueciSenha() {
-    	render();
-    }
-    
     public static void indexProxJogos() {
     	render();
     }
@@ -62,14 +54,6 @@ public class Application extends Controller {
     }
     
     public static void ingressos() {
-    	render();    	
-    }
-    
-    public static void usuarioCadastrar() {
-    	render();    	
-    }
-    
-    public static void usuarioCadastrar2() {
     	render();    	
     }
     
@@ -104,76 +88,4 @@ public class Application extends Controller {
 		evento.save();
     	index(); */
     }
-    
-    //-------------------USUÁRIOS        
-    public static void cadastrarUsuario(@Required String nome,     @Required String cpf,
-    									@Required String email,    @Required String endereco,
-    									@Required String telefone, @Required Date   dNasc,
-    									@Required String login,    @Required String senha,
-    									@Required String senha2,   @Required int    tipo, 
-    									@Required int    banido) {
-    	Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dNasc, login, senha, 3, 0);
-    	
-		/*if (validation.hasErrors()) {
-			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim */
-
-		usr._save();
-		indexLogin();
-    }
-    
-    public static void usuarioEditar(long id){
-    	Usuario usuario = Usuario.find("id", id).first();
-		render(usuario);
-    }
-    
-    public static void usuarioEditar2(long id){
-
-		Usuario usuario = Usuario.find("id", id).first();
-
-		if (validation.hasErrors()) {
-			render("Application/usuarioEditar.html", usuario);
-		}
-		
-		SimpleDateFormat formatar = new SimpleDateFormat();
-		usuario.nome = request.params.get("nome");
-		usuario.cpf = request.params.get("cpf");
-		usuario.email = request.params.get("email");
-		usuario.endereco = request.params.get("endereco");
-		usuario.telefone = request.params.get("telefone");
-		
-		try {
-			usuario.dNasc = formatar.parse(request.params.get("dia"));
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		
-		usuario.save();
-    	usuarioIndex();
-    }
-    
-    public static void usuarioApagar(long id) {
-    	Usuario usuario = Usuario.find("id", id).first();
-		usuario.delete();
-		usuarioIndex();
-    }
-    
-    public static void usuarioIndex() { //carregar página de gerencia de usuário
-    	List<Usuario> usr = Usuario.all().fetch();
-        render(usr);
-    }
-    
-    //--------------------LOGIN
-    
-    public static void entrar(@Required String usuario, @Required String senha) {
-    	
-    }
-    
-
-    public static void esqueciMinhaSenha(@Required String CPF) {
-    	
-    }
-    
-   
 }
