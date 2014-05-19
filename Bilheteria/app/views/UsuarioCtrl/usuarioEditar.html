@@ -28,7 +28,8 @@
 			<p><label for="dia">Data de Nascimento:</label></p>
 		</div>
 		<div class="dir">
-			<p><input type="date" name="dia" id="dia" value="${usuario.dNasc}" /></p>
+			${usuario.dataNasc.toGMTString()}
+			<p><input type="date" name="dataNasc" id="dataNasc" value="${usuario.dataNasc.toLocaleString()}" /></p>
 		</div>
 	</div>
 	

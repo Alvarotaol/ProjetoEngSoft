@@ -19,11 +19,11 @@ public class Usuario extends Model {
 	public String senha;
 	public String endereco;
 	
-	public Date dNasc;
+	public Date dataNasc;
 	public int tipo;
 	public int banido;
 	
-	public Usuario(String nome, String cpf, String email, String endereco, String telefone, Date dNasc,
+	public Usuario(String nome, String cpf, String email, String endereco, String telefone, Date dataNasc,
 			       String login, String senha, int tipo, int banido){
 		this.nome = nome;
 		this.cpf = cpf;
@@ -32,7 +32,7 @@ public class Usuario extends Model {
 		this.endereco = endereco;
 		this.login = login;
 		
-		this.dNasc = dNasc;
+		this.dataNasc = dataNasc;
 		this.tipo = tipo;
 		this.banido = banido;
 	}

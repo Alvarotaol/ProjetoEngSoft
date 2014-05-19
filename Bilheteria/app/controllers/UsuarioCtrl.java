@@ -2,26 +2,32 @@ package controllers;
 
 import java.text.*;
 import java.util.*;
+import java.sql.Timestamp;
 
 import models.Usuario;
 import play.data.validation.Required;
 import play.mvc.Controller;
+import play.mvc.Scope.Session;
 
 public class UsuarioCtrl extends Controller {
 	/**Manda o usuario para o banco*/
     public static void cadastrarUsuario(@Required String nome,     @Required String cpf,
     									@Required String email,    @Required String endereco,
-    									@Required String telefone, @Required Date   dNasc,
+    									@Required String telefone, @Required Date   dataNasc,
     									@Required String login,    @Required String senha,
     									@Required String senha2,   @Required int    tipo, 
     									@Required int    banido) {
-    	Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dNasc, login, senha, 3, 0);
+    	Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3, 0);
     	
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
 		}//Quando tiver validação faz algo assim */
-
-		usr._save();
+    	
+    	//Testes pra resolver o problema da data na edição
+    	//Timestamp ts = new Timestamp(123);
+    	//ts.
+		
+    	usr._save();
 		//indexLogin();//TODO Deve ser colocado dentro de um if (se estiver logado não precisa chamar isso)
     }
     
@@ -38,7 +44,6 @@ public class UsuarioCtrl extends Controller {
 			render("Application/usuarioEditar.html", usuario);
 		}
 		
-		SimpleDateFormat formatar = new SimpleDateFormat();
 		usuario.nome = request.params.get("nome");
 		usuario.cpf = request.params.get("cpf");
 		usuario.email = request.params.get("email");
@@ -46,9 +51,9 @@ public class UsuarioCtrl extends Controller {
 		usuario.telefone = request.params.get("telefone");
 		
 		try {
-			usuario.dNasc = formatar.parse(request.params.get("dia"));
+			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
+			usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
 		} catch (ParseException e) {
-			
 			e.printStackTrace();
 		}
 		
@@ -71,10 +76,19 @@ public class UsuarioCtrl extends Controller {
 
     //--------------------LOGIN
     
-    public static void entrar(@Required String usuario, @Required String senha) {
-    	
+    public static void entrar(@Required String login, @Required String senha) {
+    	//TODO precisa de tratamento de excessões
+    	Usuario usuario = Usuario.find("login", login).first();
+    	if(request.params.get("senha").equals(usuario.senha)){
+    		session.put("usuario", usuario.login);
+    		session.put("conectado", "V");
+    		//TODO Colocar dentro de um if: se não for administrador não pode acessar essa página
+    		render("Application/index2.html");
+    	} else {
+    		System.out.println(usuario.senha + " " + request.params.get("senha"));
+    		usuarioCadastrar2();
+    	}
     }
-    
 
     public static void esqueciMinhaSenha(@Required String CPF) {
     	
