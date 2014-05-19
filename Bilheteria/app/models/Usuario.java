@@ -31,6 +31,7 @@ public class Usuario extends Model {
 		this.telefone = telefone;
 		this.endereco = endereco;
 		this.login = login;
+		this.senha = senha;
 		
 		this.dataNasc = dataNasc;
 		this.tipo = tipo;
