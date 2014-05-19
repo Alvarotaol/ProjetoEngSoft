@@ -1,67 +1,63 @@
-#{extends 'pagteste.html' /}
+#{extends 'pagtesteadm.html' /}
 #{set title:'Editar Usuários' /}
 
-<h1>Editar um Usuário </h1>
-	#{form @UsuarioCtrl.usuarioEditar2(usuario.id)}
-	
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="nome">Nome:</label></p>
-		</div>
-		<div class="dir">
-			<p><input type="text" name="nome" id="nome" value="${usuario.nome}" /></p>
-		</div>
-	</div>
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="cpf">CPF:</label></p>
-		</div>
-		<div class="dir">
-			<p><input type="text" name="cpf" id="cpf" value="${usuario.cpf}" /></p>
-		</div>
-	</div>	
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="dia">Data de Nascimento:</label></p>
-		</div>
-		<div class="dir">
-			${usuario.dataNasc.toGMTString()}
-			<p><input type="date" name="dataNasc" id="dataNasc" value="${usuario.dataNasc.toLocaleString()}" /></p>
-		</div>
-	</div>
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="email">E-Mail:</label></p>
-		</div>
-		<div class="dir">
-			<p><input type="text" name="email" id="email" value="${usuario.email}" /></p>
-		</div>
-	</div>
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="endereco">Endereço:</label></p>
-		</div>
-		<div class="dir">
-			<p><input type="text" name="endereco" id="endereco" value="${usuario.endereco}" /></p>
-		</div>
-	</div>
-	
-	<div class="linha">
-		<div class="esq">
-			<p><label for="telefone">Telefone:</label></p>
-		</div>
-		<div class="dir">
-			<p><input type="text" name="telefone" id="telefone" value="${usuario.telefone}" /></p>
-		</div>
-	</div>
-	
-	<div class="bot-enviar">
-		<p><input type="submit" value="Finalizar Edição" /></p>
-	</div>
-
-#{/form}
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>editar usuario</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+          
+			#{form @UsuarioCtrl.salvarAlteracoesUsuario(usuario.id)}
+            <ol>
+            	<li>			
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" id="nome" class="text" value="${usuario.nome}" />
+				</li>
+				<li>
+					<label for="cpf">CPF:</label>
+					<input type="text" name="cpf" id="cpf" class="text" value="${usuario.cpf}" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14"/>
+				</li>
+				<li>
+					<label for="dia">Data de Nascimento:</label>
+					${usuario.dataNasc.toGMTString()}<br/>
+					<input type="date" name="dataNasc" id="dataNasc" class="text" value="${usuario.dataNasc.toLocaleString()}" />
+				</li>
+				<li>
+					<label for="email">E-Mail:</label>
+					<input type="text" name="email" id="email" class="text" value="${usuario.email}" />
+				</li>
+				<li>
+					<label for="telefone">Telefone:</label>
+					<input type="text" name="telefone" id="telefone" class="text" value="${usuario.telefone}" maxlength="15"  onkeypress="javascript: mascaraTelefone(this);"/>
+				</li>
+				<li>
+					<label for="endereco">Endereço:</label>
+					<input type="text" name="endereco" id="endereco" class="text" value="${usuario.endereco}" />
+				</li>
+				<li>
+					<label for="bairro">Bairro:</label>
+					<input type="text" name="bairro" id="bairro" class="text" value="${usuario.bairro}" />
+				</li>
+				<li>
+					<label for="cidade">Cidade:</label>
+					<input type="text" name="cidade" id="cidade" class="text" value="${usuario.cidade}" />
+				</li>
+				<li>
+					<label for="estado">Estado:</label>
+					<input type="text" name="estado" id="estado" class="text" value="${usuario.estado}" />
+				</li>
+				<li>
+					<input type="submit" value="Finalizar Edição" class="send"/>
+					<div class="clr"></div>
+				</li>			
+			</ol>	
+			#{/form}
+			
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

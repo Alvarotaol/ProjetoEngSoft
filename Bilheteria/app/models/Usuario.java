@@ -18,18 +18,25 @@ public class Usuario extends Model {
 	public String login;
 	public String senha;
 	public String endereco;
+	public String bairro;
+	public String cidade;
+	public String estado;
 	
 	public Date dataNasc;
 	public int tipo;
 	public int banido;
 	
 	public Usuario(String nome, String cpf, String email, String endereco, String telefone, Date dataNasc,
-			       String login, String senha, int tipo, int banido){
+			       String login, String senha, int tipo, int banido, String bairro, String cidade,
+			       String estado){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
 		this.endereco = endereco;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
 		this.login = login;
 		this.senha = senha;
 		

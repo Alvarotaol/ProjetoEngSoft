@@ -16,8 +16,10 @@ public class UsuarioCtrl extends Controller {
 			@Required String telefone, @Required Date   dataNasc,
 			@Required String login,    @Required String senha,
 			@Required String senha2,   @Required int    tipo, 
-			@Required int    banido) {
-		Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3, 0);
+			@Required int    banido,   @Required String bairro, @Required String cidade,
+			@Required String estado) {
+		Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3, 0,
+				                  bairro, cidade, estado);
 
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
@@ -43,7 +45,7 @@ public class UsuarioCtrl extends Controller {
 		render(usuario);
 	}
 
-	public static void usuarioEditar2(long id){
+	public static void salvarAlteracoesUsuario(long id){
 
 		Usuario usuario = Usuario.find("id", id).first();
 
@@ -54,8 +56,12 @@ public class UsuarioCtrl extends Controller {
 		usuario.nome = request.params.get("nome");
 		usuario.cpf = request.params.get("cpf");
 		usuario.email = request.params.get("email");
-		usuario.endereco = request.params.get("endereco");
 		usuario.telefone = request.params.get("telefone");
+
+		usuario.endereco = request.params.get("endereco");
+		usuario.bairro = request.params.get("bairro");
+		usuario.cidade = request.params.get("cidade");
+		usuario.estado = request.params.get("estado");
 
 		try {
 			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
@@ -100,7 +106,7 @@ public class UsuarioCtrl extends Controller {
 	//Logout
 	public static void logout(){
 		session.clear();
-		render("Application/index2.html");
+		render("Application/index.html");
 	}
 	
 	

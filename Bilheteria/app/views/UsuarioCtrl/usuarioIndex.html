@@ -8,7 +8,11 @@
 			<div class="article">
           		<h2>USUARIOS</h2>
           		<div class="clr"></div>
+          			<div><a href="@{UsuarioCtrl.usuarioCadastrar()}">Cadastrar Usuário</a></div>
+					<div><a href="@{Application.index()}">Voltar</a></div>
+					
           			<br/>
+          			
 					<table border="1">
 						<tr>
 							<th>Login</th>
@@ -25,7 +29,12 @@
 						#{list items:usr, as:'usuario'}
 						<tr>
 							<td>${usuario.login}</td>
-							<td>${usuario.tipo}</td>
+							#{if usuario.tipo == 1}
+								<td>Administrador</td>
+							#{/if}
+							#{if usuario.tipo == 3}
+								<td>Comum</td>
+							#{/if}
 							<td>${usuario.nome}</td>
 							<td>${usuario.cpf}</td>
 							<td>${usuario.dataNasc.getDate()}/${usuario.dataNasc.getMonth() + 1}/${usuario.dataNasc.getYear() + 1900}</td>
@@ -40,8 +49,6 @@
 					</table>
 					</div> <br/>
 					
-					<div><a href="@{UsuarioCtrl.usuarioCadastrar()}">Cadastrar Usuário</a></div>
-					<div><a href="@{Application.index()}">Voltar</a></div>
         		</div>
       		</div>
 		</div>
