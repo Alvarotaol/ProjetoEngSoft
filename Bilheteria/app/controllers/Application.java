@@ -35,57 +35,10 @@ public class Application extends Controller {
     	render();
     }
     
-    //------------EVENTOS
-    public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
-    	/*
-    	Logger.info("Valor hora: " + hora);
-    	Evento evento = new Evento(nome, dia, hora, quantidade);
-    	
-		/*if (validation.hasErrors()) {
-			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim
-
-		evento.save();
-		index(); */
-    }
-    
-    public static void eventos() {
-    	render();    	
-    }
     
     public static void ingressos() {
     	render();    	
     }
     
-    public static void apagar(long id) throws SQLException {
-    	Evento evento = Evento.find("id", id).first();
-		evento.delete();
-		eventos();
-    }
     
-    public static void editar(long id){
-    	Evento evento = Evento.find("id", id).first();
-		render(evento);
-    }
-    
-    public static void editarEvento(long id){
-    	/*
-		Evento evento = Evento.find("id", id).first();
-
-		if (validation.hasErrors()) {
-			render("Application/editar.html", evento);
-		}
-		SimpleDateFormat formatar = new SimpleDateFormat();
-		evento.nome = request.params.get("nome");
-		evento.quantidade = Integer.parseInt(request.params.get("quantidade"));
-		try {
-			evento.data = formatar.parse(request.params.get("dia"));
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		evento.hora = request.params.get("hora");
-		evento.save();
-    	index(); */
-    }
 }
