@@ -7,13 +7,16 @@ body {
 	color:#666666;
 	font:normal 12px/1.5em "Liberation sans", Arial, Helvetica, sans-serif;
 }
+
 html, .main {
 	padding:0;
 	margin:0;
 }
+
 .main {
 	background:#f9fbfa url(../images/main_bg.gif) repeat-x left top;
 }
+
 .clr {
 	clear:both;
 	padding:0;
@@ -22,6 +25,7 @@ html, .main {
 	font-size:0;
 	line-height:0;
 }
+
 h2 {
 	margin:8px 0;
 	padding:8px 0;
@@ -30,6 +34,7 @@ h2 {
 	color:#3f3f3f;
 	text-transform:uppercase;
 }
+
 p {
 	margin:8px 0;
 	padding:0 0 8px 0;
@@ -486,4 +491,28 @@ ol li .send {
 }
 a {
 	outline:none;
+}
+
+.tabela-jogos{
+	text-align: center;
+	margin-top: 10px;
+	width: 100%;
+	border-collapse:collapse;
+	font-weight: bold;
+}
+
+.tabela-jogos td, th, tr {
+	border: solid #D7D3DE;
+	border-width: 0.8pt;
+	border-collapse: collapse;
+}
+
+.tabela-jogos td { 
+	height: 40px;
+}
+
+#head-table {
+	font-size: 17px;
+	color: #EFE8FA; 
+	background-color: #222222;
 }
