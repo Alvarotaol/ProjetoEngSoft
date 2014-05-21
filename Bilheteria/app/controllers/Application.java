@@ -23,12 +23,26 @@ public class Application extends Controller {
 //Cada método static aqui corresponde a uma página (creio eu)
 //Desde que exista um html com o mesmo nome
     public static void index() {
-    	render();
+    	if(session.get("usuario") == null){
+    		session.put("usuario", "Visitante");
+    	}
+    	String st = session.get("tipo");
+    	if(st != null && st.equals("1")){
+    		index2();
+    	} else {
+        	render();
+    	}
     }
 
     public static void index2() {
-    	List<Evento> eve = Evento.all().fetch();
-        render(eve);
+    	String st = session.get("tipo");
+    	if(st != null && st.equals("1")){
+    		List<Evento> eve = Evento.all().fetch();
+            render(eve);
+    	} else {
+        	index();
+    	}
+    	
     }
     
     public static void indexProxJogos() {

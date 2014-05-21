@@ -94,9 +94,13 @@ public class UsuarioCtrl extends Controller {
 		Usuario usuario = Usuario.find("login", login).first();
 		if(request.params.get("senha").equals(usuario.senha)){
 			session.put("usuario", usuario.login);
+			session.put("tipo", usuario.tipo);
 			session.put("conectado", "V");
 			//TODO Colocar dentro de um if: se não for administrador não pode acessar essa página
-			render("Application/index2.html");
+			if(usuario.tipo == 1)
+				Application.index2();
+			else
+				Application.index();
 		} else {
 			System.out.println(usuario.senha + " " + request.params.get("senha"));
 			usuarioCadastrar2();
@@ -106,7 +110,7 @@ public class UsuarioCtrl extends Controller {
 	//Logout
 	public static void logout(){
 		session.clear();
-		render("Application/index.html");
+		Application.index();
 	}
 	
 	
