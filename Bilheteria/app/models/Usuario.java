@@ -24,10 +24,9 @@ public class Usuario extends Model {
 	
 	public Date dataNasc;
 	public int tipo;
-	public int banido;
 	
 	public Usuario(String nome, String cpf, String email, String endereco, String telefone, Date dataNasc,
-			       String login, String senha, int tipo, int banido, String bairro, String cidade,
+			       String login, String senha, int tipo, String bairro, String cidade,
 			       String estado){
 		this.nome = nome;
 		this.cpf = cpf;
@@ -42,6 +41,5 @@ public class Usuario extends Model {
 		
 		this.dataNasc = dataNasc;
 		this.tipo = tipo;
-		this.banido = banido;
 	}
 }

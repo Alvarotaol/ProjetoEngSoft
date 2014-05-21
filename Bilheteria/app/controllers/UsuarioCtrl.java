@@ -18,7 +18,7 @@ public class UsuarioCtrl extends Controller {
 			@Required String senha2,   @Required int    tipo, 
 			@Required int    banido,   @Required String bairro, @Required String cidade,
 			@Required String estado) {
-		Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3, 0,
+		Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3,
 				                  bairro, cidade, estado);
 
 		/*if (validation.hasErrors()) {
