@@ -16,10 +16,34 @@ public class UsuarioCtrl extends Controller {
 			@Required String telefone, @Required Date   dataNasc,
 			@Required String login,    @Required String senha,
 			@Required String senha2,   @Required int    tipo, 
-			@Required int    banido,   @Required String bairro, @Required String cidade,
+			@Required String bairro, @Required String cidade,
 			@Required String estado) {
-		Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, 3,
+		System.out.println(nome);
+		System.out.println(cpf);
+		System.out.println(email);
+		System.out.println(endereco);
+		System.out.println(telefone);
+		System.out.println(dataNasc);
+		System.out.println(login);
+		System.out.println(senha);
+		System.out.println(tipo);
+		System.out.println(bairro);
+		System.out.println(cidade);
+		System.out.println(estado);
+		if(senha.equals(senha2)){
+			Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
 				                  bairro, cidade, estado);
+			usr._save();
+			String as = session.get("tipo");
+
+			if (as != null && as.equals("1")) {
+				usuarioIndex();
+			} else {
+				indexLogin();
+			}
+		} else {
+			usuarioCadastrar(); //+ mensagem de senhas diferentes
+		}
 
 		/*if (validation.hasErrors()) {
 			render("Application/index.html", null);
@@ -29,14 +53,7 @@ public class UsuarioCtrl extends Controller {
 		//Timestamp ts = new Timestamp(123);
 		//ts.
 
-		usr._save();
-		String as = session.get("conectado");
-
-		if (as != null && as.equals("V")) {
-			usuarioIndex();
-		} else {
-			indexLogin();
-		}
+		
 
 	}
 
