@@ -81,13 +81,13 @@
 					<option          value="TO">TO</option>
 				</select>
               </li>
-              <!-- Se for usuário isso vai existir, mas ficar invisível -->
+              *{ Se for usuário isso vai existir, mas ficar invisível }*
 				#{if session.get("tipo") == "1"}
 					<li>
 						<label for="estado">Tipo*:</label>
               			<select size="1" name="tipo" class="text" id="tipo">
-							<option			value="1">Administrador</option>
-							<!--<option          value="2">Operador</option> Habilitar depois-->
+							<option			 value="1">Administrador</option>
+							<!--<option      value="2">Operador</option> Habilitar depois-->
 							<option selected value="3">Usuário</option>
 						</select>
 					</li>

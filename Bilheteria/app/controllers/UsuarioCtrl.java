@@ -18,18 +18,6 @@ public class UsuarioCtrl extends Controller {
 			@Required String senha2,   @Required int    tipo, 
 			@Required String bairro, @Required String cidade,
 			@Required String estado) {
-		System.out.println(nome);
-		System.out.println(cpf);
-		System.out.println(email);
-		System.out.println(endereco);
-		System.out.println(telefone);
-		System.out.println(dataNasc);
-		System.out.println(login);
-		System.out.println(senha);
-		System.out.println(tipo);
-		System.out.println(bairro);
-		System.out.println(cidade);
-		System.out.println(estado);
 		if(senha.equals(senha2)){
 			Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
 				                  bairro, cidade, estado);
@@ -142,9 +130,8 @@ public class UsuarioCtrl extends Controller {
 	}
 	
 	public static void alterarSenha(@Required String login, @Required String senha) {
-		System.out.println("Aqui " + login);
+		//System.out.println("Aqui " + login);
 		//O login fica nulo, não sei porque
-		login = "altaol";
 		Usuario usuario = Usuario.find("login", login).first();
 		
 		//TODO validar depois
