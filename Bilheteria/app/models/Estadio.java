@@ -7,15 +7,15 @@ import play.db.jpa.Model;
 
 @Entity
 public class Estadio extends Model{
-	public String nomeEstadio;
+	public String nome;
 	public String logradouro;
 	public String bairro;
 	public String cep;
 	public String cidade;
 	public String estado;
 	
-	public Estadio(String nome, String logradouro, String bairro, String cep, String cidade, String estado) {
-		this.nomeEstadio = nome;
+	public Estadio(String nome, String logradouro, String bairro, String cidade, String estado, String cep) {
+		this.nome = nome;
 		this.logradouro = logradouro;
 		this.bairro = bairro;
 		this.cep = cep;

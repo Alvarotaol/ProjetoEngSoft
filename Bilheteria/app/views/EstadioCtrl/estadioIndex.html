@@ -1,0 +1,43 @@
+#{extends 'pagTesteAdm.html' /}
+#{set title:'Gerência de Estádios' /}
+
+<div class="content">
+	<div class="content_resize">
+		<div class="mainbar">
+			<div class="article">
+          		<h2>ESTADIOS</h2>
+          		<div class="clr"></div>
+          		
+          			<br/>
+          		
+          			<a class="bt-adm" href="@{EstadioCtrl.estadioCadastrar()}">Cadastrar Estádio</a>
+					
+          			<br/>
+          			
+					<table class="tabela-jogos">
+						<tr id="head-table">
+							<th>Nome</th>
+							<th>Cidade</th>
+							<th>Estado</th>
+							<th>Ações</th>
+						</tr>
+						#{if est != null}
+						#{list items:est, as:'estadio'}
+						<tr>
+							<td>${estadio.nome}</td>
+							<td>${estadio.cidade}</td>
+							<td>${estadio.estado}</td>
+							<td><a class="bt-adm" href="@{EstadioCtrl.estadioApagar(estadio.id)}" onClick="if(!confirm('Deseja excluir este Estádio?')){return false;}">Apagar</a>
+							    <a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(estadio.id)}">Editar</a></td>
+						</tr>
+						#{/list}
+						#{/if}
+					</table>
+					</div> <br/>
+					
+        		</div>
+      		</div>
+		</div>
+	<div class="clr"></div>
+	</div>
+</div>

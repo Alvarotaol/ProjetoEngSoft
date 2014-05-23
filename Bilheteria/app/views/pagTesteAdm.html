@@ -36,10 +36,10 @@
 					<ul>
 						<!--Substituir a palavra Application pelo nome do controlador apropriado-->
 						<li><a href="@{Application.index2()}"><span>Home</span></a></li>
-						<li><a href="@{EventoCtrl.eventos()}"><span>Estádios</span></a></li>
+						<li><a href="@{EventoCtrl.eventos()}"><span>Eventos</span></a></li>
+						<li><a href="@{EstadioCtrl.estadioIndex()}"><span>Estádios</span></a></li>
 						<li><a href="@{TimeFutebolCtrl.timesIndex()}"><span>Times de Futebol</span></a></li>
-						<li><a href="@{EventoCtrl.eventos()}"><span>Partidas</span></a></li>
-						<li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Gerência de Usuários</span></a></li>
+						<li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Usuários</span></a></li>
 						<li><a href="@{Application.index2()}"><span>Dados Pessoais</span></a></li>
 						#{if session.get("conectado") == "V"}
 						<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>

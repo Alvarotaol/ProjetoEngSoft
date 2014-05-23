@@ -8,13 +8,14 @@
 			<div class="article">
           		<h2>TIMES DE FUTEBOL</h2>
           		<div class="clr"></div>
-          			<div><a href="@{TimeFutebolCtrl.timesCadastrar()}">Cadastrar Times</a></div>
-					<div><a href="@{Application.index2()}">Voltar</a></div>
+          		
+          			<br/>
+          		
+          			<a class="bt-adm" href="@{TimeFutebolCtrl.timesCadastrar()}">Cadastrar Times</a>
 					
           			<br/>
 					<table class="tabela-jogos">
 						<tr  id="head-table">
-							<th>Id</th>
 							<th>Nome</th>
 							<th>CNPJ</th>
 							<th>Ano de Fundação</th>
@@ -23,12 +24,11 @@
 						
 						#{list items:time, as:'timefutebol'}
 						<tr>
-							<td>${timefutebol.id}</td>
 							<td>${timefutebol.nomeTime}</td>
 							<td>${timefutebol.cnpjTime}</td>
 							<td>${timefutebol.anoFundacao}</td>
-							<td><a href="@{TimeFutebolCtrl.timeApagar(timefutebol.id)}" onClick="if(!confirm('Deseja excluir este Time?')){return false;}">Apagar</a>
-							    <a href="@{TimeFutebolCtrl.timesEditar(timefutebol.id)}">Editar</a></td>
+							<td><a class="bt-adm" href="@{TimeFutebolCtrl.timeApagar(timefutebol.id)}" onClick="if(!confirm('Deseja excluir este Time?')){return false;}">Apagar</a>
+							    <a class="bt-adm" href="@{TimeFutebolCtrl.timesEditar(timefutebol.id)}">Editar</a></td>
 						</tr>
 						#{/list}
 					</table>

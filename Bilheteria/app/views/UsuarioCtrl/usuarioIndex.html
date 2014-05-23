@@ -1,15 +1,16 @@
 #{extends 'pagTesteAdm.html' /}
 #{set title:'Gerência de Usuários' /}
 
-
 <div class="content">
 	<div class="content_resize">
 		<div class="mainbar">
 			<div class="article">
           		<h2>USUARIOS</h2>
           		<div class="clr"></div>
-          			<div><a href="@{UsuarioCtrl.usuarioCadastrar()}">Cadastrar Usuário</a></div>
-					<div><a href="@{Application.index()}">Voltar</a></div>
+          		
+          			<br/>
+          		
+          			<a class="bt-adm" href="@{UsuarioCtrl.usuarioCadastrar()}">Cadastrar Usuário</a>
 					
           			<br/>
           			
@@ -18,11 +19,7 @@
 							<th>Login</th>
 							<th>Tipo</th>
 							<th>Nome</th>
-							<th>CPF</th>
-							<th>Nacimento</th>
 							<th>E-Mail</th>
-							<th>Endereço</th>
-							<th>Telefone</th>
 							<th>Ações</th>
 						</tr>
 						#{if usr != null}
@@ -36,13 +33,9 @@
 								<td>Comum</td>
 							#{/if}
 							<td>${usuario.nome}</td>
-							<td>${usuario.cpf}</td>
-							<td>${usuario.dataNasc.getDate()}/${usuario.dataNasc.getMonth() + 1}/${usuario.dataNasc.getYear() + 1900}</td>
 							<td>${usuario.email}</td>
-							<td>${usuario.endereco}</td>
-							<td>${usuario.telefone}</td>
-							<td><a href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
-							    <a href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a></td>
+							<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
+							    <a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a></td>
 						</tr>
 						#{/list}
 						#{/if}
