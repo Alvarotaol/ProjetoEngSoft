@@ -1,8 +1,8 @@
 package controllers;
 
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
+import java.text.*;
+import java.util.*;
 
 import models.Evento;
 import models.TimeFutebol;
@@ -36,22 +36,19 @@ public class EventoCtrl extends Controller {
 		eventos();
     }
     
-    //Falta criar a página de edição
     public static void editar(long id){
     	Evento evento = Evento.find("id", id).first();
 		render(evento);
     }
     
     public static void editarEvento(long id){
-    	/*
 		Evento evento = Evento.find("id", id).first();
 
 		if (validation.hasErrors()) {
 			render("Application/editar.html", evento);
 		}
-		SimpleDateFormat formatar = new SimpleDateFormat();
+		SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
 		evento.nome = request.params.get("nome");
-		evento.quantidade = Integer.parseInt(request.params.get("quantidade"));
 		try {
 			evento.data = formatar.parse(request.params.get("dia"));
 		} catch (ParseException e) {
@@ -60,6 +57,6 @@ public class EventoCtrl extends Controller {
 		}
 		evento.hora = request.params.get("hora");
 		evento.save();
-    	index(); */
+    	Application.index();
     }
 }

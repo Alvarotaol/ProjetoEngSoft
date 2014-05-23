@@ -34,9 +34,9 @@ public class UsuarioCtrl extends Controller {
 			Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
 				                  bairro, cidade, estado);
 			usr._save();
-			String as = session.get("tipo");
+			String tipoUsuario = session.get("tipo");
 
-			if (as != null && as.equals("1")) {
+			if (tipoUsuario != null && tipoUsuario.equals("1")) {
 				usuarioIndex();
 			} else {
 				indexLogin();
@@ -109,11 +109,14 @@ public class UsuarioCtrl extends Controller {
 	public static void entrar(@Required String login, @Required String senha) {
 		//TODO precisa de tratamento de excessões
 		Usuario usuario = Usuario.find("login", login).first();
+		if(usuario == null){
+			//Exibir mensagem correspondente
+			indexLogin();
+		}
 		if(request.params.get("senha").equals(usuario.senha)){
 			session.put("usuario", usuario.login);
 			session.put("tipo", usuario.tipo);
 			session.put("conectado", "V");
-			//TODO Colocar dentro de um if: se não for administrador não pode acessar essa página
 			if(usuario.tipo == 1)
 				Application.index2();
 			else
@@ -131,10 +134,25 @@ public class UsuarioCtrl extends Controller {
 	}
 	
 	
-	public static void esqueciMinhaSenha(@Required String CPF) {
-
+	public static void esqueciMinhaSenha(@Required String cpf) {
+		Usuario usuario = Usuario.find("cpf", cpf).first();
+		int tela = 2;
+		//TODO validar depois
+		render("UsuarioCtrl/indexEsqueciSenha.html", usuario, tela);
 	}
-
+	
+	public static void alterarSenha(@Required String login, @Required String senha) {
+		System.out.println("Aqui " + login);
+		//O login fica nulo, não sei porque
+		login = "altaol";
+		Usuario usuario = Usuario.find("login", login).first();
+		
+		//TODO validar depois
+		usuario.senha = senha;
+		usuario.save();
+		entrar(login, senha);
+	}
+	
 	/**Abre a página de login*/
 	//TODO não sei se ele fica neste controlador
 	public static void indexLogin() {
@@ -150,6 +168,7 @@ public class UsuarioCtrl extends Controller {
 	}
 
 	public static void indexEsqueciSenha() {
-		render();
+		int tela = 1;
+		render(tela);
 	}
 }
