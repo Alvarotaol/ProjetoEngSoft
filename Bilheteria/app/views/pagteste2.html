@@ -43,7 +43,8 @@
          		<li><a href="@{UsuarioCtrl.indexEsqueciSenha()}"><span>Esqueci Minha Senha</span></a></li>
 			#{/if}
       		#{if session.get("conectado") == "V"}
-			<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
+				<li><a href="@{UsuarioCtrl.usuarioDadosPessoaisComum()}"><span>Dados Pessoais</span></a></li>
+				<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
 			#{/if}
 		</ul>
       </div>

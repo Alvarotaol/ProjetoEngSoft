@@ -1,0 +1,60 @@
+#{extends 'pagteste2.html' /}
+#{set title:'Dados Pessoais' /}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>dados pessoais</h2>
+          <div class="clr"></div>
+          
+	          <br/>
+	          <font size="4">
+	            <ol>
+	            	<li>
+	            		<b>Login:</b> ${usuario.login}
+					</li>
+	            	<li>
+	            		<b>Nome:</b> ${usuario.nome}
+					</li>
+					<li>
+						<b>CPF:</b> ${usuario.cpf}
+					</li>
+					<li>
+						<b>Data de Nascimento:</b> ${usuario.dataNasc.toGMTString()}
+					</li>
+					<li>
+						<b>E-Mail:</b> ${usuario.email}
+					</li>
+					<li>
+						<b>Telefone:</b> ${usuario.telefone}
+					</li>
+					<li>
+						<b>Endereço:</b> ${usuario.endereco}
+					</li>
+					<li>
+						<b>Bairro:</b> ${usuario.bairro}
+					</li>
+					<li>
+						<b>Cidade:</b> ${usuario.cidade}
+					</li>
+					<li>
+						<b>Estado:</b> ${usuario.estado}
+					</li>
+					<li>
+						<div class="clr"></div>
+					</li>			
+				</ol>	
+			</font>
+			
+			<br/>
+			
+			<a class="bt-adm" href="@{UsuarioCtrl.usuarioDadosPessoaisComumEditar()}">Alterar Dados Pessoais</a> 
+			<a class="bt-adm" href="@{UsuarioCtrl.usuarioAlterarSenhaComum()}">Alterar Senha</a>
+			
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

@@ -42,7 +42,7 @@
 						<li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Usuários</span></a></li>
 						<li><a href="@{UsuarioCtrl.usuarioDadosPessoaisAdm()}"><span>Dados Pessoais</span></a></li>
 						#{if session.get("conectado") == "V"}
-						<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
+							<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
 						#{/if}
 					</ul>
 				</div>
