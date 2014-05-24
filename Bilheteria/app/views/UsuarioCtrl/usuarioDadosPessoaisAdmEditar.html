@@ -1,0 +1,63 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Alterar Dados Pessoais' /}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>alterar dados pessoais</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+          
+			#{form @UsuarioCtrl.salvarAlteracoesUsuarioAdm(usuario.id)}
+            <ol>
+            	<li>			
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" id="nome" class="text" value="${usuario.nome}" />
+				</li>
+				<li>
+					<label for="cpf">CPF:</label>
+					<input type="text" name="cpf" id="cpf" class="text" value="${usuario.cpf}" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14"/>
+				</li>
+				<li>
+					<label for="dia">Data de Nascimento:</label>
+					${usuario.dataNasc.toGMTString()}<br/>
+					<input type="date" name="dataNasc" id="dataNasc" class="text" value="${usuario.dataNasc.toLocaleString()}" />
+				</li>
+				<li>
+					<label for="email">E-Mail:</label>
+					<input type="text" name="email" id="email" class="text" value="${usuario.email}" />
+				</li>
+				<li>
+					<label for="telefone">Telefone:</label>
+					<input type="text" name="telefone" id="telefone" class="text" value="${usuario.telefone}" maxlength="15"  onkeypress="javascript: mascaraTelefone(this);"/>
+				</li>
+				<li>
+					<label for="endereco">Endereço:</label>
+					<input type="text" name="endereco" id="endereco" class="text" value="${usuario.endereco}" />
+				</li>
+				<li>
+					<label for="bairro">Bairro:</label>
+					<input type="text" name="bairro" id="bairro" class="text" value="${usuario.bairro}" />
+				</li>
+				<li>
+					<label for="cidade">Cidade:</label>
+					<input type="text" name="cidade" id="cidade" class="text" value="${usuario.cidade}" />
+				</li>
+				<li>
+					<label for="estado">Estado:</label>
+					<input type="text" name="estado" id="estado" class="text" value="${usuario.estado}" />
+				</li>
+				<li>
+					<input type="submit" value="Finalizar Edição" class="send"/>
+					<div class="clr"></div>
+				</li>			
+			</ol>	
+			#{/form}
+			
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

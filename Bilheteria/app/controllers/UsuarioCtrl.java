@@ -40,14 +40,29 @@ public class UsuarioCtrl extends Controller {
 		//Testes pra tentar resolver o problema da data na edição
 		//Timestamp ts = new Timestamp(123);
 		//ts.
-
-		
-
 	}
 
 	public static void usuarioEditar(long id){
 		Usuario usuario = Usuario.find("id", id).first();
 		render(usuario);
+	}
+	
+	public static void usuarioDadosPessoaisAdmEditar(){
+		String lgn = session.get("usuario");
+		
+		if (lgn != null) {
+			Usuario usuario = Usuario.find("login", lgn).first();
+			render(usuario);
+		}
+	}
+	
+	public static void usuarioDadosPessoaisAdm(){
+		String lgn = session.get("usuario");
+		
+		if (lgn != null) {
+			Usuario usuario = Usuario.find("login", lgn).first();
+			render(usuario);
+		}
 	}
 
 	public static void salvarAlteracoesUsuario(long id){
@@ -78,12 +93,47 @@ public class UsuarioCtrl extends Controller {
 		usuario.save();
 		usuarioIndex();
 	}
+	
+	public static void salvarAlteracoesUsuarioAdm(long id){
+
+		Usuario usuario = Usuario.find("id", id).first();
+
+		if (validation.hasErrors()) {
+			render("Application/usuarioEditar.html", usuario);
+		}
+
+		usuario.nome = request.params.get("nome");
+		usuario.cpf = request.params.get("cpf");
+		usuario.email = request.params.get("email");
+		usuario.telefone = request.params.get("telefone");
+
+		usuario.endereco = request.params.get("endereco");
+		usuario.bairro = request.params.get("bairro");
+		usuario.cidade = request.params.get("cidade");
+		usuario.estado = request.params.get("estado");
+
+		try {
+			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
+			usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		usuario.save();
+		usuarioDadosPessoaisAdm();
+	}
 
 	public static void usuarioApagar(long id) {
 		Usuario usuario = Usuario.find("id", id).first();
 		usuario.delete();
 		usuarioIndex();
 	}
+	
+	public static void efetivarMudarSenhaAdm(long id, @Required String atual,  @Required String nova1,
+											@Required String nova2) {
+		//função para fazer a mudança de senha no banco de dados
+	}	
+	
 	/**Carregar página de gerência de usuário*/
 	public static void usuarioIndex() {
 		List<Usuario> usr = Usuario.all().fetch();
@@ -157,5 +207,14 @@ public class UsuarioCtrl extends Controller {
 	public static void indexEsqueciSenha() {
 		int tela = 1;
 		render(tela);
+	}
+	
+	public static void usuarioAlterarSenhaAdm(){
+		String lgn = session.get("usuario");
+		
+		if (lgn != null) {
+			Usuario usuario = Usuario.find("login", lgn).first();
+			render(usuario);
+		}
 	}
 }

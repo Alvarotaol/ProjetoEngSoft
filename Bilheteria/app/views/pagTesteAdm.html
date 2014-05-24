@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Página de Cadastro</title>
+	<title>Ingressos</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<link href="@{'/public/stylesheets/coin-slider.css'}" rel="stylesheet" type="text/css" media="screen"/>
@@ -40,7 +40,7 @@
 						<li><a href="@{EstadioCtrl.estadioIndex()}"><span>Estádios</span></a></li>
 						<li><a href="@{TimeFutebolCtrl.timesIndex()}"><span>Times de Futebol</span></a></li>
 						<li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Usuários</span></a></li>
-						<li><a href="@{Application.index2()}"><span>Dados Pessoais</span></a></li>
+						<li><a href="@{UsuarioCtrl.usuarioDadosPessoaisAdm()}"><span>Dados Pessoais</span></a></li>
 						#{if session.get("conectado") == "V"}
 						<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
 						#{/if}
