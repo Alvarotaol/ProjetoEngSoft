@@ -1,0 +1,50 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Editar Estádios' /}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>editar estadio</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+          
+			#{form @EstadioCtrl.salvarAlteracoesEstadio(estadio.id)}
+            <ol>
+            	<li>			
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" id="nome" class="text" value="${estadio.nome}" />
+				</li>
+				<li>
+					<label for="endereco">Endereço:</label>
+					<input type="text" name="endereco" id="endereco" class="text" value="${estadio.logradouro}" />
+				</li>
+				<li>
+					<label for="bairro">Bairro:</label>
+					<input type="text" name="bairro" id="bairro" class="text" value="${estadio.bairro}" />
+				</li>
+				<li>
+					<label for="cidade">Cidade:</label>
+					<input type="text" name="cidade" id="cidade" class="text" value="${estadio.cidade}" />
+				</li>
+				<li>
+					<label for="estado">Estado:</label>
+					<input type="text" name="estado" id="estado" class="text" value="${estadio.estado}" />
+				</li>
+				<li>
+					<label for="cep">CEP:</label>
+					<input type="text" name="cep" id="cep" class="text" value="${estadio.cep}" />
+				</li>
+				<li>
+					<input type="submit" value="Finalizar Edição" class="send"/>
+					<div class="clr"></div>
+				</li>			
+			</ol>	
+			#{/form}
+			
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

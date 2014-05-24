@@ -21,6 +21,7 @@ import models.*;
 
 public class EstadioCtrl extends Controller {
 	
+	//CREATE, UPDATE, DELETE
 	public static void criarEstadio(@Required String nome,   @Required String endereco,
 									@Required String bairro, @Required String cidade,
 									@Required String estado, @Required String cep) {
@@ -37,6 +38,25 @@ public class EstadioCtrl extends Controller {
 		estadioIndex();
 	}
 	
+	public static void salvarAlteracoesEstadio(long id){
+
+		Estadio est = Estadio.find("id", id).first();
+
+		if (validation.hasErrors()) {
+			render("Application/usuarioEditar.html", est);
+		}
+
+		est.nome = request.params.get("nome");
+		est.logradouro = request.params.get("endereco");
+		est.bairro = request.params.get("bairro");
+		est.cidade = request.params.get("cidade");
+		est.estado = request.params.get("estado");
+		est.cep = request.params.get("cep");
+
+		est.save();
+		estadioIndex();
+	}
+	
 
 	//------Funções para abrir as páginas
 	public static void estadioIndex() {
@@ -48,5 +68,10 @@ public class EstadioCtrl extends Controller {
 	
 	public static void estadioCadastrar() {
 		render();
+	}
+	
+	public static void estadioEditar(long id){
+		Estadio estadio = Estadio.find("id", id).first();
+		render(estadio);
 	}
 }

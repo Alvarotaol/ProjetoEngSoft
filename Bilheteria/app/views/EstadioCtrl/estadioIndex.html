@@ -28,7 +28,7 @@
 							<td>${estadio.cidade}</td>
 							<td>${estadio.estado}</td>
 							<td><a class="bt-adm" href="@{EstadioCtrl.estadioApagar(estadio.id)}" onClick="if(!confirm('Deseja excluir este Estádio?')){return false;}">Apagar</a>
-							    <a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(estadio.id)}">Editar</a></td>
+							    <a class="bt-adm" href="@{EstadioCtrl.estadioEditar(estadio.id)}">Editar</a></td>
 						</tr>
 						#{/list}
 						#{/if}
