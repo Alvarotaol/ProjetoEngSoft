@@ -21,8 +21,7 @@
 				</li>
 				<li>
 					<label for="dia">Data de Nascimento:</label>
-					${usuario.dataNasc.toGMTString()}<br/>
-					<input type="date" name="dataNasc" id="dataNasc" class="text" value="${usuario.dataNasc.toLocaleString()}" />
+					<input type="date" name="dataNasc" id="dataNasc" class="text" value="${usuario.dataNasc.toString().substring(0,10)}" />
 				</li>
 				<li>
 					<label for="email">E-Mail:</label>

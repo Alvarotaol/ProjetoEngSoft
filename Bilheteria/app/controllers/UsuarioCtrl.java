@@ -138,11 +138,39 @@ public class UsuarioCtrl extends Controller {
 	public static void efetivarMudarSenhaAdm(long id, @Required String atual,  @Required String nova1,
 											@Required String nova2) {
 		//função para fazer a mudança de senha no banco de dados
+		Usuario usuario = Usuario.find("id", id).first();
+		if(usuario != null && usuario.senha.equals(atual)){
+			if(nova1.equals(nova2)){
+				usuario.senha = nova1;
+				usuario.save();
+			} else {
+				//Senhas não conferem
+				usuarioAlterarSenhaAdm();
+			}
+		} else {
+			//Senha errada
+			usuarioAlterarSenhaAdm();
+		}
+		Application.index();
 	}	
 	
 	public static void efetivarMudarSenhaComum(long id, @Required String atual,  @Required String nova1,
 			@Required String nova2) {
 			//função para fazer a mudança de senha no banco de dados
+		Usuario usuario = Usuario.find("id", id).first();
+		if(usuario != null && usuario.senha.equals(atual)){
+			if(nova1.equals(nova2)){
+				usuario.senha = nova1;
+				usuario.save();
+			} else {
+				//Senhas não conferem
+				usuarioAlterarSenhaComum();
+			}
+		} else {
+			//Senha errada
+			usuarioAlterarSenhaComum();
+		}
+		Application.index();
 	}	
 
 	//--------------------LOGIN
