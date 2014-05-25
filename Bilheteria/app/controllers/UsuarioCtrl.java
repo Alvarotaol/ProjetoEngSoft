@@ -151,7 +151,7 @@ public class UsuarioCtrl extends Controller {
 			//Senha errada
 			usuarioAlterarSenhaAdm();
 		}
-		Application.index();
+		UsuarioCtrl.usuarioDadosPessoaisAdm();
 	}	
 	
 	public static void efetivarMudarSenhaComum(long id, @Required String atual,  @Required String nova1,
@@ -170,7 +170,7 @@ public class UsuarioCtrl extends Controller {
 			//Senha errada
 			usuarioAlterarSenhaComum();
 		}
-		Application.index();
+		UsuarioCtrl.usuarioDadosPessoaisComum();
 	}	
 
 	//--------------------LOGIN
