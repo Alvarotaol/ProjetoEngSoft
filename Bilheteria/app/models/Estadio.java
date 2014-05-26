@@ -13,6 +13,7 @@ public class Estadio extends Model{
 	public String cep;
 	public String cidade;
 	public String estado;
+	public String localImagem;
 	
 	public Estadio(String nome, String logradouro, String bairro, String cidade, String estado, String cep) {
 		this.nome = nome;
@@ -21,5 +22,6 @@ public class Estadio extends Model{
 		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
+		//this.localImagem = ;
 	}
 }

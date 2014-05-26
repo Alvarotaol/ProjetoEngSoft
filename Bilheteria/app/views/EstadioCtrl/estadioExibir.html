@@ -1,0 +1,60 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Editar Estádios' /}
+
+<div class="content">
+	<div class="content_resize">
+		<div class="mainbar">
+			<div class="article">
+          
+			<h2>Informacoes do estadio</h2>
+			<div class="clr"></div>
+
+			<br/>
+
+			Nome: ${estadio.nome} <br/>
+			Endereço: ${estadio.logradouro} <br/>
+			Bairro: ${estadio.bairro} <br/>
+			Cidade: ${estadio.cidade} <br/>
+			Estadio: ${estadio.estado} <br/>
+			CEP: ${estadio.cep} <br/>
+          
+			<h2>setores/modulos</h2>
+			
+			<table class="tabela-jogos">
+						<tr id="head-table">
+							<th>Nome</th>
+							<th>Ações</th>
+						</tr>
+						#{if setor != null}
+						#{list items:setor, as:'setor'}
+						<tr>
+							<td> ${setor.nome} </td>
+							<td> <a class="bt-adm" href="@{SetorCtrl.setorEditar(setor.id)}">Editar</a>
+								 <a class="bt-adm" href="@{SetorCtrl.setorApagar(setor.id, estadio.id)}" onClick="if(!confirm('Deseja excluir este Setor?')){return false;}">Apagar</a></td> 
+						</tr>
+						#{/list}
+						#{/if}
+					</table>
+			
+			<h2>inserir setor/modulo</h2>
+			
+			#{form @SetorCtrl.criarSetor(estadio.id)}
+            <ol>
+            	<li>			
+					<label for="nome">Nome:</label>
+					<input type="text" name="nomeS" id="nomeS" class="text"/>
+					<input type="submit" value="Inserir"/>
+				</li>
+			</ol>
+			#{/form}
+			
+			<br/> <br/> <br/>
+			
+			<center> <a class="bt-adm" href="@{EstadioCtrl.estadioIndex()}">Voltar</a> </center>
+			
+			</div>
+      </div>
+      </div>
+	<div class="clr"></div>
+	</div>
+</div>

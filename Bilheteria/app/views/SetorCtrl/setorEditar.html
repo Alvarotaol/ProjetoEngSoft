@@ -1,0 +1,30 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Editar Estádios' /}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>editar estadio</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+          
+			#{form @SetorCtrl.salvarAlteracoesSetor(setor.id, setor.id_estadio)}
+            <ol>
+            	<li>			
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" id="nome" class="text" value="${setor.nome}" />
+				</li>
+				<li>
+					<input type="submit" value="Finalizar Edição" class="send"/>
+					<div class="clr"></div>
+				</li>			
+			</ol>	
+			#{/form}
+			
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

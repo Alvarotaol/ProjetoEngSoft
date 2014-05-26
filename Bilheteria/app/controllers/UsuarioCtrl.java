@@ -16,8 +16,11 @@ public class UsuarioCtrl extends Controller {
 			@Required String telefone, @Required Date   dataNasc,
 			@Required String login,    @Required String senha,
 			@Required String senha2,   @Required int    tipo, 
-			@Required String bairro, @Required String cidade,
-			@Required String estado) {
+			@Required String bairro,   @Required String cidade,
+			@Required String estado,   @Required String imagem) {
+		
+		System.out.println(imagem);
+		
 		if(senha.equals(senha2)){
 			Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
 				                  bairro, cidade, estado);
@@ -309,4 +312,5 @@ public class UsuarioCtrl extends Controller {
 
 		render(usr);
 	}
+	
 }

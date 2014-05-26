@@ -27,8 +27,8 @@
 							<td>${timefutebol.nomeTime}</td>
 							<td>${timefutebol.cnpjTime}</td>
 							<td>${timefutebol.anoFundacao}</td>
-							<td><a class="bt-adm" href="@{TimeFutebolCtrl.timeApagar(timefutebol.id)}" onClick="if(!confirm('Deseja excluir este Time?')){return false;}">Apagar</a>
-							    <a class="bt-adm" href="@{TimeFutebolCtrl.timesEditar(timefutebol.id)}">Editar</a></td>
+							<td><a class="bt-adm" href="@{TimeFutebolCtrl.timesEditar(timefutebol.id)}">Editar</a>
+							    <a class="bt-adm" href="@{TimeFutebolCtrl.timeApagar(timefutebol.id)}" onClick="if(!confirm('Deseja excluir este Time?')){return false;}">Apagar</a></td>
 						</tr>
 						#{/list}
 					</table>

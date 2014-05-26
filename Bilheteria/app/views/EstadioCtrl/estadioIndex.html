@@ -24,11 +24,11 @@
 						#{if est != null}
 						#{list items:est, as:'estadio'}
 						<tr>
-							<td>${estadio.nome}</td>
+							<td> <a href="@{EstadioCtrl.estadioExibir(estadio.id)}"> ${estadio.nome} </a> </td>
 							<td>${estadio.cidade}</td>
 							<td>${estadio.estado}</td>
-							<td><a class="bt-adm" href="@{EstadioCtrl.estadioApagar(estadio.id)}" onClick="if(!confirm('Deseja excluir este Estádio?')){return false;}">Apagar</a>
-							    <a class="bt-adm" href="@{EstadioCtrl.estadioEditar(estadio.id)}">Editar</a></td>
+							<td><a class="bt-adm" href="@{EstadioCtrl.estadioEditar(estadio.id)}">Editar</a>
+								<a class="bt-adm" href="@{EstadioCtrl.estadioApagar(estadio.id)}" onClick="if(!confirm('Deseja excluir este Estádio?')){return false;}">Apagar</a></td>
 						</tr>
 						#{/list}
 						#{/if}

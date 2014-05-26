@@ -34,8 +34,8 @@
 							#{/if}
 							<td>${usuario.nome}</td>
 							<td>${usuario.email}</td>
-							<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
-							    <a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a></td>
+							<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a>
+								<a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a></td>
 						</tr>
 						#{/list}
 						#{/if}

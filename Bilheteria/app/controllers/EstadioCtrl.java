@@ -5,6 +5,7 @@ import play.mvc.*;
 import play.data.*;
 import play.data.validation.*;
 import play.db.jpa.JPA;
+import groovy.transform.ToString;
 
 import java.sql.SQLException;
 import java.sql.Time;
@@ -73,5 +74,11 @@ public class EstadioCtrl extends Controller {
 	public static void estadioEditar(long id){
 		Estadio estadio = Estadio.find("id", id).first();
 		render(estadio);
+	}
+
+	public static void estadioExibir(long id){
+		Estadio estadio = Estadio.find("id", id).first();
+		List<Setor> setor = Setor.find("id_estadio", id).fetch();
+		render(estadio, setor);
 	}
 }
