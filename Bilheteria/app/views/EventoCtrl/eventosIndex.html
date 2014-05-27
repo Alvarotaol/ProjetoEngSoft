@@ -1,0 +1,45 @@
+#{extends 'pagTesteAdm.html' /}
+#{set title:'Gerenciar eventos' /}
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>EVENTOS</h2>
+          <div class="clr"></div>
+          
+          <br/>
+          		<a class="bt-adm" href="@{EventoCtrl.eventosCadastrar()}">Cadastrar Evento</a>
+ 			<br/>
+          
+					<table class="tabela-jogos">
+						<tr id="head-table">
+							<th>Descrição</th>
+							<th>Estádio</th>
+							<th>Mandante</th>
+							<th>Visitante</th>
+							<th>Ações</th>
+						</tr>
+	
+						#{list items:eventos, as:'evento'}
+							<tr>
+								<td>${evento.desc}</td>
+								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900}*}</td>
+								<td>${evento.id_mandante}</td>
+								<td>${evento.id_visitante}</td>
+								<td><a href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este cevento?')){return false;}">Apagar</a>
+								<a href="@{EventoCtrl.editar(evento.id)}">Editar</a></td>
+							</tr>
+						#{/list}
+						</table>
+			</div>
+			
+			<br/>
+		
+
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

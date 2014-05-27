@@ -37,12 +37,11 @@ public class Application extends Controller {
     public static void index2() {
     	String st = session.get("tipo");
     	if(st != null && st.equals("1")){
-    		List<Evento> eve = Evento.all().fetch();
-            render(eve);
+    		//List<Evento> eve = Evento.all().fetch();
+            render();
     	} else {
         	index();
-    	}
-    	
+    	}    	
     }
     
     public static void indexProxJogos() {

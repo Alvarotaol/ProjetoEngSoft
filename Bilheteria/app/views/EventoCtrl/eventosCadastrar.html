@@ -1,0 +1,57 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Cadastrar Eventos' /}
+  
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>digite os dados do time de futebol</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+                    
+          #{form @EventoCtrl.criarEvento()}
+            <ol>
+              <li>
+                <label for="nome">Descrição*:</label>
+                <input type="text" name="desc" id="desc" class="text"/>
+              </li>
+              <li>
+                <label for="estadio">Estadio*:</label>
+	            <select size="1" name="estadio" class="text" id="estadio" class="text">
+	              	#{list items:estadio, as:'estadio'}
+						<option value="${estadio.id}">${estadio.nome}</option>
+	              	#{/list}
+				</select>
+              </li>
+              <li>
+                <label for="mandante">Time Mandante*:</label>
+	            <select size="1" name="mandante" class="text" id="mandante" class="text">
+	              	#{list items:time, as:'timefutebol'}
+						<option value="${timefutebol.id}">${timefutebol.nomeTime}</option>
+	              	#{/list}
+				</select>
+              </li>
+              <li>
+                <label for="visitante">Time Visitante*:</label>
+	            <select size="1" name="visitante" class="text" id="visitante" class="text">
+	              	#{list items:time, as:'timefutebol'}
+						<option value="${timefutebol.id}">${timefutebol.nomeTime}</option>
+	              	#{/list}
+				</select>
+              </li>
+              <li>
+              	<label for="dia">Data*:</label>
+              	<input type="date" name="dia" id="dia" class="text" />
+			  </li>
+              <li>
+                <input type="submit" value="Finalizar Cadastro" class="send"/>
+              </li>
+            </ol> 
+          #{/form}
+          
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

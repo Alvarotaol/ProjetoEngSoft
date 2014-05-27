@@ -4,28 +4,27 @@ import java.sql.SQLException;
 import java.text.*;
 import java.util.*;
 
+import models.Estadio;
 import models.Evento;
 import models.TimeFutebol;
+import models.Usuario;
 import play.data.validation.Required;
 import play.mvc.Controller;
 
 public class EventoCtrl extends Controller {
 	//------------EVENTOS
-    public static void cadastrarEvento(@Required String nome, @Required Date dia, @Required String hora, @Required int quantidade){
-    	/*
-    	Logger.info("Valor hora: " + hora);
-    	Evento evento = new Evento(nome, dia, hora, quantidade);
-    	
-		/*if (validation.hasErrors()) {
-			render("Application/index.html", null);
-		}//Quando tiver validação faz algo assim
+	/**Manda o usuario para o banco*/
+	public static void criarEvento(@Required String desc,      @Required long id_estadio,
+								   @Required long id_mandante, @Required long id_visitante,
+								   @Required Date data) {
+		Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, data);
+		ev.save();
 
-		evento.save();
-		index(); */
-    }
+		eventosIndex();
+	}
     
     //Esses nomes precisam ser alterados para manter o padrão de nomes
-    public static void eventos() {
+    public static void eventosIndex() {
     	List<Evento> eventos = Evento.all().fetch();
     	render(eventos);
     }
@@ -33,7 +32,7 @@ public class EventoCtrl extends Controller {
     public static void apagar(long id) throws SQLException {
     	Evento evento = Evento.find("id", id).first();
 		evento.delete();
-		eventos();
+		eventosIndex();
     }
     
     public static void editar(long id){
@@ -48,9 +47,9 @@ public class EventoCtrl extends Controller {
 			render("Application/editar.html", evento);
 		}
 		SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
-		evento.nome = request.params.get("nome");
+		evento.desc = request.params.get("nome");
 		try {
-			evento.data = formatar.parse(request.params.get("dia"));
+			evento.dataEvento = formatar.parse(request.params.get("dia"));
 		} catch (ParseException e) {
 			
 			e.printStackTrace();
@@ -58,5 +57,11 @@ public class EventoCtrl extends Controller {
 		evento.hora = request.params.get("hora");
 		evento.save();
     	Application.index();
+    }
+    
+    public static void eventosCadastrar() {
+    	List<Estadio> estadio = Estadio.all().fetch();
+    	List<TimeFutebol> time = TimeFutebol.all().fetch();
+    	render(estadio, time);
     }
 }
