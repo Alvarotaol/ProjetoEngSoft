@@ -16,9 +16,11 @@ public class EventoCtrl extends Controller {
 	/**Manda o usuario para o banco*/
 	public static void criarEvento(@Required String desc,      @Required long id_estadio,
 								   @Required long id_mandante, @Required long id_visitante,
-								   @Required Date data) {
-		Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, data);
-		ev.save();
+								   @Required Date dia, 		   @Required String hora) {
+		
+		Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, dia, hora);
+
+		ev._save();
 
 		eventosIndex();
 	}
@@ -47,7 +49,7 @@ public class EventoCtrl extends Controller {
 			render("Application/editar.html", evento);
 		}
 		SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
-		evento.desc = request.params.get("nome");
+		evento.descricao = request.params.get("nome");
 		try {
 			evento.dataEvento = formatar.parse(request.params.get("dia"));
 		} catch (ParseException e) {

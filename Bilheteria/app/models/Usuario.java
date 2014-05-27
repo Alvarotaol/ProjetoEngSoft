@@ -21,7 +21,6 @@ public class Usuario extends Model {
 	public String bairro;
 	public String cidade;
 	public String estado;
-	public boolean banido;
 	public Date dataNasc;
 	public int tipo;
 	
@@ -38,7 +37,6 @@ public class Usuario extends Model {
 		this.estado = estado;
 		this.login = login;
 		this.senha = senha;
-		banido = false; //Esse campo não foi removido do banco. Vai ficar aqui por enquanto
 		this.dataNasc = dataNasc;
 		this.tipo = tipo;
 	}

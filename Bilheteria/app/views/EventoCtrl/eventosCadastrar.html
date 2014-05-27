@@ -12,28 +12,28 @@
           #{form @EventoCtrl.criarEvento()}
             <ol>
               <li>
-                <label for="nome">Descrição*:</label>
+                <label for="desc">Descrição*:</label>
                 <input type="text" name="desc" id="desc" class="text"/>
               </li>
               <li>
-                <label for="estadio">Estadio*:</label>
-	            <select size="1" name="estadio" class="text" id="estadio" class="text">
+                <label for="id_estadio">Estadio*:</label>
+	            <select size="1" name="id_estadio" class="text" id="id_estadio" class="text">
 	              	#{list items:estadio, as:'estadio'}
 						<option value="${estadio.id}">${estadio.nome}</option>
 	              	#{/list}
 				</select>
               </li>
               <li>
-                <label for="mandante">Time Mandante*:</label>
-	            <select size="1" name="mandante" class="text" id="mandante" class="text">
+                <label for="id_mandante">Time Mandante*:</label>
+	            <select size="1" name="id_mandante" class="text" id="id_mandante" class="text">
 	              	#{list items:time, as:'timefutebol'}
 						<option value="${timefutebol.id}">${timefutebol.nomeTime}</option>
 	              	#{/list}
 				</select>
               </li>
               <li>
-                <label for="visitante">Time Visitante*:</label>
-	            <select size="1" name="visitante" class="text" id="visitante" class="text">
+                <label for="id_visitante">Time Visitante*:</label>
+	            <select size="1" name="id_visitante" class="text" id="id_visitante" class="text">
 	              	#{list items:time, as:'timefutebol'}
 						<option value="${timefutebol.id}">${timefutebol.nomeTime}</option>
 	              	#{/list}
@@ -43,6 +43,10 @@
               	<label for="dia">Data*:</label>
               	<input type="date" name="dia" id="dia" class="text" />
 			  </li>
+              <li>
+              	<label for="hora">Hora*:</label>
+              	<input type="time" name="hora" id="hora" class="text" />
+			  </li> 
               <li>
                 <input type="submit" value="Finalizar Cadastro" class="send"/>
               </li>
