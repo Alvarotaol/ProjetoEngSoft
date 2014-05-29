@@ -24,7 +24,7 @@
 						</tr>
 						#{if usr != null}
 						#{list items:usr, as:'usuario'}
-						<tr>
+						<tr bgcolor=#{if usuario.tipo != 3}"AAAAFF"#{/if} #{else}"AAFFAA"#{/else}>
 							<td>${usuario.login}</td>
 							#{if usuario.tipo == 1}
 								<td>Administrador</td>
@@ -35,6 +35,7 @@
 							<td>${usuario.nome}</td>
 							<td>${usuario.email}</td>
 							<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a>
+								#{if usuario.tipo == 3} <a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspender</a> #{/if}
 								<a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a></td>
 						</tr>
 						#{/list}

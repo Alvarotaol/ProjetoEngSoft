@@ -175,6 +175,17 @@ public class UsuarioCtrl extends Controller {
 		}
 		UsuarioCtrl.usuarioDadosPessoaisComum();
 	}	
+	
+	public static void usuarioSuspender(long id){
+		Usuario usuario = Usuario.find("id", id).first();
+		render(usuario);
+	}
+	
+	public static void suspender(String login, Date tempo){
+		Usuario usuario = Usuario.find("login", login).first();
+		usuario.banido = true;
+		usuarioIndex();
+	}
 
 	//--------------------LOGIN
 

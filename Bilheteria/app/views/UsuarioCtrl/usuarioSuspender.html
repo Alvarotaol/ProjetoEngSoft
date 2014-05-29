@@ -1,0 +1,25 @@
+#{extends 'pagTesteAdm.html' /}
+#{set title:'Gerência de Usuários' /}
+
+<div class="content">
+	<div class="content_resize">
+		<div class="mainbar">
+			<div class="article">
+          		#{form @UsuarioCtrl.suspender()}
+          			<div floar = "right">
+          				Suspender usuário:
+          				<input type="date" name="tempo" id="tempo" class="text" value="${usuario.login}/>
+          				</br>
+          			</div>
+          			<div float="left">
+	          			<label for="tempo">Data de liberação:</label>
+		                <input type="date" name="tempo" id="tempo" class="text"/>
+		                <a class="bt-adm" href="@{UsuarioCtrl.suspender()}">Confirmar</a>
+		                <a class="bt-adm" href="@{UsuarioCtrl.usuarioIndex()}">Cancelar</a>
+	                </div>
+          		#{/form}
+      		</div>
+		</div>
+		<div class="clr"></div>
+	</div>
+</div>
