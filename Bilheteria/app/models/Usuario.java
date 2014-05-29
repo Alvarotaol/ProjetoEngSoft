@@ -21,6 +21,8 @@ public class Usuario extends Model {
 	public String bairro;
 	public String cidade;
 	public String estado;
+	public boolean banido;
+	public Date dataBanido;
 	public Date dataNasc;
 	public int tipo;
 	

@@ -182,8 +182,13 @@ public class UsuarioCtrl extends Controller {
 	}
 	
 	public static void suspender(String login, Date tempo){
+		System.out.println("Logint "+ login);
+		System.out.println(tempo);
+		System.out.println("Data "+ tempo.toString());
 		Usuario usuario = Usuario.find("login", login).first();
 		usuario.banido = true;
+		usuario.dataBanido = tempo;
+		usuario.save();
 		usuarioIndex();
 	}
 

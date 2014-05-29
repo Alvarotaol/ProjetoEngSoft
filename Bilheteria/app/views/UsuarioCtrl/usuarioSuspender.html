@@ -6,17 +6,19 @@
 		<div class="mainbar">
 			<div class="article">
           		#{form @UsuarioCtrl.suspender()}
-          			<div floar = "right">
-          				Suspender usuário:
-          				<input type="date" name="tempo" id="tempo" class="text" value="${usuario.login}/>
+          			<div float = "right">
+          				Suspender usuário: ${usuario.login}
+          				<input type="hidden" name="login" id="login" class="text" value="${usuario.login}"/>
           				</br>
           			</div>
           			<div float="left">
 	          			<label for="tempo">Data de liberação:</label>
 		                <input type="date" name="tempo" id="tempo" class="text"/>
-		                <a class="bt-adm" href="@{UsuarioCtrl.suspender()}">Confirmar</a>
-		                <a class="bt-adm" href="@{UsuarioCtrl.usuarioIndex()}">Cancelar</a>
 	                </div>
+	                <div>
+		                <input type="submit" value="Confirmar" class="bt-adm"/>
+		                <a class="bt-adm" href="@{UsuarioCtrl.usuarioIndex()}">Cancelar</a>
+		            </div>
           		#{/form}
       		</div>
 		</div>

@@ -23,21 +23,26 @@
 							<th>Ações</th>
 						</tr>
 						#{if usr != null}
+							*{pode banir administrador?}*
 						#{list items:usr, as:'usuario'}
-						<tr bgcolor=#{if usuario.tipo != 3}"AAAAFF"#{/if} #{else}"AAFFAA"#{/else}>
-							<td>${usuario.login}</td>
-							#{if usuario.tipo == 1}
-								<td>Administrador</td>
-							#{/if}
-							#{if usuario.tipo == 3}
-								<td>Comum</td>
-							#{/if}
-							<td>${usuario.nome}</td>
-							<td>${usuario.email}</td>
-							<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a>
-								#{if usuario.tipo == 3} <a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspender</a> #{/if}
-								<a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a></td>
-						</tr>
+							<tr bgcolor=#{if usuario.tipo != 3}"AAAAFF"#{/if} #{if usuario.banido}"FFAAAA"#{/if}>
+								<td>${usuario.login}</td>
+								#{if usuario.tipo == 1}<td>Administrador</td>#{/if}
+								#{if usuario.tipo == 3} <td>Comum</td>#{/if}
+								<td>${usuario.nome}</td>
+								<td>${usuario.email}</td>
+								<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a>
+									#{if usuario.tipo == 3}
+										#{if usuario.banido}
+											<a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspenso</a>*{mudar depois}*
+										#{/if}
+										#{else}
+											<a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspender</a>
+										#{/else}
+									#{/if}
+									<a class="bt-adm" href="@{UsuarioCtrl.usuarioApagar(usuario.id)}" onClick="if(!confirm('Deseja excluir este Usuário?')){return false;}">Apagar</a>
+								</td>
+							</tr>
 						#{/list}
 						#{/if}
 					</table>
