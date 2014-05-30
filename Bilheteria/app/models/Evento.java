@@ -10,23 +10,24 @@ import play.db.jpa.Model; //Classe modelo
 
 @Entity
 public class Evento extends Model {
+	
+	//chaves estrangeiras
+	public long id_estadio;
+	public long id_mandante;
+	public long id_visitante;
 
-	public String desc;
+	//informações da partida
+	public String descricao;
 	public Date dataEvento;
 	public String hora;
 
 	//public Date dataExpiraCompraDeIngresso;
 	//public String horaExpiraCompraDeIngressos;
 	
-	//chaves estrangeiras
-	public long id_estadio;
-	public long id_mandante;
-	public long id_visitante;
-	
-	public Evento(String desc, long id_estadio, long id_mandante, long id_visitante, Date data){
-		this.desc = desc;
+	public Evento(String desc, long id_estadio, long id_mandante, long id_visitante, Date data, String hora) {
+		this.descricao = desc;
 		this.dataEvento = data;
-		//this.hora = hora;
+		this.hora = hora;
 		//this.dataExpiraCompraDeIngresso = data2;
 		//this.horaExpiraCompraDeIngressos = hora2;
 		

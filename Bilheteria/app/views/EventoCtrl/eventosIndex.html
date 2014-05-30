@@ -14,6 +14,8 @@
           
 					<table class="tabela-jogos">
 						<tr id="head-table">
+							<th>Data</th>
+							<th>Hora</th>
 							<th>Descrição</th>
 							<th>Estádio</th>
 							<th>Mandante</th>
@@ -23,12 +25,14 @@
 	
 						#{list items:eventos, as:'evento'}
 							<tr>
-								<td>${evento.desc}</td>
-								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900}*}</td>
+								<td>${evento.dataEvento}</td>
+								<td>${evento.hora}</td>
+								<td>${evento.descricao}</td>
+								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900} }*</td>
 								<td>${evento.id_mandante}</td>
 								<td>${evento.id_visitante}</td>
-								<td><a href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este cevento?')){return false;}">Apagar</a>
-								<a href="@{EventoCtrl.editar(evento.id)}">Editar</a></td>
+								<td><a class="bt-adm" href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
+								<a class="bt-adm" href="@{EventoCtrl.editar(evento.id)}">Editar</a></td>
 							</tr>
 						#{/list}
 						</table>
