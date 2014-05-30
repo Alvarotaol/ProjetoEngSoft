@@ -1,6 +1,9 @@
 package controllers;
 
+import java.util.List;
+
 import models.Estadio;
+import models.Fileira;
 import models.Setor;
 import models.Usuario;
 import play.data.validation.Required;
@@ -38,5 +41,10 @@ public class SetorCtrl extends Controller {
 	public static void setorEditar(long id){
 		Setor setor = Setor.find("id", id).first();
 		render(setor, setor.id_estadio);
+	}
+	
+	public static void setorExibir(long id_estadio, long id_setor, String nome) {
+		List<Fileira> fileira = Fileira.find("id_setor", id_setor).fetch();
+		render(id_estadio, id_setor, fileira, nome);
 	}
 }

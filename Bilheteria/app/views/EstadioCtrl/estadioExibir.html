@@ -18,6 +18,8 @@
 			Estadio: ${estadio.estado} <br/>
 			CEP: ${estadio.cep} <br/>
           
+          	<br/>
+          
 			<h2>setores/modulos</h2>
 			
 			<table class="tabela-jogos">
@@ -29,12 +31,15 @@
 						#{list items:setor, as:'setor'}
 						<tr>
 							<td> ${setor.nome} </td>
-							<td> <a class="bt-adm" href="@{SetorCtrl.setorEditar(setor.id)}">Editar</a>
+							<td> <a class="bt-adm" href="@{SetorCtrl.setorExibir(setor.id_estadio, setor.id, setor.nome)}">Exibir</a>
+								 <a class="bt-adm" href="@{SetorCtrl.setorEditar(setor.id)}">Editar</a>
 								 <a class="bt-adm" href="@{SetorCtrl.setorApagar(setor.id, estadio.id)}" onClick="if(!confirm('Deseja excluir este Setor?')){return false;}">Apagar</a></td> 
 						</tr>
 						#{/list}
 						#{/if}
 					</table>
+			
+			<br/>
 			
 			<h2>inserir setor/modulo</h2>
 			
