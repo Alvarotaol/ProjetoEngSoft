@@ -27,7 +27,7 @@ public class UsuarioCtrl extends Controller {
 			usr._save();
 			String tipoUsuario = session.get("tipo");
 
-			if (tipoUsuario != null && tipoUsuario.equals("1")) {
+			if (tipoUsuario != null && tipoUsuario.equals(Usuario.admin)) {
 				usuarioIndex();
 			} else {
 				indexLogin(null);
@@ -73,72 +73,14 @@ public class UsuarioCtrl extends Controller {
 		usuario.save();
 		usuarioIndex();
 	}
-	
-	public static void salvarAlteracoesUsuarioAdm(long id){
 
-		Usuario usuario = Usuario.find("id", id).first();
-
-		if (validation.hasErrors()) {
-			render("Application/usuarioEditar.html", usuario);
-		}
-
-		usuario.nome = request.params.get("nome");
-		usuario.cpf = request.params.get("cpf");
-		usuario.email = request.params.get("email");
-		usuario.telefone = request.params.get("telefone");
-
-		usuario.endereco = request.params.get("endereco");
-		usuario.bairro = request.params.get("bairro");
-		usuario.cidade = request.params.get("cidade");
-		usuario.estado = request.params.get("estado");
-
-		try {
-			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
-			usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		usuario.save();
-		usuarioDadosPessoaisAdm();
-	}
-
-	public static void salvarAlteracoesUsuarioComum(long id){
-
-		Usuario usuario = Usuario.find("id", id).first();
-
-		if (validation.hasErrors()) {
-			render("Application/usuarioEditar.html", usuario);
-		}
-
-		usuario.nome = request.params.get("nome");
-		usuario.cpf = request.params.get("cpf");
-		usuario.email = request.params.get("email");
-		usuario.telefone = request.params.get("telefone");
-
-		usuario.endereco = request.params.get("endereco");
-		usuario.bairro = request.params.get("bairro");
-		usuario.cidade = request.params.get("cidade");
-		usuario.estado = request.params.get("estado");
-
-		try {
-			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
-			usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		usuario.save();
-		usuarioDadosPessoaisComum();
-	}
-	
 	public static void usuarioApagar(long id) {
 		Usuario usuario = Usuario.find("id", id).first();
 		usuario.delete();
 		usuarioIndex();
 	}
 	
-	public static void efetivarMudarSenhaAdm(long id, @Required String atual,  @Required String nova1,
+	public static void efetivarMudarSenha(long id, @Required String atual,  @Required String nova1,
 											@Required String nova2) {
 		//função para fazer a mudança de senha no banco de dados
 		Usuario usuario = Usuario.find("id", id).first();
@@ -148,32 +90,13 @@ public class UsuarioCtrl extends Controller {
 				usuario.save();
 			} else {
 				//Senhas não conferem
-				usuarioAlterarSenhaAdm();
+				usuarioAlterarSenha();
 			}
 		} else {
 			//Senha errada
-			usuarioAlterarSenhaAdm();
+			usuarioAlterarSenha();
 		}
-		UsuarioCtrl.usuarioDadosPessoaisAdm();
-	}	
-	
-	public static void efetivarMudarSenhaComum(long id, @Required String atual,  @Required String nova1,
-			@Required String nova2) {
-			//função para fazer a mudança de senha no banco de dados
-		Usuario usuario = Usuario.find("id", id).first();
-		if(usuario != null && usuario.senha.equals(atual)){
-			if(nova1.equals(nova2)){
-				usuario.senha = nova1;
-				usuario.save();
-			} else {
-				//Senhas não conferem
-				usuarioAlterarSenhaComum();
-			}
-		} else {
-			//Senha errada
-			usuarioAlterarSenhaComum();
-		}
-		UsuarioCtrl.usuarioDadosPessoaisComum();
+		UsuarioCtrl.usuarioDadosPessoais();
 	}	
 	
 	public static void usuarioSuspender(long id){
@@ -212,7 +135,7 @@ public class UsuarioCtrl extends Controller {
 			session.put("usuario", usuario.login);
 			session.put("tipo", usuario.tipo);
 			session.put("conectado", "V");
-			if(usuario.tipo == 1)
+			if(Usuario.admin.equals(usuario.tipo))
 				Application.index2();
 			else
 				Application.index();
@@ -271,7 +194,7 @@ public class UsuarioCtrl extends Controller {
 		render(tela);
 	}
 	
-	public static void usuarioAlterarSenhaAdm(){
+	public static void usuarioAlterarSenha(){
 		String lgn = session.get("usuario");
 		
 		if (lgn != null) {
@@ -279,22 +202,14 @@ public class UsuarioCtrl extends Controller {
 			render(usuario);
 		}
 	}
-	
-	public static void usuarioAlterarSenhaComum(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}
-	}
+
 	
 	public static void usuarioEditar(long id){
 		Usuario usuario = Usuario.find("id", id).first();
 		render(usuario);
 	}
 	
-	public static void usuarioDadosPessoaisAdmEditar(){
+	public static void usuarioDadosPessoaisEditar(){
 		String lgn = session.get("usuario");
 		
 		if (lgn != null) {
@@ -303,25 +218,7 @@ public class UsuarioCtrl extends Controller {
 		}
 	}
 	
-	public static void usuarioDadosPessoaisAdm(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}	
-	}
-	
-	public static void usuarioDadosPessoaisComum(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}	
-	}
-	
-	public static void usuarioDadosPessoaisComumEditar(){
+	public static void usuarioDadosPessoais(){
 		String lgn = session.get("usuario");
 		
 		if (lgn != null) {
@@ -332,6 +229,9 @@ public class UsuarioCtrl extends Controller {
 	
 	/**Carregar página de gerência de usuário*/
 	public static void usuarioIndex() {
+		if(session.get("tipo").equals(Usuario.comum)){
+			usuarioDadosPessoais();
+		}
 		List<Usuario> usr = Usuario.all().fetch();
 		System.out.print("Teste " + usr.size());
 

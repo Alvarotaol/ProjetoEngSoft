@@ -1,4 +1,9 @@
+#{if session.get("tipo") == models.Usuario.admin}
+#{extends 'pagtesteadm.html' /}
+#{/if}
+#{else}
 #{extends 'pagteste2.html' /}
+#{/else}
 #{set title:'Dados Pessoais' /}
 
   <div class="content">
@@ -49,8 +54,8 @@
 			
 			<br/>
 			
-			<a class="bt-adm" href="@{UsuarioCtrl.usuarioDadosPessoaisComumEditar()}">Alterar Dados Pessoais</a> 
-			<a class="bt-adm" href="@{UsuarioCtrl.usuarioAlterarSenhaComum()}">Alterar Senha</a>
+			<a class="bt-adm" href="@{UsuarioCtrl.usuarioDadosPessoaisEditar()}">Alterar Dados Pessoais</a>
+			<a class="bt-adm" href="@{UsuarioCtrl.usuarioAlterarSenha()}">Alterar Senha</a>
 			
         </div>
       </div>

@@ -10,6 +10,9 @@ import play.db.jpa.Model; //Classe modelo
 
 @Entity
 public class Usuario extends Model {
+	//Algumas constantes
+	public static final String admin = "1";
+	public static final String comum = "3";
 	
 	public String nome;
 	public String cpf;

@@ -1,4 +1,9 @@
+#{if session.get("tipo") == models.Usuario.admin}
+#{extends 'pagtesteadm.html' /}
+#{/if}
+#{else}
 #{extends 'pagteste2.html' /}
+#{/else}
 #{set title:'Alterar Senha' /}
 
   <div class="content">
@@ -9,7 +14,7 @@
           <div class="clr"></div>
           * Dados Obrigatórios
           
-			#{form @UsuarioCtrl.efetivarMudarSenhaComum(usuario.id)}
+			#{form @UsuarioCtrl.efetivarMudarSenha(usuario.id)}
             <ol>
             	<li>			
 					<label for="atual">Senha Atual:</label>
