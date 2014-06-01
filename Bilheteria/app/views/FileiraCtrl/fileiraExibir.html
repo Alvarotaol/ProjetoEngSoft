@@ -28,10 +28,18 @@
 						
                     #{if cadeira != null}
 			#{list items:cadeira, as:'cadeira'}
-                            <tr>
+                            <tr bgcolor=#{if cadeira.status == 1}"AAAAFF"#{/if} #{else}"FFAAAA"#{/else}>
 				<td> ${cadeira.nome} </td>
 				<td> ${cadeira.status} </td>
-				<td> <a class="bt-adm" href="@{CadeiraCtrl.cadeiraApagar(id_estadio, id_setor, id_fileira, cadeira.id, nomeS, nomeF)}" onClick="if(!confirm('Deseja excluir esta Cadeira?')){return false;}">Apagar</a></td> 
+				<td> 
+                                    #{if cadeira.status == 1}
+                                        <a class="bt-adm" href="@{CadeiraCtrl.cadeiraTornarIndisponivel(id_estadio, id_setor, id_fileira, cadeira.id, nomeS, nomeF)}">Tornar Indisponível</a>
+                                    #{/if}
+                                    #{else}
+                                        <a class="bt-adm" href="@{CadeiraCtrl.cadeiraTornarDisponivel(id_estadio, id_setor, id_fileira, cadeira.id, nomeS, nomeF)}">Tornar Disponível</a>
+                                    #{/else}
+                                    <a class="bt-adm" href="@{CadeiraCtrl.cadeiraApagar(id_estadio, id_setor, id_fileira, cadeira.id, nomeS, nomeF)}" onClick="if(!confirm('Deseja excluir esta Cadeira?')){return false;}">Apagar</a>
+                                </td> 
                             </tr>
 			#{/list}
                     #{/if}
