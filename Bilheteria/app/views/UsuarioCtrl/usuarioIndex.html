@@ -34,7 +34,7 @@
 								<td><a class="bt-adm" href="@{UsuarioCtrl.usuarioEditar(usuario.id)}">Editar</a>
 									#{if usuario.tipo == 3}
 										#{if usuario.banido}
-											<a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspenso</a>*{mudar depois}*
+											<a class="bt-adm" onClick="alert('Usuário suspenso até ${usuario.dataBanido.toGMTString()}')">Suspenso</a>
 										#{/if}
 										#{else}
 											<a class="bt-adm" href="@{UsuarioCtrl.usuarioSuspender(usuario.id)}">Suspender</a>

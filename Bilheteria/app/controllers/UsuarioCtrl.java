@@ -30,7 +30,7 @@ public class UsuarioCtrl extends Controller {
 			if (tipoUsuario != null && tipoUsuario.equals("1")) {
 				usuarioIndex();
 			} else {
-				indexLogin();
+				indexLogin(null);
 			}
 		} else {
 			usuarioCadastrar(); //+ mensagem de senhas diferentes
@@ -182,9 +182,6 @@ public class UsuarioCtrl extends Controller {
 	}
 	
 	public static void suspender(String login, Date tempo){
-		System.out.println("Logint "+ login);
-		System.out.println(tempo);
-		System.out.println("Data "+ tempo.toString());
 		Usuario usuario = Usuario.find("login", login).first();
 		usuario.banido = true;
 		usuario.dataBanido = tempo;
@@ -195,11 +192,21 @@ public class UsuarioCtrl extends Controller {
 	//--------------------LOGIN
 
 	public static void entrar(@Required String login, @Required String senha) {
-		//TODO precisa de tratamento de excessões
+		
 		Usuario usuario = Usuario.find("login", login).first();
 		if(usuario == null){
 			//Exibir mensagem correspondente
-			indexLogin();
+			indexLogin("Usuário inexistente");
+		}
+		if(usuario.banido){
+			System.out.print(Calendar.getInstance().getTime());
+			if(usuario.dataBanido.before(Calendar.getInstance().getTime())){
+				usuario.banido = false;
+				usuario.save();
+			} else {
+				//TODO Mostrar mensagem
+				indexLogin("Você está banido, seu cabra de peia!");
+			}
 		}
 		if(request.params.get("senha").equals(usuario.senha)){
 			session.put("usuario", usuario.login);
@@ -210,8 +217,7 @@ public class UsuarioCtrl extends Controller {
 			else
 				Application.index();
 		} else {
-			System.out.println(usuario.senha + " " + request.params.get("senha"));
-			usuarioCadastrar2();
+			indexLogin("Senha inválida");
 		}
 	}
 
@@ -225,8 +231,11 @@ public class UsuarioCtrl extends Controller {
 	public static void esqueciMinhaSenha(@Required String cpf) {
 		Usuario usuario = Usuario.find("cpf", cpf).first();
 		int tela = 2;
-		//TODO validar depois
-		render("UsuarioCtrl/indexEsqueciSenha.html", usuario, tela);
+		if(usuario != null){
+			render("UsuarioCtrl/indexEsqueciSenha.html", usuario, tela);
+		} else {
+			//TODO Mostrar mensagem
+		}
 	}
 	
 	public static void alterarSenha(@Required String login, @Required String senha) {
@@ -245,8 +254,8 @@ public class UsuarioCtrl extends Controller {
 	
 	/**Abre a página de login*/
 	//TODO não sei se ele fica neste controlador
-	public static void indexLogin() {
-		render();
+	public static void indexLogin(String erro) {
+		render(erro);
 	}
 
 	public static void usuarioCadastrar() {
