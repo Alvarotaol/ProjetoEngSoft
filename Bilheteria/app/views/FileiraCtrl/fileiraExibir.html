@@ -22,6 +22,7 @@
                 <table class="tabela-jogos">
                     <tr id="head-table">
                         <th>Nome</th>
+                        <th>Status</th>
 			<th>Ações</th>
                     </tr>
 						
@@ -29,7 +30,8 @@
 			#{list items:cadeira, as:'cadeira'}
                             <tr>
 				<td> ${cadeira.nome} </td>
-				<td> *{<a class="bt-adm" href="@{FileiraCtrl.fileiraApagar(fileira.id, id_estadio, fileira.id_setor, nome)}" onClick="if(!confirm('Deseja excluir esta Fileira?')){return false;}">Apagar</a>}*</td> 
+				<td> ${cadeira.status} </td>
+				<td> <a class="bt-adm" href="@{CadeiraCtrl.cadeiraApagar(id_estadio, id_setor, id_fileira, cadeira.id, nomeS, nomeF)}" onClick="if(!confirm('Deseja excluir esta Cadeira?')){return false;}">Apagar</a></td> 
                             </tr>
 			#{/list}
                     #{/if}
@@ -37,17 +39,17 @@
 			
 		<br/>
 		
-		*{<h2>inserir cadeira</h2>
+		<h2>inserir cadeira</h2>
 			
-                #{form @FileiraCtrl.criarFileira(id_estadio, id_setor, nome)}
+                #{form @CadeiraCtrl.criarCadeira(id_estadio, id_setor, id_fileira, nomeS, nomeF)}
                     <ol>
                         <li>			
                             <label for="nome">Nome:</label>
-                            <input type="text" name="nomeF" id="nomeF" class="text"/>
+                            <input type="text" name="nomeC" id="nomeC" class="text"/>
                             <input type="submit" value="Inserir"/>
 			</li>
                     </ol>
-		#{/form} }*
+		#{/form}
 			
 		<br/> <br/> <br/> 
 			
