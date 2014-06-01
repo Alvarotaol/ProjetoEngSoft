@@ -1,0 +1,66 @@
+#{extends 'pagTesteAdm.html' /}
+#{set title:'Fileira' /}
+
+<div class="content">
+    <div class="content_resize">
+        <div class="mainbar">
+            <div class="article">
+                
+                <h2>informacoes da fileira</h2>
+                <div class="clr"> </div>
+          
+                <br/>
+                
+               	Nome: ${nomeF} <br/>
+		Capacidade: <br/> <br/>
+  
+                <h2>Cadeiras</h2>
+ 		
+                <br/>
+          
+		
+                <table class="tabela-jogos">
+                    <tr id="head-table">
+                        <th>Nome</th>
+			<th>Ações</th>
+                    </tr>
+						
+                    #{if cadeira != null}
+			#{list items:cadeira, as:'cadeira'}
+                            <tr>
+				<td> ${cadeira.nome} </td>
+				<td> *{<a class="bt-adm" href="@{FileiraCtrl.fileiraApagar(fileira.id, id_estadio, fileira.id_setor, nome)}" onClick="if(!confirm('Deseja excluir esta Fileira?')){return false;}">Apagar</a>}*</td> 
+                            </tr>
+			#{/list}
+                    #{/if}
+                </table>
+			
+		<br/>
+		
+		*{<h2>inserir cadeira</h2>
+			
+                #{form @FileiraCtrl.criarFileira(id_estadio, id_setor, nome)}
+                    <ol>
+                        <li>			
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nomeF" id="nomeF" class="text"/>
+                            <input type="submit" value="Inserir"/>
+			</li>
+                    </ol>
+		#{/form} }*
+			
+		<br/> <br/> <br/> 
+			
+		<center> <a class="bt-adm" href="@{SetorCtrl.setorExibir(id_estadio, id_setor, nomeS)}">Voltar</a> </center>
+                
+		</div>
+			
+		<br/>
+            </div>
+          </div>
+        </div>
+      <div class="clr">
+          
+      </div>
+    </div>
+</div>

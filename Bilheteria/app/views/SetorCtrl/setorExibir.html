@@ -2,58 +2,58 @@
 #{set title:'Exibir Setor' /}
 
 <div class="content">
-	<div class="content_resize">
-		<div class="mainbar">
-			<div class="article">
+    <div class="content_resize">
+        <div class="mainbar">
+            <div class="article">
           
-			<h2>Informacoes do Setor</h2>
-			<div class="clr"></div>
+                <h2>Informacoes do Setor</h2>   
+                <div class="clr"></div>
 
-			<br/>
+                <br/>
 
-			Nome: ${nome} <br/>
-			Capacidade: <br/> <br/>
+                Nome: ${nome} <br/>
+                Capacidade: <br/> <br/>
           
-			<h2>Fileiras</h2>
+                <h2>Fileiras</h2>
 			
-			<table class="tabela-jogos">
-				<tr id="head-table">
-					<th>Nome</th>
-					<th>Ações</th>
-				</tr>
+                <table class="tabela-jogos">
+                    <tr id="head-table">
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
 						
-				#{if fileira != null}
-					#{list items:fileira, as:'fileira'}
-					<tr>
-						<td> ${fileira.nome} </td>
-						<td> *{<a class="bt-adm" href="@{SetorCtrl.setorEditar(setor.id)}">Editar</a> }*
-							   <a class="bt-adm" href="@{FileiraCtrl.fileiraApagar(fileira.id, id_estadio, fileira.id_setor, nome)}" onClick="if(!confirm('Deseja excluir esta Fileira?')){return false;}">Apagar</a></td> 
-					</tr>
-					#{/list}
-				#{/if}
-			</table>
+                    #{if fileira != null}
+                        #{list items:fileira, as:'fileira'}
+                            <tr>
+                                <td> ${fileira.nome} </td>
+                                <td> <a class="bt-adm" href="@{FileiraCtrl.fileiraExibir(id_estadio, fileira.id_setor, fileira.id, nome, fileira.nome)}">Exibir</a>
+                                     <a class="bt-adm" href="@{FileiraCtrl.fileiraApagar(fileira.id, id_estadio, fileira.id_setor, nome)}" onClick="if(!confirm('Deseja excluir esta Fileira?')){return false;}">Apagar</a></td> 
+                            </tr>
+                        #{/list}
+                    #{/if}
+                </table>
 			
-			<br/>
+		<br/>
 			
-			<h2>inserir fileira</h2>
+                <h2>inserir fileira</h2>
 			
-			#{form @FileiraCtrl.criarFileira(id_estadio, id_setor, nome)}
-            <ol>
-            	<li>			
-					<label for="nome">Nome:</label>
-					<input type="text" name="nomeF" id="nomeF" class="text"/>
-					<input type="submit" value="Inserir"/>
-				</li>
-			</ol>
-			#{/form}
+		#{form @FileiraCtrl.criarFileira(id_estadio, id_setor, nome)}
+                    <ol>
+                        <li>
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nomeF" id="nomeF" class="text"/>
+                            <input type="submit" value="Inserir"/>
+                        </li>
+                    </ol>
+                #{/form}
 			
-			<br/> <br/> <br/> 
+		<br/> <br/> <br/> 
 			
-			<center> <a class="bt-adm" href="@{EstadioCtrl.estadioExibir(id_estadio)}">Voltar</a> </center>
+		<center> <a class="bt-adm" href="@{EstadioCtrl.estadioExibir(id_estadio)}">Voltar</a> </center>
 			
-			</div>
-      </div>
-      </div>
-	<div class="clr"></div>
-	</div>
+                </div>
+            </div>
+        </div>
+    <div class="clr"></div>
+    </div>
 </div>

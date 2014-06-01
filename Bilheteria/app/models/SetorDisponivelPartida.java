@@ -14,7 +14,7 @@ public class SetorDisponivelPartida extends Model{
 	public float valor;
 	
 	public SetorDisponivelPartida (int status, long id_evento, long id_setor, float valor) {
-		this.status = status;
+                this.status = status;
 		this.id_evento = id_evento;
 		this.id_setor = id_setor;
 		this.valor = valor;
