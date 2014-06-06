@@ -6,27 +6,16 @@
       <div class="mainbar">
         <div class="article">
           <h2>digite os dados do time de futebol</h2>
-          <div class="clr"></div>
+          <div class="clr">asa</div>
           * Dados Obrigatórios
                     
           #{form @TimeFutebolCtrl.cadastrarTime()}
             <ol>
-              <li>
-                <label for="nome">Nome*:</label>
-                <input type="text" name="nome" id="nome" class="text" value="${params.nome}"/>
-              </li>
-			  <li>
-                <label for="login">CNPJ*:</label>
-                <input type="text" name="cnpj" id="cnpj" class="text" value="${params.cnpj}" />
-              </li>
-			  <li>
-                <label for="ano">Ano de Fundação*:</label>
-                <input type="text" name="ano" id="ano" class="text" value="${params.ano}" />
-              </li>
+              #{formtime time:null/}
               <li>
                 <input type="submit" value="Finalizar Cadastro" class="send"/>
               </li>
-            </ol> 
+            </ol>
           #{/form}
 
 

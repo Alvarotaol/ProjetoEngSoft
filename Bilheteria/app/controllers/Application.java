@@ -45,7 +45,8 @@ public class Application extends Controller {
     }
     
     public static void indexProxJogos() {
-    	render();
+    	List<Evento> eventos = Evento.all().fetch();
+    	render(eventos);
     }
     
     

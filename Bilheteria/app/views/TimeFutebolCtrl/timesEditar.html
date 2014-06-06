@@ -11,18 +11,7 @@
           
           #{form @TimeFutebolCtrl.timeEditar(timefutebol.id)}
           <ol>
-              <li>
-                <label for="nome">Nome*:</label>
-                <input type="text" name="nome" id="nome" class="text" value="${timefutebol.nomeTime}"/>
-              </li>
-			  <li>
-                <label for="login">CNPJ*:</label>
-                <input type="text" name="cnpj" id="cnpj" class="text" value="${timefutebol.cnpjTime}" />
-              </li>
-			  <li>
-                <label for="login">Ano de Fundação*:</label>
-                <input type="text" name="ano" id="ano" class="text" value="${timefutebol.anoFundacao}" />
-              </li>
+          	#{formtime time:timefutebol /}
               <li>
                 <input type="submit" value="Finalizar Edição" class="send"/>
                 <div class="clr"></div>
