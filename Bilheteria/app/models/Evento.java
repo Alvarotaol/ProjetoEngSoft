@@ -9,8 +9,7 @@ import play.*; //Coloquei pra caso precise
 import play.db.jpa.Model; //Classe modelo
 
 @Entity
-public class Evento extends Model {
-	
+public class Evento extends Model {	
 	//chaves estrangeiras
 	public long id_estadio;
 	public long id_mandante;
@@ -19,17 +18,17 @@ public class Evento extends Model {
 	//informações da partida
 	public String descricao;
 	public Date dataEvento;
+	public Date dataFinalCompra;
 	public String hora;
-
-	//public Date dataExpiraCompraDeIngresso;
-	//public String horaExpiraCompraDeIngressos;
+        
+        public int disponivel;
 	
-	public Evento(String desc, long id_estadio, long id_mandante, long id_visitante, Date data, String hora) {
+	public Evento(String desc, long id_estadio, long id_mandante, long id_visitante, Date data, String hora, int disp, Date dataLimite) {
 		this.descricao = desc;
 		this.dataEvento = data;
 		this.hora = hora;
-		//this.dataExpiraCompraDeIngresso = data2;
-		//this.horaExpiraCompraDeIngressos = hora2;
+		this.dataFinalCompra = dataLimite;
+                this.disponivel = disp;                
 		
 		//chaves estrangeiras
 		this.id_estadio = id_estadio;

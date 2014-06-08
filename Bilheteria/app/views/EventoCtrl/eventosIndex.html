@@ -15,7 +15,7 @@
 					<table class="tabela-jogos">
 						<tr id="head-table">
 							<th>Data</th>
-							<th>Hora</th>
+							<th>Limite p/Compra</th>
 							<th>Descrição</th>
 							<th>Estádio</th>
 							<th>Mandante</th>
@@ -26,7 +26,7 @@
 						#{list items:eventos, as:'evento'}
 							<tr>
 								<td>${evento.dataEvento}</td>
-								<td>${evento.hora}</td>
+								<td>${evento.dataFinalCompra}</td>
 								<td>${evento.descricao}</td>
 								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900} }*</td>
 								<td>${evento.id_mandante}</td>

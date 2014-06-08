@@ -16,9 +16,9 @@ public class EventoCtrl extends Controller {
 	/**Manda o usuario para o banco*/
 	public static void criarEvento(@Required String desc,      @Required long id_estadio,
 								   @Required long id_mandante, @Required long id_visitante,
-								   @Required Date dia, 		   @Required String hora) {
+								   @Required Date dia, @Required String hora, @Required Date diaLimite) {
 		
-		Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, dia, hora);
+		Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, dia, hora, 0, diaLimite);
 
 		ev._save();
 
