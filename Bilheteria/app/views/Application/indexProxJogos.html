@@ -13,6 +13,7 @@
                 <td >Jogo</td>
                 <td>Campeonato</td>    
                 <td>Data</td>
+                <td></td>
               </tr>
               
               #{list items:eventos, as:'evento'}
@@ -20,6 +21,7 @@
 	                <td>${evento.descricao}</td>
 	                <td>Série B</td>
 	                <td>${evento.dataEvento.toString()}</td>
+	                <td><a class="bt-adm" href="@{EventoCtrl.comprar(evento.id)}">Comprar</a></td>
 	              </tr>
               #{/list}
             </table>

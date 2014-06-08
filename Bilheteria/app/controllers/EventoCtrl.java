@@ -66,4 +66,8 @@ public class EventoCtrl extends Controller {
     	List<TimeFutebol> time = TimeFutebol.all().fetch();
     	render(estadio, time);
     }
+    
+    public static void comprar(long id) {
+    	Application.index();
+    }
 }
