@@ -4,8 +4,11 @@ import java.sql.SQLException;
 import java.text.*;
 import java.util.*;
 
+import models.Cadeira;
 import models.Estadio;
 import models.Evento;
+import models.Fileira;
+import models.Setor;
 import models.TimeFutebol;
 import models.Usuario;
 import play.data.validation.Required;
@@ -67,7 +70,36 @@ public class EventoCtrl extends Controller {
     	render(estadio, time);
     }
     
-    public static void comprar(long id) {
-    	Application.index();
+    public static void setor(long idevento, long id) {
+    	if(session.get("conectado") != null){
+    		Evento evento = Evento.find("id", idevento).first();
+    		List<Setor> setores = Setor.find("id_estadio", evento.id_estadio).fetch();
+    		render(idevento, setores);
+    	} else {
+    		UsuarioCtrl.indexLogin(null);
+    	}
+    }
+    
+    public static void fileira(long idevento, long id_setor) {
+    	if(session.get("conectado") != null){
+    		//Estadio estadio = Estadio.find("id", id).first();
+    		List<Fileira> fileiras = Fileira.find("id_setor", id_setor).fetch();
+    		render(idevento, fileiras);
+    	} else {
+    		UsuarioCtrl.indexLogin(null);
+    	}
+    }
+    
+    public static void cadeira(long idevento, long id_fileira) {
+    	if(session.get("conectado") != null){
+    		//Estadio estadio = Estadio.find("id_fileira", id_fileira).first();
+    		
+    		int st = 1;
+    		
+    		List<Cadeira> cadeiras = Cadeira.find("id_fileira", id_fileira).fetch();
+    		render(idevento, cadeiras);
+    	} else {
+    		UsuarioCtrl.indexLogin(null);
+    	}
     }
 }

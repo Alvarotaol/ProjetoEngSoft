@@ -30,7 +30,28 @@ public class Application extends Controller {
     	if(st != null && st.equals("1")){
     		index2();
     	} else {
-        	render();
+    		Usuario usuario = Usuario.find("login", session.get("usuario")).first();
+    		List<Ingresso> ingressos = Ingresso.find("id_usuario", usuario.id).fetch();
+    		/*List<Evento> eventos = new ArrayList<Evento>();
+    		List<Estadio> estadios;
+    		List<Setor> setores;
+    		List<Fileira> fileiras;
+    		List<Cadeira> cadeiras;*/
+    		List<List<String>> compras = new ArrayList<List<String>>();
+    		for(Ingresso ingresso: ingressos){
+				Evento ev = Evento.find("id", ingresso.id_evento).first();
+				Estadio es = Estadio.find("id", ev.id_estadio).first();
+				Cadeira ca = Cadeira.find("id", ingresso.id_cadeira).first();
+				Fileira fi = Fileira.find("id", ca.id_fileira).first();
+				Setor se = Setor.find("id", fi.id_setor).first();
+				List<String> compra = new ArrayList<String>();
+				compra.add(ev.descricao);
+				compra.add(es.nome);
+				compra.add(se.nome);
+				compra.add(fi.nome);
+				compra.add(ca.nome);
+    		}
+        	render(compras);
     	}
     }
 
@@ -54,5 +75,12 @@ public class Application extends Controller {
     	render();    	
     }
     
+    public static void comprar(long idcadeira, long idevento) {
+		Cadeira cadeira = Cadeira.find("id", idcadeira).first();
+		Usuario usuario = Usuario.find("login", session.get("usuario")).first();
+		Ingresso ingresso = new Ingresso(null, null, usuario.id, idevento, idcadeira);
+		ingresso.save();
+		Application.index();
+	}
     
 }
