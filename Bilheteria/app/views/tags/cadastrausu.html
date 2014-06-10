@@ -8,7 +8,7 @@
   </li>
   <li>
     <label for="dataNasc">Data de Nascimento*:</label>
-    <input type="date" name="dataNasc" id="dataNasc" class="text" value="${_usuario?.dataNasc.toString().substring(0, 10)}"/>
+    <input type="date" name="dataNasc" id="dataNasc" class="text" #{if usuario != null}value="${_usuario?.dataNasc.toString().substring(0, 10)}#{/if}"/>
   </li>
   <li>
     <label for="email">E-Mail*:</label>

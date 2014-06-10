@@ -29,9 +29,13 @@ public class Application extends Controller {
     	String st = session.get("tipo");
     	if(st != null && st.equals("1")){
     		index2();
+    	} if(session.get("conectado") != "V") { 
+    		render();
     	} else {
+    	
     		Usuario usuario = Usuario.find("login", session.get("usuario")).first();
     		List<Ingresso> ingressos = Ingresso.find("id_usuario", usuario.id).fetch();
+    		//System.out.println("ID do usuário ativo " + ingressos.size());
     		/*List<Evento> eventos = new ArrayList<Evento>();
     		List<Estadio> estadios;
     		List<Setor> setores;
@@ -50,6 +54,7 @@ public class Application extends Controller {
 				compra.add(se.nome);
 				compra.add(fi.nome);
 				compra.add(ca.nome);
+				compras.add(compra);
     		}
         	render(compras);
     	}
