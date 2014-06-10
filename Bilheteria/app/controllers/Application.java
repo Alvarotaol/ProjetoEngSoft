@@ -137,11 +137,43 @@ public class Application extends Controller {
     }
     
     public static void comprar(long idcadeira, long idevento) {
-		Cadeira cadeira = Cadeira.find("id", idcadeira).first();
-		Usuario usuario = Usuario.find("login", session.get("usuario")).first();
-		Ingresso ingresso = new Ingresso(null, null, usuario.id, idevento, idcadeira);
-		ingresso.save();
-		Application.index();
-	}
+        Cadeira cadeira = Cadeira.find("id", idcadeira).first();
+        Usuario usuario = Usuario.find("login", session.get("usuario")).first();
+        Ingresso ingresso = new Ingresso(null, null, usuario.id, idevento, idcadeira);
+        ingresso.save();
+        Application.index();
+    }
+    
+    public static void indexIngressosComprados() throws SQLException {
+        Usuario usuario = Usuario.find("login", session.get("usuario")).first();
+        
+        String query =  "Select ev.descricao as descricao, es.nome as nomeEstadio, ma.nometime as mandante, " +
+                        "vi.nometime as visitante, ev.dataEvento as dia, ev.hora as hora, se.nome as sector, fil.nome as fileir, ca.nome as cad " +
+                        "from evento ev, estadio es, timefutebol ma, timefutebol vi, ingresso i, setor se, fileira fil, cadeira ca " +
+                        "where i.id_evento = ev.id and ev.id_estadio = es.id and ev.id_mandante = ma.id and ev.id_visitante = vi.id and i.id_usuario = "+ usuario.id +" "+
+                        "and i.id_cadeira = ca.id and ca.id_fileira = fil.id and fil.id_setor = se.id and se.id_estadio = es.id";
+        
+        ResultSet rs = DB.executeQuery(query);
+
+        List<joinJogosComprados> eventos = new ArrayList();
+        
+        while(rs.next()) {
+            joinJogosComprados j = new joinJogosComprados();
+            
+            j.setDescricao(rs.getString("descricao"));
+            j.setNomeEstadio(rs.getString("nomeEstadio"));
+            j.setNomeMandante(rs.getString("mandante"));
+            j.setNomeVisitante(rs.getString("visitante"));
+            j.setData(rs.getDate("dia").toString());
+            j.setHora(rs.getString("hora"));
+            j.setSec(rs.getString("sector"));
+            j.setFil(rs.getString("fileir"));
+            j.setCad(rs.getString("cad"));
+            
+            eventos.add(j);
+        }
+        
+        render(eventos);
+    }
     
 }

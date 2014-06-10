@@ -1,0 +1,40 @@
+#{extends 'pagteste2.html' /}
+#{set title:'Login' /}
+  
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>Meus Ingressos Comprados</h2>
+          <div class="clr"></div>
+          
+            <table class="tabela-jogos">
+              <tr id="head-table">
+                <td>Estádio</td>
+                <td>Setor</td>
+                <td>Fileira</td>
+                <td>Cadeira</td>
+                <td>Jogo</td>
+                <td>Descricao</td>    
+                <td>Data</td>
+              </tr>
+              
+              #{list items:eventos, as:'joinJogosComprados'}
+                  <tr>
+                    <td>${joinJogosComprados.nomeEstadio}</td>
+                    <td>${joinJogosComprados.sec}</td>
+                    <td>${joinJogosComprados.fil}</td>
+                    <td>${joinJogosComprados.cad}</td>
+                    <td>${joinJogosComprados.nomeMandante} x ${joinJogosComprados.nomeVisitante} </td>
+                    <td>${joinJogosComprados.descricao}</td>
+                    <td>${joinJogosComprados.data} às ${joinJogosComprados.hora}</td>
+                  </tr>
+              #{/list}
+            </table>
+                
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
