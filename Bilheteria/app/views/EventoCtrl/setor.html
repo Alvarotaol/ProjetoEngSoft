@@ -2,18 +2,23 @@
 #{set title:'Login' /}
 
 <div class="content">
- 	<div class="content_resize">
-		<div class="setor">
-			Estádio: 
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
 			<h2>Escolher setor</h2>
-			<div class="corpo">
+                        
+                        <div class="clr"></div>
+          
+                        <br/>
+                        
+                        
 				#{list items:setores,as:'setor'}
-					<a class="bt-adm" href="@{EventoCtrl.fileira(idevento, setor.id)}">Setor${setor.nome}</a>
+					<a class="bt-adm" href="@{EventoCtrl.fileira(idevento, setor.id)}">${setor.nome}</a>
 				#{/list}
 				
-			</div>
-		</div>
-				
-				
-	</div>
-</div>
+	
+       </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

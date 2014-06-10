@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.text.*;
 import java.util.*;
 
-import com.sun.java.swing.plaf.windows.WindowsBorders.DashedBorder;
-
 import models.Cadeira;
 import models.Estadio;
 import models.Evento;
@@ -69,7 +67,6 @@ public class EventoCtrl extends Controller {
    
     //Esses nomes precisam ser alterados para manter o padrão de nomes
     public static void eventosIndex() {
-    	
     	List<Evento> eventos = Evento.all().fetch();
     	render(eventos);
     }
@@ -139,7 +136,6 @@ public class EventoCtrl extends Controller {
             int st = 1;
 
             List<Cadeira> cadeiras = Cadeira.find("id_fileira", id_fileira).fetch();
-
     		render(idevento, cadeiras);
     	} else {
             UsuarioCtrl.indexLogin(null);

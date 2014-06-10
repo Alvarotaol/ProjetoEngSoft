@@ -36,15 +36,15 @@
 				*{aparentemente é inútil}*
 				<div class="menu_nav">
 					<ul>
-						<li><a href="@{Application.index2()}"><span>Home</span></a></li>
-						<li><a href="@{EventoCtrl.eventosIndex()}"><span>Eventos</span></a></li>
-						<li><a href="@{EstadioCtrl.estadioIndex()}"><span>Estádios</span></a></li>
-						<li><a href="@{TimeFutebolCtrl.timesIndex()}"><span>Times de Futebol</span></a></li>
-						<li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Usuários</span></a></li>
-						<li><a href="@{UsuarioCtrl.usuarioDadosPessoais()}"><span>Dados Pessoais</span></a></li>
-						#{if session.get("conectado") == "V"}
-							<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
-						#{/if}
+                                            <li><a href="@{Application.index2()}"><span>Home</span></a></li>
+                                            <li><a href="@{EventoCtrl.eventosIndex()}"><span>Eventos</span></a></li>
+                                            <li><a href="@{EstadioCtrl.estadioIndex()}"><span>Estádios</span></a></li>
+                                            <li><a href="@{TimeFutebolCtrl.timesIndex()}"><span>Times de Futebol</span></a></li>
+                                            <li><a href="@{UsuarioCtrl.usuarioIndex()}"><span>Usuários</span></a></li>
+                                            <li><a href="@{UsuarioCtrl.usuarioDadosPessoais()}"><span>Dados Pessoais</span></a></li>
+                                            #{if session.get("conectado") == "V"}
+                                                    <li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
+                                            #{/if}
 					</ul>
 				</div>
 				*{aparentemente são inúteis}*
