@@ -31,8 +31,11 @@
 								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900} }*</td>
 								<td>${evento.id_mandante}</td>
 								<td>${evento.id_visitante}</td>
-								<td><a class="bt-adm" href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
-								<a class="bt-adm" href="@{EventoCtrl.editar(evento.id)}">Editar</a></td>
+								<td>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.setoresDisponiveis(evento.id, evento.id_estadio)}" >Setores</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.editar(evento.id)}">Editar</a>
+                                                                </td>
 							</tr>
 						#{/list}
 						</table>
