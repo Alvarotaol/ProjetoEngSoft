@@ -6,42 +6,30 @@
       <div class="mainbar">
         <div class="article">
  
-			<h1>Cadastro de evento </h1>
-			#{form @EventoCtrl.editarEvento(evento.id)}
-			
-			
-			<div class="linha">
-				<div class="esq">
-					<p><label for="nome">Nome:</label></p>
-				</div>
-				<div class="dir">
-					<p><input type="text" name="nome" id="nome" value="${evento.descricao}" /></p>
-				</div>
-			</div>
-			
-			<div class="linha">
-				<div class="esq">
-					<p><label for="dia">Data:</label></p>
-				</div>
-				<div class="dir">
-					<p><input type="date" name="dia" id="dia" value="${evento.dataEvento.toString().substring(0,10)}" /></p>
-				</div>
-			</div>
-			
-			<div class="linha">
-				<div class="esq">
-					<p><label for="hora">Hora:</label></p>
-				</div>
-				<div class="dir">
-					<p><input type="time" name="hora" id="hora" value="${evento.hora}" /></p>
-				</div>
-			</div>
-			
-			<div class="bot-enviar">
-				<p><input type="submit" value="Editar o Evento" /></p>
-			</div>
-		</div>
-	
-
-
-#{/form}
+			<h2>Editar evento </h2>
+			#{form @EventoCtrl.editarEvento(evento.id)}			
+                            <ol>
+                                <li>
+                                    <label for="nome">Nome:</label>
+                                    <input class="text" type="text" name="nome" id="nome" value="${evento.descricao}" />
+                                </li>
+                                <li>
+                                    <label for="dia">Data:</label>
+                                    <input class="text" type="date" name="dia" id="dia" value="${evento.dataEvento.toString().substring(0,10)}" />
+                                </li>
+                                <li>
+                                    <label for="hora">Hora:</label>
+                                    <input class="text" type="time" name="hora" id="hora" value="${evento.hora}" />
+                                </li>
+                                <li>
+                                    <p><input type="submit" value="Editar o Evento" class="send"/></p>
+                                </li>
+                            </ol>
+                        #{/form}
+                        
+                                </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

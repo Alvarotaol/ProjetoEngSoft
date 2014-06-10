@@ -61,10 +61,10 @@ public class EstadioCtrl extends Controller {
 
 	//------Funções para abrir as páginas
 	public static void estadioIndex() {
-		List<Estadio> est = Estadio.all().fetch();
-		System.out.print("Teste " + est.size());
-		
-		render(est);
+            List<Estadio> est = Estadio.all().fetch();
+            System.out.print("Teste " + est.size());
+
+            render(est);
 	}
 	
 	public static void estadioCadastrar() {

@@ -1,0 +1,32 @@
+#{extends 'pagtesteadm.html' /}
+#{set title: 'Colocar Valor do Ingresso' /}  
+ 
+ <div class="content">
+ 	<div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>digite o preco do ingresso neste setor</h2>
+          <div class="clr"></div>
+          * Dados Obrigatórios
+            
+          
+          #{form @EventoCtrl.disponibilizarSetor(id_setor, id_evento, id_estadio)}
+            <ol>
+              <li>
+                <label for="nome">Valor*:</label>
+                <input type="text" name="valor" id="valor" class="text"/>
+              </li>
+              <li>
+                <input type="submit" value="Colocar Valor" class="send"/>
+                <div class="clr"></div>
+              </li>
+            </ol>
+          #{/form}
+          
+          
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+ </div>
