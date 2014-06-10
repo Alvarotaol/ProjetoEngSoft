@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.text.*;
 import java.util.*;
 
+import com.sun.java.swing.plaf.windows.WindowsBorders.DashedBorder;
+
 import models.Cadeira;
 import models.Estadio;
 import models.Evento;
@@ -11,7 +13,9 @@ import models.Fileira;
 import models.Setor;
 import models.TimeFutebol;
 import models.Usuario;
-import play.data.validation.Required;
+import play.data.validation.*;
+import play.data.binding.*;
+import play.db.DB;
 import play.mvc.Controller;
 
 public class EventoCtrl extends Controller {
@@ -30,6 +34,7 @@ public class EventoCtrl extends Controller {
     
     //Esses nomes precisam ser alterados para manter o padrão de nomes
     public static void eventosIndex() {
+    	
     	List<Evento> eventos = Evento.all().fetch();
     	render(eventos);
     }
@@ -95,7 +100,6 @@ public class EventoCtrl extends Controller {
     		//Estadio estadio = Estadio.find("id_fileira", id_fileira).first();
     		
     		int st = 1;
-    		
     		List<Cadeira> cadeiras = Cadeira.find("id_fileira", id_fileira).fetch();
     		render(idevento, cadeiras);
     	} else {
