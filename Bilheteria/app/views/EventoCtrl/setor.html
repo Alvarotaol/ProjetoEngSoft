@@ -10,9 +10,9 @@
             <div class="clr"></div>
 
             <br/>
-                #{list items:setores,as:'joinSelecionarSetorDisponivel'}
-                        <a class="bt-adm" href="@{EventoCtrl.fileira(idevento, joinSelecionarSetorDisponivel.id_setor)}">${joinSelecionarSetorDisponivel.nomeSetor}</a>
-                #{/list}			
+            #{list items:setores,as:'joinSelecionarSetorDisponivel'}
+                <a class="bt-adm" href="@{EventoCtrl.fileira(idevento, joinSelecionarSetorDisponivel.id_setor)}">${joinSelecionarSetorDisponivel.nomeSetor} por ${joinSelecionarSetorDisponivel.preco}</a>
+            #{/list}			
 	
        </div>
       </div>

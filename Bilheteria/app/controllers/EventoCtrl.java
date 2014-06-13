@@ -142,7 +142,7 @@ public class EventoCtrl extends Controller {
     public static void setor(long idevento, long id) throws SQLException {
     	if(session.get("conectado") != null){
             
-            String query = "select s.id as id_setor, s.nome as nomeSetor "+
+            String query = "select s.id as id_setor, s.nome as nomeSetor, sdp.valor as val "+
                            "from setor s, setordisponivelpartida sdp, evento ev "+
                            "where sdp.status = 1 and ev.id = "+idevento+" and sdp.id_setor = s.id and sdp.id_evento = ev.id;";
             
@@ -153,6 +153,10 @@ public class EventoCtrl extends Controller {
                 joinSelecionarSetorDisponivel j = new joinSelecionarSetorDisponivel();
                 j.setId_setor(rs.getLong("id_setor"));
                 j.setNomeSetor(rs.getString("nomeSetor"));
+                
+                DecimalFormat df = new DecimalFormat("0.00"); //colocar duas casas decimais no valor do ingresso
+                j.setPreco("R$ "+df.format(rs.getFloat("val")));
+                
                 setores.add(j);
             }
             rs.close();

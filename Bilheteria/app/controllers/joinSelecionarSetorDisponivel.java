@@ -3,6 +3,15 @@ package controllers;
 public class joinSelecionarSetorDisponivel {
     long id_setor;
     String nomeSetor;
+    String preco;
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
 
     public long getId_setor() {
         return id_setor;
