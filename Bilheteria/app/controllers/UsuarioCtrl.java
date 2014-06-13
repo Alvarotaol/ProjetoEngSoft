@@ -65,10 +65,10 @@ public class UsuarioCtrl extends Controller {
 		//usuario.tipo = Integer.parseInt(request.params.get("tipo"));
 
 		try {
-			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
-			usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
+                    SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");
+                    usuario.dataNasc = formatar.parse(request.params.get("dataNasc"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+                    e.printStackTrace();
 		}
 
 		usuario.save();

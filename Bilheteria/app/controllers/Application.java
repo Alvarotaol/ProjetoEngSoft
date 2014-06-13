@@ -18,7 +18,7 @@ public class Application extends Controller {
 //Desde que exista um html com o mesmo nome
     public static void index() {
     	if(session.get("usuario") == null){
-    		session.put("usuario", "Visitante");
+            session.put("usuario", "Visitante");
     	}
     	String st = session.get("tipo");
     	if(st != null && st.equals("1")){
@@ -67,9 +67,6 @@ public class Application extends Controller {
     public static int verificaSeOUsuarioComprouIngressoParaTalJogo(long id_evento) throws SQLException {
         Usuario usuario = Usuario.find("login", session.get("usuario")).first();
         
-        System.out.println("\nchegou aqui\n id_usuario = " + usuario.id + "\n id_evento = " + id_evento +" \n");
-        
-        
         String query = "Select id from ingresso where id_evento ="+id_evento+" and id_usuario = "+usuario.id;
         
         ResultSet rs = DB.executeQuery(query);
@@ -110,7 +107,11 @@ public class Application extends Controller {
             j.setHoraEvento(rs.getString("hora"));
             j.setDataFinalCompra(rs.getDate("limite").toString());
             
-            j.setComprou(verificaSeOUsuarioComprouIngressoParaTalJogo(j.getId_evento()));
+            if(session.get("conectado") != null) {
+                if(session.get("conectado").equals("V")) {
+                    j.setComprou(verificaSeOUsuarioComprouIngressoParaTalJogo(j.getId_evento()));
+                }
+            }
             
             eventos.add(j);
         }
