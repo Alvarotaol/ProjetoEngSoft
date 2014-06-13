@@ -1,0 +1,37 @@
+#{extends 'pagtesteadm.html' /}
+#{set title:'Gerenciar eventos' /}
+
+<div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+            <h2>usuarios que compraram ingresso para o jogo </h2>
+
+            <table class="tabela-jogos">
+              <tr id="head-table">
+                <td>Setor</td>
+                <td>Fileira</td>
+                <td>Cadeira</td>
+                <td>Torcedor</td>
+                <td>Login</td>    
+                <td>CPF</td>
+              </tr>
+              
+              #{list items:comprados, as:'joinUsuariosQueCompraram'}
+                  <tr>
+                    <td>${joinUsuariosQueCompraram.nomeSetor}</td>
+                    <td>${joinUsuariosQueCompraram.nomeFileira}</td>
+                    <td>${joinUsuariosQueCompraram.nomeCadeira}</td>
+                    <td>${joinUsuariosQueCompraram.nomeUsuario}</td>
+                    <td>${joinUsuariosQueCompraram.usr}</td>
+                    <td>${joinUsuariosQueCompraram.cpf}</td>
+                  </tr>
+              #{/list}
+            </table>   
+            
+            </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

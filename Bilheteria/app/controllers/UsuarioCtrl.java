@@ -62,7 +62,7 @@ public class UsuarioCtrl extends Controller {
 		usuario.bairro = request.params.get("bairro");
 		usuario.cidade = request.params.get("cidade");
 		usuario.estado = request.params.get("estado");
-		usuario.tipo = Integer.parseInt(request.params.get("tipo"));
+		//usuario.tipo = Integer.parseInt(request.params.get("tipo"));
 
 		try {
 			SimpleDateFormat formatar = new SimpleDateFormat("yyyy-mm-dd");

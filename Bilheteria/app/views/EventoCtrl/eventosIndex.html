@@ -30,9 +30,10 @@
 								<td>${joinEventosNaPagAdministrador.nomeEstadio}</td>
 								<td>${joinEventosNaPagAdministrador.mandante} x ${joinEventosNaPagAdministrador.visitante}</td>
 								<td>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.mostrarUsuariosQueCompraram(joinEventosNaPagAdministrador.id_evento)}" >Clientes</a>
                                                                     <a class="bt-adm" href="@{EventoCtrl.setoresDisponiveis(joinEventosNaPagAdministrador.id_evento, joinEventosNaPagAdministrador.id_estadio)}" >Setores</a>
-                                                                    <a class="bt-adm" href="@{EventoCtrl.apagar(joinEventosNaPagAdministrador.id_evento)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
                                                                     <a class="bt-adm" href="@{EventoCtrl.editar(joinEventosNaPagAdministrador.id_evento)}">Editar</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.apagar(joinEventosNaPagAdministrador.id_evento)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
                                                                 </td>
 							</tr>
 						#{/list}

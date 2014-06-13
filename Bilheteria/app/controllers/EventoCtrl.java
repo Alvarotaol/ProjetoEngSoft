@@ -200,4 +200,35 @@ public class EventoCtrl extends Controller {
    public static void setorDisponibilizarValor(long id_setor, long id_evento, long id_estadio) {
         render(id_setor, id_evento, id_estadio);
    }
+   
+   public static void mostrarUsuariosQueCompraram(long id_evento) throws SQLException {
+       
+        String query = "select u.nome nomeUsuario, u.login as usr, u.cpf as cpf, str.nome as nomeSetor, fil.nome as nomeFileira, ca.nome as nomeCadeira "+
+                        "from usuario u,  evento ev, ingresso i, cadeira ca, fileira fil, setor str "+
+
+                        "where i.id_usuario = u.id and ev.id = i.id_evento and i.id_evento = "+id_evento+" "+
+
+                       "and ca.id = i.id_cadeira and ca.id_fileira = fil.id and fil.id_setor = str.id " +
+                       "order by nomeSetor, nomeFileira, nomeCadeira ";
+       
+        ResultSet rs = DB.executeQuery(query);
+
+        List<joinUsuariosQueCompraram> comprados = new ArrayList();
+
+        while(rs.next()) {
+            joinUsuariosQueCompraram j = new joinUsuariosQueCompraram();
+
+            j.setNomeSetor(rs.getString("nomeSetor"));
+            j.setNomeFileira(rs.getString("nomeFileira"));
+            j.setNomeCadeira(rs.getString("nomeCadeira"));
+            j.setNomeUsuario(rs.getString("nomeUsuario"));
+            j.setCpf(rs.getString("cpf"));
+            j.setUsr(rs.getString("usr"));
+
+            comprados.add(j);
+        }
+
+        rs.close();
+        render(comprados);
+   }
 }
