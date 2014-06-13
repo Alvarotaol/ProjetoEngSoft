@@ -23,7 +23,22 @@
 				        <div class="clr"></div>
 				</div>
 
-          			
+          			<table>
+						<tr id="head-table">
+							<td>Evento</td>
+							<td>Estádio</td>
+							<td>Setor</td>
+							<td>Fileira</td>
+							<td>Cadeira</td>
+						</tr>
+		          		#{list items:compras, as:'compra'}
+	          			<tr>
+	          				#{list items:compra,as:'valor'}
+	          				<td>${valor}</td>
+	          				#{/list}
+	          			</tr>
+		          		#{/list}
+          			</table>
           		
 			</div>
       		</div>

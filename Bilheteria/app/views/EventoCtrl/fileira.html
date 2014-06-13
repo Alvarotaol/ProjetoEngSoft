@@ -1,23 +1,19 @@
 #{extends 'pagteste2.html' /}
 #{set title:'Login' /}
 
-  <div class="content">
-    <div class="content_resize">
-      <div class="mainbar">
-        <div class="article">
-            
-            <h2>Escolher fileira</h2>
-            <div class="clr"></div>
-
-            <br/>
-
-            #{list items:fileiras,as:'fileira'}
-                <a class="bt-adm" href="@{EventoCtrl.cadeira(idevento, fileira.id)}">${fileira.nome}</a>
-            #{/list}
-                                
-        </div>
-      </div>
-      </div>
-      <div class="clr"></div>
-    </div>
-  </div>
+<div class="content">
+ 	<div class="content_resize">
+		<div class="setor">
+			Estádio: 
+			<h2>Escolher fileira</h2>
+			<div class="corpo">
+				#{list items:fileiras,as:'fileira'}
+					<a class="bt-adm" href="@{EventoCtrl.cadeira(idevento, fileira.id)}">${fileira.nome}</a>
+				#{/list}
+				
+			</div>
+		</div>
+				
+				
+	</div>
+</div>

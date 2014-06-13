@@ -76,14 +76,6 @@ public class joinEventosDisponiveisParaCompra {
         this.dataFinalCompra = dataFinalCompra;
     }
     
-    public void setComprou(int comprou) {
-        this.comprou = comprou;
-    }
-    
-    public int getComprou() {
-        return (comprou);
-    }
-    
     long id_evento;
     long id_estadio;
         
@@ -96,6 +88,4 @@ public class joinEventosDisponiveisParaCompra {
     String dataEvento;
     String dataFinalCompra;
     String horaEvento;
-    
-    int comprou;
 }
