@@ -19,11 +19,12 @@ import play.db.DB;
 import play.mvc.Controller;
 
 public class EventoCtrl extends Controller {
+    
 	//------------EVENTOS
     /**Manda o usuario para o banco*/
     public static void criarEvento(@Required String desc,      @Required long id_estadio,
                                                                @Required long id_mandante, @Required long id_visitante,
-                                                               @Required Date dia, @Required String hora, @Required Date diaLimite) {
+                                                               @Required Date dia, @Required String hora, @Required Date diaLimite) throws SQLException {
 
         Evento ev = new Evento(desc, id_estadio, id_mandante, id_visitante, dia, hora, 2, diaLimite);
         ev._save();
@@ -66,8 +67,36 @@ public class EventoCtrl extends Controller {
     }
    
     //Esses nomes precisam ser alterados para manter o padrão de nomes
-    public static void eventosIndex() {
-    	List<Evento> eventos = Evento.all().fetch();
+    public static void eventosIndex() throws SQLException {
+        String query = "select ev.id as id_evento, ev.descricao as descric, ev.dataEvento as dia, ev.hora as hora, ev.dataFinalCompra as limite, " +
+                              "es.id as id_estadio, es.nome as nomeEstadio, m.nomeTime as mandante, v.nomeTime as visitante " +
+
+	               "from evento ev, estadio es, timefutebol m, timefutebol v " + 
+
+	               "where ev.id_estadio = es.id and ev.id_mandante = m.id and ev.id_visitante = v.id ORDER BY dia;";
+        
+        ResultSet rs = DB.executeQuery(query);
+
+        List<joinEventosNaPagAdministrador> eventos = new ArrayList();
+            
+       while(rs.next()) {
+            joinEventosNaPagAdministrador j = new joinEventosNaPagAdministrador();
+
+            j.setId_estadio(rs.getLong("id_estadio"));
+            j.setId_evento(rs.getLong("id_evento"));
+            j.setDescricao(rs.getString("descric"));
+            j.setNomeEstadio(rs.getString("nomeEstadio"));
+            j.setMandante(rs.getString("mandante"));
+            j.setVisitante(rs.getString("visitante"));
+            j.setData(rs.getDate("dia").toString());
+            j.setHora(rs.getString("hora"));
+            j.setDataLimite(rs.getDate("limite").toString());
+            
+            eventos.add(j);
+        }
+
+        rs.close();
+        
     	render(eventos);
     }
     
@@ -82,7 +111,7 @@ public class EventoCtrl extends Controller {
 		render(evento);
     }
     
-    public static void editarEvento(long id){
+    public static void editarEvento(long id) throws SQLException{
         Evento evento = Evento.find("id", id).first();
 
         if (validation.hasErrors()) {
@@ -100,7 +129,8 @@ public class EventoCtrl extends Controller {
 
         evento.hora = request.params.get("hora");
         evento.save();
-        Application.index();
+        
+        eventosIndex();
     }
     
     public static void eventosCadastrar() {

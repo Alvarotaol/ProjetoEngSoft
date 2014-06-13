@@ -15,26 +15,24 @@
 					<table class="tabela-jogos">
 						<tr id="head-table">
 							<th>Data</th>
-							<th>Limite p/Compra</th>
+							<th>Compras até</th>
 							<th>Descrição</th>
 							<th>Estádio</th>
-							<th>Mandante</th>
-							<th>Visitante</th>
+							<th>Partida</th>
 							<th>Ações</th>
 						</tr>
 	
-						#{list items:eventos, as:'evento'}
+						#{list items:eventos, as:'joinEventosNaPagAdministrador'}
 							<tr>
-								<td>${evento.dataEvento}</td>
-								<td>${evento.dataFinalCompra}</td>
-								<td>${evento.descricao}</td>
-								<td>${evento.id_estadio}  *{${evento.data.getDate()}/${evento.data.getMonth() + 1}/${evento.data.getYear() + 1900} }*</td>
-								<td>${evento.id_mandante}</td>
-								<td>${evento.id_visitante}</td>
+								<td>${joinEventosNaPagAdministrador.data} ás ${joinEventosNaPagAdministrador.hora}</td>
+								<td>${joinEventosNaPagAdministrador.dataLimite}</td>
+								<td>${joinEventosNaPagAdministrador.descricao}</td>
+								<td>${joinEventosNaPagAdministrador.nomeEstadio}</td>
+								<td>${joinEventosNaPagAdministrador.mandante} x ${joinEventosNaPagAdministrador.visitante}</td>
 								<td>
-                                                                    <a class="bt-adm" href="@{EventoCtrl.setoresDisponiveis(evento.id, evento.id_estadio)}" >Setores</a>
-                                                                    <a class="bt-adm" href="@{EventoCtrl.apagar(evento.id)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
-                                                                    <a class="bt-adm" href="@{EventoCtrl.editar(evento.id)}">Editar</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.setoresDisponiveis(joinEventosNaPagAdministrador.id_evento, joinEventosNaPagAdministrador.id_estadio)}" >Setores</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.apagar(joinEventosNaPagAdministrador.id_evento)}" onClick="if(!confirm('Deseja excluir este evento?')){return false;}">Apagar</a>
+                                                                    <a class="bt-adm" href="@{EventoCtrl.editar(joinEventosNaPagAdministrador.id_evento)}">Editar</a>
                                                                 </td>
 							</tr>
 						#{/list}
