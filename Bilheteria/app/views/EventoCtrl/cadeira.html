@@ -12,9 +12,11 @@
             <br/>
             
             <div class="corpo">
-                    #{list items:cadeiras,as:'cadeira'}
+                    #{list items:cadeiras,as:'joinCadeirasQueNaoForamCompradas'}
                     *{href="@{Application.index()}"}*
-                            #{if cadeira.status == 1}<a class="bt-adm" href="@{Application.comprar(cadeira.id, idevento)}">${cadeira.nome}</a>#{/if}	
+                            #{if joinCadeirasQueNaoForamCompradas.status == 1}
+                                <a class="bt-adm" href="@{Application.comprar(joinCadeirasQueNaoForamCompradas.id_cadeira, idevento)}">${joinCadeirasQueNaoForamCompradas.nomeCadeira}</a>
+                            #{/if}	
                     #{/list}
 				
         </div>

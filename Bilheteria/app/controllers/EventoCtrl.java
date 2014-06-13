@@ -38,7 +38,7 @@ public class EventoCtrl extends Controller {
         eventosIndex();
     }
     
-   public static void disponibilizarSetor(long id_setor, long id_evento, long id_estadio, @Required String valor) throws SQLException {
+    public static void disponibilizarSetor(long id_setor, long id_evento, long id_estadio, @Required String valor) throws SQLException {
         SetorDisponivelPartida est = SetorDisponivelPartida.find("id_evento=? and id_setor=?", id_evento, id_setor).first();
 
         if (validation.hasErrors()) {
@@ -159,14 +159,32 @@ public class EventoCtrl extends Controller {
     	}
     }
     
-    public static void cadeira(long idevento, long id_fileira) {
+    public static void cadeira(long idevento, long id_fileira) throws SQLException {
     	if(session.get("conectado") != null){
             //Estadio estadio = Estadio.find("id_fileira", id_fileira).first();
-
             int st = 1;
+            
+            String qry = "select ca.id as ca_id, ca.nome as ca_nome, ca.status as ca_status " + 
+                         "from cadeira ca " +
+                         "where ca.id_fileira = "+id_fileira+
+                         " and ca.id not in (select id_cadeira from ingresso where id_evento = "+idevento+")";
 
-            List<Cadeira> cadeiras = Cadeira.find("id_fileira", id_fileira).fetch();
-    		render(idevento, cadeiras);
+            ResultSet rs = DB.executeQuery(qry);
+
+            List<joinCadeirasQueNaoForamCompradas> cadeiras = new ArrayList();
+            while(rs.next()) {
+                joinCadeirasQueNaoForamCompradas j = new joinCadeirasQueNaoForamCompradas();
+
+                j.setId_cadeira(rs.getLong("ca_id"));
+                j.setNomeCadeira(rs.getString("ca_nome"));
+                j.setStatus(rs.getInt("ca_status"));
+
+                cadeiras.add(j);
+            }
+            rs.close();
+            
+            
+            render(idevento, cadeiras);
     	} else {
             UsuarioCtrl.indexLogin(null);
     	}
@@ -197,11 +215,11 @@ public class EventoCtrl extends Controller {
         render(id_evento, id_estadio, setores);
     }
     
-   public static void setorDisponibilizarValor(long id_setor, long id_evento, long id_estadio) {
+    public static void setorDisponibilizarValor(long id_setor, long id_evento, long id_estadio) {
         render(id_setor, id_evento, id_estadio);
    }
    
-   public static void mostrarUsuariosQueCompraram(long id_evento) throws SQLException {
+    public static void mostrarUsuariosQueCompraram(long id_evento) throws SQLException {
        
         String query = "select u.nome nomeUsuario, u.login as usr, u.cpf as cpf, str.nome as nomeSetor, fil.nome as nomeFileira, ca.nome as nomeCadeira, sdp.valor as val "+
                        "from usuario u,  evento ev, ingresso i, cadeira ca, fileira fil, setor str, setordisponivelpartida sdp "+
