@@ -1,20 +1,25 @@
 #{extends 'pagteste2.html' /}
 #{set title:'Login' /}
 
-<div class="content">
- 	<div class="content_resize">
-		<div class="setor">
-			Estádio: 
-			<h2>Escolher cadeira</h2>
-			<div class="corpo">
-				#{list items:cadeiras,as:'cadeira'}
-				*{href="@{Application.index()}"}*
-					#{if cadeira.status == 1}<a class="bt-adm" href="@{Application.comprar(cadeira.id, idevento)}">${cadeira.nome}</a>#{/if}	
-				#{/list}
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+            
+            
+            <h2>Escolher cadeira</h2>
+            
+            <br/>
+            
+            <div class="corpo">
+                    #{list items:cadeiras,as:'cadeira'}
+                    *{href="@{Application.index()}"}*
+                            #{if cadeira.status == 1}<a class="bt-adm" href="@{Application.comprar(cadeira.id, idevento)}">${cadeira.nome}</a>#{/if}	
+                    #{/list}
 				
-			</div>
-		</div>
-				
-				
-	</div>
-</div>
+        </div>
+      </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>

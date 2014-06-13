@@ -15,7 +15,9 @@
                 <td>Descricao</td>    
                 <td>Data</td>
                 <td>Compras até</td>
-                <td>Ação</td>
+                #{if session.get("conectado") == "V"}
+                    <td>Ação</td>
+                #{/if}
               </tr>
               
               #{list items:eventos, as:'joinEventosDisponiveisParaCompra'}
@@ -25,7 +27,16 @@
                     <td>${joinEventosDisponiveisParaCompra.descricao}</td>
                     <td>${joinEventosDisponiveisParaCompra.dataEvento} às ${joinEventosDisponiveisParaCompra.horaEvento}</td>
                     <td>${joinEventosDisponiveisParaCompra.dataFinalCompra}</td>
-                    <td><a class="bt-adm" href="@{EventoCtrl.setor(joinEventosDisponiveisParaCompra.id_evento)}">Comprar</a></td>
+                    #{if session.get("conectado") == "V"}
+                        <td>
+                            #{if joinEventosDisponiveisParaCompra.comprou == 0}
+                                <a class="bt-adm" href="@{EventoCtrl.setor(joinEventosDisponiveisParaCompra.id_evento)}">Comprar</a>
+                            #{/if}
+                            #{else}
+                                Já comprado!
+                            #{/else}
+                        </td>
+                    #{/if}
                   </tr>
               #{/list}
             </table>
