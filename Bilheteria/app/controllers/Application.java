@@ -7,15 +7,7 @@ import play.data.validation.*;
 import play.db.jpa.JPA;
 
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-
-import javax.management.Query;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
 import java.sql.ResultSet;
 
 import models.*;
@@ -72,39 +64,34 @@ public class Application extends Controller {
     	}    	
     }
     
-    /*
-     public static void setoresDisponiveis(long id_evento, long id_estadio) throws SQLException {
-        String q2 = "select se.id as id_evento, se.nome as nome, sdp.status as status, sdp.valor as valor " +
-                    "from setor se, setordisponivelpartida sdp, evento e " +
-                    "where se.id = sdp.id_setor and sdp.id_evento = "+ id_evento+" and e.id = sdp.id_evento and se.id_estadio = "+id_estadio;
+    public static int verificaSeOUsuarioComprouIngressoParaTalJogo(long id_evento) throws SQLException {
+        Usuario usuario = Usuario.find("login", session.get("usuario")).first();
         
-        ResultSet rs = DB.executeQuery(q2);
-
-        List<joinSetoresDisponiveis> setores = new ArrayList();
-
+        System.out.println("\nchegou aqui\n id_usuario = " + usuario.id + "\n id_evento = " + id_evento +" \n");
+        
+        
+        String query = "Select id from ingresso where id_evento ="+id_evento+" and id_usuario = "+usuario.id;
+        
+        ResultSet rs = DB.executeQuery(query);
+        
+        List<Long> ids = new ArrayList();            
         while(rs.next()) {
-            joinSetoresDisponiveis j = new joinSetoresDisponiveis();
-
-            j.setId_setor(rs.getLong("id_evento"));
-            j.setNomeSetor(rs.getString("nome"));
-            j.setStatus(rs.getInt("status"));
-            j.setValor(rs.getFloat("valor"));
-
-            setores.add(j);
-        }
-
+            ids.add(rs.getLong("id"));
+        }       
         rs.close();
-                
-        render(id_evento, id_estadio, setores);
+        
+        if(ids.isEmpty()) {
+            return(0);
+        }        
+        return(1);
     }
-     */
     
     public static void indexProxJogos() throws SQLException {
-    	String query = "select ev.id as id_evento, ev.id_estadio as id_estadio, p.descricao as descricao, "+
+    	String query = "select ev.id as id_evento, ev.id_estadio as id_estadio, ev.descricao as descricao, "+
                        "es.nome as nomeEstadio, m.nometime as mandante, v.nometime as visitante, ev.dataEvento as dia, "+
                        "ev.hora as hora, ev.dataFinalCompra as limite "+
-                       "from evento p, estadio es, timefutebol m, timefutebol v, evento ev " +
-                       "where es.id = p.id_estadio and m.id = p.id_mandante and v.id = p.id_visitante and ev.dataFinalCompra >= now()";
+                       "from estadio es, timefutebol m, timefutebol v, evento ev " +
+                       "where ev.id_estadio = es.id and ev.id_mandante = m.id and ev.id_visitante = v.id and ev.dataFinalCompra >= now() ORDER BY ev.dataEvento";
         
         ResultSet rs = DB.executeQuery(query);
 
@@ -122,6 +109,8 @@ public class Application extends Controller {
             j.setDataEvento(rs.getDate("dia").toString());
             j.setHoraEvento(rs.getString("hora"));
             j.setDataFinalCompra(rs.getDate("limite").toString());
+            
+            j.setComprou(verificaSeOUsuarioComprouIngressoParaTalJogo(j.getId_evento()));
             
             eventos.add(j);
         }

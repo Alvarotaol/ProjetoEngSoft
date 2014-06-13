@@ -30,13 +30,14 @@
 				<ul>
 					<li><a href="@{Application.index()}"><span>Home</span></a></li>
 					<li><a href="@{Application.indexProxJogos()}"><span>Próximos jogos</span></a></li>
-					<li><a href="@{Application.indexIngressosComprados()}"><span>Ingressos Comprados</span></a></li>
+		
 					#{if session.get("conectado") != "V"}
 						<li><a href="@{UsuarioCtrl.usuarioCadastrar()}"><span>Cadastre-se</span></a></li>
 						<li><a href="@{UsuarioCtrl.indexLogin()}"><span>Login</span></a></li>
 						<li><a href="@{UsuarioCtrl.indexEsqueciSenha()}"><span>Esqueci Minha Senha</span></a></li>
 					#{/if}
 					#{if session.get("conectado") == "V"}
+                                                <li><a href="@{Application.indexIngressosComprados()}"><span>Ingressos Comprados</span></a></li>
 						<li><a href="@{UsuarioCtrl.usuarioDadosPessoais()}"><span>Dados Pessoais</span></a></li>
 						<li><a href="@{UsuarioCtrl.logout()}"><span>sair (&{session.get("usuario")})</span></a></li>
 					#{/if}

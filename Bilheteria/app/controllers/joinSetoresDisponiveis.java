@@ -1,6 +1,5 @@
 package controllers;
 
-
 public class joinSetoresDisponiveis {
 
     public long getId_setor() {
