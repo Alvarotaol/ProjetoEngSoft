@@ -139,10 +139,24 @@ public class EventoCtrl extends Controller {
     	render(estadio, time);
     }
     
-    public static void setor(long idevento, long id) {
+    public static void setor(long idevento, long id) throws SQLException {
     	if(session.get("conectado") != null){
-            Evento evento = Evento.find("id", idevento).first();
-            List<Setor> setores = Setor.find("id_estadio", evento.id_estadio).fetch();
+            
+            String query = "select s.id as id_setor, s.nome as nomeSetor "+
+                           "from setor s, setordisponivelpartida sdp, evento ev "+
+                           "where sdp.status = 1 and ev.id = "+idevento+" and sdp.id_setor = s.id and sdp.id_evento = ev.id;";
+            
+            ResultSet rs = DB.executeQuery(query);
+
+            List<joinSelecionarSetorDisponivel> setores = new ArrayList();
+            while(rs.next()) {
+                joinSelecionarSetorDisponivel j = new joinSelecionarSetorDisponivel();
+                j.setId_setor(rs.getLong("id_setor"));
+                j.setNomeSetor(rs.getString("nomeSetor"));
+                setores.add(j);
+            }
+            rs.close();
+            
             render(idevento, setores);
     	} else {
             UsuarioCtrl.indexLogin(null);
