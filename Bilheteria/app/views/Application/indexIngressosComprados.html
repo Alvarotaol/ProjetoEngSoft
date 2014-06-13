@@ -1,5 +1,5 @@
 #{extends 'pagteste2.html' /}
-#{set title:'Login' /}
+#{set title:'Ingressos Comprados' /}
   
   <div class="content">
     <div class="content_resize">
@@ -14,6 +14,7 @@
                 <td>Setor</td>
                 <td>Fileira</td>
                 <td>Cadeira</td>
+                <td>Valor</td>
                 <td>Jogo</td>
                 <td>Descricao</td>    
                 <td>Data</td>
@@ -25,6 +26,7 @@
                     <td>${joinJogosComprados.sec}</td>
                     <td>${joinJogosComprados.fil}</td>
                     <td>${joinJogosComprados.cad}</td>
+                    <td>${joinJogosComprados.valor}</td>
                     <td>${joinJogosComprados.nomeMandante} x ${joinJogosComprados.nomeVisitante} </td>
                     <td>${joinJogosComprados.descricao}</td>
                     <td>${joinJogosComprados.data} às ${joinJogosComprados.hora}</td>

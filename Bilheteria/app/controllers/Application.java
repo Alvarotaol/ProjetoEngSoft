@@ -9,6 +9,7 @@ import play.db.jpa.JPA;
 import java.sql.SQLException;
 import java.util.*;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 
 import models.*;
 import play.db.DB;
@@ -138,10 +139,11 @@ public class Application extends Controller {
         Usuario usuario = Usuario.find("login", session.get("usuario")).first();
         
         String query =  "Select ev.descricao as descricao, es.nome as nomeEstadio, ma.nometime as mandante, " +
-                        "vi.nometime as visitante, ev.dataEvento as dia, ev.hora as hora, se.nome as sector, fil.nome as fileir, ca.nome as cad " +
-                        "from evento ev, estadio es, timefutebol ma, timefutebol vi, ingresso i, setor se, fileira fil, cadeira ca " +
+                        "vi.nometime as visitante, ev.dataEvento as dia, ev.hora as hora, se.nome as sector, fil.nome as fileir, ca.nome as cad, sdp.valor as val " +
+                        "from evento ev, estadio es, timefutebol ma, timefutebol vi, ingresso i, setor se, fileira fil, cadeira ca, " +
+                        "setordisponivelpartida sdp " +
                         "where i.id_evento = ev.id and ev.id_estadio = es.id and ev.id_mandante = ma.id and ev.id_visitante = vi.id and i.id_usuario = "+ usuario.id +" "+
-                        "and i.id_cadeira = ca.id and ca.id_fileira = fil.id and fil.id_setor = se.id and se.id_estadio = es.id";
+                        "and i.id_cadeira = ca.id and ca.id_fileira = fil.id and fil.id_setor = se.id and se.id_estadio = es.id and sdp.id_evento = ev.id and sdp.id_setor = se.id";
         
         ResultSet rs = DB.executeQuery(query);
 
@@ -159,6 +161,9 @@ public class Application extends Controller {
             j.setSec(rs.getString("sector"));
             j.setFil(rs.getString("fileir"));
             j.setCad(rs.getString("cad"));
+            
+            DecimalFormat df = new DecimalFormat("0.00"); //colocar duas casas decimais no valor do ingresso
+            j.setValor("R$ "+df.format(rs.getFloat("val")));
             
             eventos.add(j);
         }

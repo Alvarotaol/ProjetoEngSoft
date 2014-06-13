@@ -203,11 +203,9 @@ public class EventoCtrl extends Controller {
    
    public static void mostrarUsuariosQueCompraram(long id_evento) throws SQLException {
        
-        String query = "select u.nome nomeUsuario, u.login as usr, u.cpf as cpf, str.nome as nomeSetor, fil.nome as nomeFileira, ca.nome as nomeCadeira "+
-                        "from usuario u,  evento ev, ingresso i, cadeira ca, fileira fil, setor str "+
-
-                        "where i.id_usuario = u.id and ev.id = i.id_evento and i.id_evento = "+id_evento+" "+
-
+        String query = "select u.nome nomeUsuario, u.login as usr, u.cpf as cpf, str.nome as nomeSetor, fil.nome as nomeFileira, ca.nome as nomeCadeira, sdp.valor as val "+
+                       "from usuario u,  evento ev, ingresso i, cadeira ca, fileira fil, setor str, setordisponivelpartida sdp "+
+                       "where i.id_usuario = u.id and ev.id = i.id_evento and sdp.id_setor = str.id and sdp.id_evento = ev.id and i.id_evento = "+id_evento+" "+
                        "and ca.id = i.id_cadeira and ca.id_fileira = fil.id and fil.id_setor = str.id " +
                        "order by nomeSetor, nomeFileira, nomeCadeira ";
        
@@ -224,7 +222,10 @@ public class EventoCtrl extends Controller {
             j.setNomeUsuario(rs.getString("nomeUsuario"));
             j.setCpf(rs.getString("cpf"));
             j.setUsr(rs.getString("usr"));
-
+            
+            DecimalFormat df = new DecimalFormat("0.00"); //colocar duas casas decimais no valor do ingresso
+            j.setValor("R$ "+df.format(rs.getFloat("val")));
+            
             comprados.add(j);
         }
 

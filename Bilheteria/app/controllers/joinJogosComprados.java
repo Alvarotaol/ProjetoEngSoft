@@ -59,6 +59,15 @@ public class joinJogosComprados {
     String sec;
     String cad;
     String fil;
+    String valor;
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
 
     public String getSec() {
         return sec;

@@ -50,6 +50,14 @@ public class joinUsuariosQueCompraram {
         this.cpf = cpf;
     }
     
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+    
     public String nomeSetor;
     public String nomeFileira;
     public String nomeCadeira;
@@ -57,4 +65,8 @@ public class joinUsuariosQueCompraram {
     public String nomeUsuario;
     public String usr;
     public String cpf;
+    
+    public String valor;
+
+
 }
