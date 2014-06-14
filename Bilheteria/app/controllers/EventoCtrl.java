@@ -88,9 +88,14 @@ public class EventoCtrl extends Controller {
             j.setNomeEstadio(rs.getString("nomeEstadio"));
             j.setMandante(rs.getString("mandante"));
             j.setVisitante(rs.getString("visitante"));
-            if(rs.getDate("dia") != null) j.setData(rs.getDate("dia").toString());
+            
+            if(rs.getDate("dia") != null)
+                j.setData(rs.getDate("dia").toString());
+            
             j.setHora(rs.getString("hora"));
-            if(rs.getDate("limite") != null) j.setDataLimite(rs.getDate("limite").toString());
+            
+            if(rs.getDate("limite") != null)
+                j.setDataLimite(rs.getDate("limite").toString());
             
             eventos.add(j);
         }

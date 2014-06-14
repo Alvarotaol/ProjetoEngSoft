@@ -22,16 +22,16 @@ public class UsuarioCtrl extends Controller {
 		System.out.println(imagem);
 		
 		if(senha.equals(senha2)){
-			Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
-				                  bairro, cidade, estado);
-			usr._save();
-			String tipoUsuario = session.get("tipo");
+                    Usuario usr = new Usuario(nome, cpf, email, endereco, telefone, dataNasc, login, senha, tipo,
+                                              bairro, cidade, estado);
+                    usr._save();
+                    String tipoUsuario = session.get("tipo");
 
-			if (tipoUsuario != null && tipoUsuario.equals(Usuario.admin)) {
-				usuarioIndex();
-			} else {
-				indexLogin(null);
-			}
+                    if (tipoUsuario != null && tipoUsuario.equals(Usuario.admin)) {
+                            usuarioIndex();
+                    } else {
+                            indexLogin(null);
+                    }
 		} else {
 			usuarioCadastrar(); //+ mensagem de senhas diferentes
 		}
@@ -101,16 +101,16 @@ public class UsuarioCtrl extends Controller {
 	}	
 	
 	public static void usuarioSuspender(long id){
-		Usuario usuario = Usuario.find("id", id).first();
-		render(usuario);
+            Usuario usuario = Usuario.find("id", id).first();
+            render(usuario);
 	}
 	
 	public static void suspender(String login, Date tempo){
-		Usuario usuario = Usuario.find("login", login).first();
-		usuario.banido = true;
-		usuario.dataBanido = tempo;
-		usuario.save();
-		usuarioIndex();
+            Usuario usuario = Usuario.find("login", login).first();
+            usuario.banido = true;
+            usuario.dataBanido = tempo;
+            usuario.save();
+            usuarioIndex();
 	}
 
 	//--------------------LOGIN
@@ -119,8 +119,8 @@ public class UsuarioCtrl extends Controller {
 		
 		Usuario usuario = Usuario.find("login", login).first();
 		if(usuario == null){
-			//Exibir mensagem correspondente
-			indexLogin("Usuário inexistente");
+                    //Exibir mensagem correspondente
+                    indexLogin("Usuário inexistente");
 		}
 		if(usuario.banido){
 			System.out.print(Calendar.getInstance().getTime());
@@ -153,24 +153,24 @@ public class UsuarioCtrl extends Controller {
 	
 	
 	public static void esqueciMinhaSenha(@Required String cpf) {
-		Usuario usuario = Usuario.find("cpf", cpf).first();
-		int tela = 2;
-		if(usuario != null){
-			render("UsuarioCtrl/indexEsqueciSenha.html", usuario, tela);
-		} else {
-			//TODO Mostrar mensagem
-		}
+            Usuario usuario = Usuario.find("cpf", cpf).first();
+            int tela = 2;
+            if(usuario != null){
+                render("UsuarioCtrl/indexEsqueciSenha.html", usuario, tela);
+            } else {
+                //TODO Mostrar mensagem
+            }
 	}
 	
 	public static void alterarSenha(@Required String login, @Required String senha) {
-		//System.out.println("Aqui " + login);
-		//O login fica nulo, não sei porque
-		Usuario usuario = Usuario.find("login", login).first();
-		
-		//TODO validar depois
-		usuario.senha = senha;
-		usuario.save();
-		entrar(login, senha);
+            //System.out.println("Aqui " + login);
+            //O login fica nulo, não sei porque
+            Usuario usuario = Usuario.find("login", login).first();
+
+            //TODO validar depois
+            usuario.senha = senha;
+            usuario.save();
+            entrar(login, senha);
 	}
 	
 	
@@ -191,52 +191,52 @@ public class UsuarioCtrl extends Controller {
 	}
 
 	public static void indexEsqueciSenha() {
-		int tela = 1;
-		render(tela);
+            int tela = 1;
+            render(tela);
 	}
 	
 	public static void usuarioAlterarSenha(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}
+            String lgn = session.get("usuario");
+
+            if (lgn != null) {
+                    Usuario usuario = Usuario.find("login", lgn).first();
+                    render(usuario);
+            }
 	}
 
 	
 	public static void usuarioEditar(long id){
-		Usuario usuario = Usuario.find("id", id).first();
-		render(usuario);
+            Usuario usuario = Usuario.find("id", id).first();
+            render(usuario);
 	}
 	
 	public static void usuarioDadosPessoaisEditar(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}
+            String lgn = session.get("usuario");
+
+            if (lgn != null) {
+                    Usuario usuario = Usuario.find("login", lgn).first();
+                    render(usuario);
+            }
 	}
 	
 	public static void usuarioDadosPessoais(){
-		String lgn = session.get("usuario");
-		
-		if (lgn != null) {
-			Usuario usuario = Usuario.find("login", lgn).first();
-			render(usuario);
-		}	
+            String lgn = session.get("usuario");
+
+            if (lgn != null) {
+                    Usuario usuario = Usuario.find("login", lgn).first();
+                    render(usuario);
+            }	
 	}
 	
 	/**Carregar página de gerência de usuário*/
 	public static void usuarioIndex() {
-		if(session.get("tipo").equals(Usuario.comum)){
-			usuarioDadosPessoais();
-		}
-		List<Usuario> usr = Usuario.all().fetch();
-		System.out.print("Teste " + usr.size());
+            if(session.get("tipo").equals(Usuario.comum)){
+                    usuarioDadosPessoais();
+            }
+            List<Usuario> usr = Usuario.all().fetch();
+            System.out.print("Teste " + usr.size());
 
-		render(usr);
+            render(usr);
 	}
 	
 }

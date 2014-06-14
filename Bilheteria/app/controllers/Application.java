@@ -104,9 +104,14 @@ public class Application extends Controller {
             j.setNomeEstadio(rs.getString("nomeEstadio"));
             j.setNomeMandante(rs.getString("mandante"));
             j.setNomeVisitante(rs.getString("visitante"));
-            j.setDataEvento(rs.getDate("dia").toString());
+            
+            if (rs.getDate("dia") != null)
+                j.setDataEvento(rs.getDate("dia").toString());
+            
             j.setHoraEvento(rs.getString("hora"));
-            j.setDataFinalCompra(rs.getDate("limite").toString());
+            
+            if (rs.getDate("limite") != null)
+                j.setDataFinalCompra(rs.getDate("limite").toString());
             
             if(session.get("conectado") != null) {
                 if(session.get("conectado").equals("V")) {
@@ -156,7 +161,10 @@ public class Application extends Controller {
             j.setNomeEstadio(rs.getString("nomeEstadio"));
             j.setNomeMandante(rs.getString("mandante"));
             j.setNomeVisitante(rs.getString("visitante"));
-            j.setData(rs.getDate("dia").toString());
+            
+            if (rs.getDate("dia") != null)
+                j.setData(rs.getDate("dia").toString());
+            
             j.setHora(rs.getString("hora"));
             j.setSec(rs.getString("sector"));
             j.setFil(rs.getString("fileir"));
