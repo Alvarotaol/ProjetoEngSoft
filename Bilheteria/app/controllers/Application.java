@@ -68,7 +68,7 @@ public class Application extends Controller {
     public static int verificaSeOUsuarioComprouIngressoParaTalJogo(long id_evento) throws SQLException {
         Usuario usuario = Usuario.find("login", session.get("usuario")).first();
         
-        String query = "Select id from ingresso where id_evento ="+id_evento+" and id_usuario = "+usuario.id;
+        String query = "Select id from Ingresso where id_evento ="+id_evento+" and id_usuario = "+usuario.id;
         
         ResultSet rs = DB.executeQuery(query);
         
@@ -88,7 +88,7 @@ public class Application extends Controller {
     	String query = "select ev.id as id_evento, ev.id_estadio as id_estadio, ev.descricao as descricao, "+
                        "es.nome as nomeEstadio, m.nometime as mandante, v.nometime as visitante, ev.dataEvento as dia, "+
                        "ev.hora as hora, ev.dataFinalCompra as limite "+
-                       "from estadio es, timefutebol m, timefutebol v, evento ev " +
+                       "from Estadio es, TimeFutebol m, TimeFutebol v, Evento ev " +
                        "where ev.id_estadio = es.id and ev.id_mandante = m.id and ev.id_visitante = v.id and ev.dataFinalCompra >= now() ORDER BY ev.dataEvento";
         
         ResultSet rs = DB.executeQuery(query);
@@ -145,7 +145,7 @@ public class Application extends Controller {
         
         String query =  "Select ev.descricao as descricao, es.nome as nomeEstadio, ma.nometime as mandante, " +
                         "vi.nometime as visitante, ev.dataEvento as dia, ev.hora as hora, se.nome as sector, fil.nome as fileir, ca.nome as cad, sdp.valor as val " +
-                        "from evento ev, estadio es, timefutebol ma, timefutebol vi, ingresso i, setor se, fileira fil, cadeira ca, " +
+                        "from Evento ev, Estadio es, Timefutebol ma, timefutebol vi, ingresso i, setor se, fileira fil, cadeira ca, " +
                         "setordisponivelpartida sdp " +
                         "where i.id_evento = ev.id and ev.id_estadio = es.id and ev.id_mandante = ma.id and ev.id_visitante = vi.id and i.id_usuario = "+ usuario.id +" "+
                         "and i.id_cadeira = ca.id and ca.id_fileira = fil.id and fil.id_setor = se.id and se.id_estadio = es.id and sdp.id_evento = ev.id and sdp.id_setor = se.id";

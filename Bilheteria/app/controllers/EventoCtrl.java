@@ -71,7 +71,7 @@ public class EventoCtrl extends Controller {
         String query = "select ev.id as id_evento, ev.descricao as descric, ev.dataEvento as dia, ev.hora as hora, ev.dataFinalCompra as limite, " +
                               "es.id as id_estadio, es.nome as nomeEstadio, m.nomeTime as mandante, v.nomeTime as visitante " +
 
-	               "from evento ev, estadio es, timefutebol m, timefutebol v " + 
+	               "from Evento ev, Estadio es, TimeFutebol m, TimeFutebol v " + 
 
 	               "where ev.id_estadio = es.id and ev.id_mandante = m.id and ev.id_visitante = v.id ORDER BY dia;";
         
